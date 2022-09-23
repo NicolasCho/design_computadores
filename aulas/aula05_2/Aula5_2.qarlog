@@ -1,0 +1,27 @@
+Quartus Prime Archive log --	D:/Faculdade/6_Semestre/DesCom/aula5_2/Aula5_2.qarlog
+
+Archive:	D:/Faculdade/6_Semestre/DesCom/aula5_2/Aula5_2.qar
+Date:		Fri Sep 16 14:48:57 2022
+Quartus Prime		20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+D:/Faculdade/6_Semestre/DesCom/aula5_2/Aula5_2.qpf
+D:/Faculdade/6_Semestre/DesCom/aula5_2/Aula5_2.qsf
+D:/Faculdade/6_Semestre/DesCom/aula5_2/Aula5_2.vhd
+D:/Faculdade/6_Semestre/DesCom/aula5_2/ULASomaSub.vhd
+D:/Faculdade/6_Semestre/DesCom/aula5_2/Waveform.vwf
+D:/Faculdade/6_Semestre/DesCom/aula5_2/decoderGeneric.vhd
+D:/Faculdade/6_Semestre/DesCom/aula5_2/edgeDetector.vhd
+D:/Faculdade/6_Semestre/DesCom/aula5_2/flipFlop.vhd
+D:/Faculdade/6_Semestre/DesCom/aula5_2/logicaDesvio.vhd
+D:/Faculdade/6_Semestre/DesCom/aula5_2/memoriaRAM.vhd
+D:/Faculdade/6_Semestre/DesCom/aula5_2/memoriaROM.vhd
+D:/Faculdade/6_Semestre/DesCom/aula5_2/muxGenerico2x1.vhd
+D:/Faculdade/6_Semestre/DesCom/aula5_2/muxGenerico4x1.vhd
+D:/Faculdade/6_Semestre/DesCom/aula5_2/registradorGenerico.vhd
+D:/Faculdade/6_Semestre/DesCom/aula5_2/somaConstante.vhd
+d:/quartus/quartus/bin64/assignment_defaults.qdf
+	======= Total: 16 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
