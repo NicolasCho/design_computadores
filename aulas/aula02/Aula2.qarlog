@@ -1,0 +1,22 @@
+Quartus Prime Archive log --	C:/Users/nicol/Desktop/insper/6_semestre/descomp/arquiteturas/aula2/Aula2.qarlog
+
+Archive:	C:/Users/nicol/Desktop/insper/6_semestre/descomp/arquiteturas/aula2/Aula2.qar
+Date:		Sun Aug 28 20:47:23 2022
+Quartus Prime		20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/arquiteturas/aula2/Aula2.qpf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/arquiteturas/aula2/Aula2.qsf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/arquiteturas/aula2/Aula2.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/arquiteturas/aula2/ULASomaSub.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/arquiteturas/aula2/Waveform1.vwf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/arquiteturas/aula2/edgeDetector.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/arquiteturas/aula2/memoriaROM.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/arquiteturas/aula2/muxGenerico2x1.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/arquiteturas/aula2/registradorGenerico.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/arquiteturas/aula2/somaConstante.vhd
+c:/intelfpga_lite/20.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 11 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
