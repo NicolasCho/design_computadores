@@ -18,7 +18,8 @@ entity Aula08 is
 	 HEX2  : out std_logic_vector(6 downto 0);
 	 HEX3  : out std_logic_vector(6 downto 0);
 	 HEX4  : out std_logic_vector(6 downto 0);
-	 HEX5  : out std_logic_vector(6 downto 0)
+	 HEX5  : out std_logic_vector(6 downto 0);
+	 PC    : out std_logic_vector(larguraEnderecos-1 downto 0) --verificar instrucao
   );
 end entity;
 
@@ -143,10 +144,13 @@ LOGICASW : entity work.logicaSW
 						saida => saidaSW);
 						
 LOGICAKEY : entity work.logicaKey
-			 port map (key0 => KEY0, key1 => KEY1, key2 => KEY2, key3 => KEY3, FPGA_reset => FPGA_RESET,
+			 port map (CLK => CLK,
+			         key0 => KEY0, key1 => KEY1, key2 => KEY2, key3 => KEY3, FPGA_reset => FPGA_RESET,
 						RD => RD,
+						WR => WR,
 						bloco => saidaDecoderBlocos(5),
 						endereco => saidaDecoderEnderecos(4 downto 0),
+						endereco_reset => saidaEnderecosCPU,
 						sw_ou_key => divisor,
 						saida => saidaKEY);
 						
@@ -157,5 +161,5 @@ HEX2 <= saidaHex2;
 HEX3 <= saidaHex3;
 HEX4 <= saidaHex4;
 HEX5 <= saidaHex5;
-
+PC   <= entradaROM;
 end architecture;

@@ -10,7 +10,7 @@ z2
 cModel Technology
 Z0 dC:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula08_completa/simulation/qsim
 Eaula08
-Z1 w1665357592
+Z1 w1665455735
 Z2 DPx8 cyclonev 18 cyclonev_atom_pack 0 22 ^K2eeK[IVbX]]MLcdOEI91
 Z3 DPx8 cyclonev 19 cyclonev_components 0 22 GFL[QAd@dAZF:`jjOGn9>2
 Z4 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 3dzZ?YU_4FC5UU0cTXRET1
@@ -20,19 +20,19 @@ Z7 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
 Z8 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z9 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 Z10 DPx6 altera 28 altera_primitives_components 0 22 VSD=32;3391kSOd?PDZYj3
-!i122 4
+!i122 10
 R0
 Z11 8Aula08.vho
 Z12 FAula08.vho
 l0
 L39 1
-V[85j=<P?HNz=Wg7<8XNT80
-!s100 emgLD>U]6zX2>Cd2:Zmc52
+VSgG[j9hb]8i[BjI6H9c]42
+!s100 ZVB8?YAW0Ffa5MKHW_QVc0
 Z13 OV;C;2020.1;71
 32
-Z14 !s110 1665357593
+Z14 !s110 1665455736
 !i10b 1
-Z15 !s108 1665357593.000000
+Z15 !s108 1665455736.000000
 Z16 !s90 -work|work|Aula08.vho|
 Z17 !s107 Aula08.vho|
 !i113 1
@@ -48,12 +48,12 @@ R7
 R8
 R9
 R10
-DEx4 work 6 aula08 0 22 [85j=<P?HNz=Wg7<8XNT80
-!i122 4
-l381
-L67 4088
-V;d@[7_L2dP<T1fUK1NB;O3
-!s100 P6CkzcdI1Jk4U<:1S83Pi2
+DEx4 work 6 aula08 0 22 SgG[j9hb]8i[BjI6H9c]42
+!i122 10
+l2044
+L68 20499
+VTDQ3h_@m05;d>`1lTiKjn2
+!s100 ;eWj=Y`KHV^mUPeSNicXC3
 R13
 32
 R14
@@ -65,43 +65,43 @@ R17
 R18
 R19
 Eaula08_vhd_vec_tst
-Z20 w1665357590
+Z20 w1665455733
 R8
 R9
-!i122 5
+!i122 11
 R0
-Z21 8Waveform.vwf.vht
-Z22 FWaveform.vwf.vht
+Z21 8Waveform1.vwf.vht
+Z22 FWaveform1.vwf.vht
 l0
 L32 1
 V3J[eF0gJ^DP5H2M[UNaTh0
 !s100 WXD3gVf=8o;E5_DWMGlD>3
 R13
 32
-R14
+Z23 !s110 1665455737
 !i10b 1
-R15
-Z23 !s90 -work|work|Waveform.vwf.vht|
-Z24 !s107 Waveform.vwf.vht|
+Z24 !s108 1665455737.000000
+Z25 !s90 -work|work|Waveform1.vwf.vht|
+Z26 !s107 Waveform1.vwf.vht|
 !i113 1
 R18
 R19
 Aaula08_arch
 R8
 R9
-Z25 DEx4 work 18 aula08_vhd_vec_tst 0 22 3J[eF0gJ^DP5H2M[UNaTh0
-!i122 5
-l87
-L34 219
-Ve43N2E9>N`nM18A=^LL0B2
-!s100 K3fnWcRJORRF3RB:z7Sn10
+Z27 DEx4 work 18 aula08_vhd_vec_tst 0 22 3J[eF0gJ^DP5H2M[UNaTh0
+!i122 11
+l89
+L34 112
+VjzV8ljzhT>QEa:LRT=aT61
+!s100 kJE[YgR<keA<S?c9=iKDD2
 R13
 32
-R14
-!i10b 1
-R15
 R23
+!i10b 1
 R24
+R25
+R26
 !i113 1
 R18
 R19

@@ -3,6 +3,7 @@ CLOCK => cpu:CPU.CLOCK_50
 CLOCK => memoriaram:RAM.clk
 CLOCK => logicaled:LOGICALEDS.CLK
 CLOCK => logicadisplay:LOGICADISPLAYS.CLK
+CLOCK => logicakey:LOGICAKEY.CLK
 SW0 => logicasw:LOGICASW.sw0
 SW1 => logicasw:LOGICASW.sw1
 SW2 => logicasw:LOGICASW.sw2
@@ -70,6 +71,15 @@ HEX5[3] <= logicadisplay:LOGICADISPLAYS.hex5[3]
 HEX5[4] <= logicadisplay:LOGICADISPLAYS.hex5[4]
 HEX5[5] <= logicadisplay:LOGICADISPLAYS.hex5[5]
 HEX5[6] <= logicadisplay:LOGICADISPLAYS.hex5[6]
+PC[0] <= cpu:CPU.ROM_Address[0]
+PC[1] <= cpu:CPU.ROM_Address[1]
+PC[2] <= cpu:CPU.ROM_Address[2]
+PC[3] <= cpu:CPU.ROM_Address[3]
+PC[4] <= cpu:CPU.ROM_Address[4]
+PC[5] <= cpu:CPU.ROM_Address[5]
+PC[6] <= cpu:CPU.ROM_Address[6]
+PC[7] <= cpu:CPU.ROM_Address[7]
+PC[8] <= cpu:CPU.ROM_Address[8]
 
 
 |Aula08|CPU:CPU
@@ -1691,7 +1701,8 @@ saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Aula08|logicaKey:LOGICAKEY
-key0 => buffer_3_state:BUFFER3STATEKEY0.entrada
+CLK => edgedetector:DISCRIMINADORBORDA.clk
+key0 => edgedetector:DISCRIMINADORBORDA.entrada
 key1 => buffer_3_state:BUFFER3STATEKEY1.entrada
 key2 => buffer_3_state:BUFFER3STATEKEY2.entrada
 key3 => buffer_3_state:BUFFER3STATEKEY3.entrada
@@ -1701,6 +1712,7 @@ RD => habilitaKey1.IN0
 RD => habilitaKey2.IN0
 RD => habilitaKey3.IN0
 RD => habilitaKeyFPGAReset.IN0
+WR => resetFlipFlop.IN1
 bloco => habilitaKey0.IN1
 bloco => habilitaKey1.IN1
 bloco => habilitaKey2.IN1
@@ -1711,19 +1723,43 @@ endereco[1] => habilitaKey1.IN1
 endereco[2] => habilitaKey2.IN1
 endereco[3] => habilitaKey3.IN1
 endereco[4] => habilitaKeyFPGAReset.IN1
+endereco_reset[0] => resetFlipFlop.IN1
+endereco_reset[1] => resetFlipFlop.IN1
+endereco_reset[2] => resetFlipFlop.IN1
+endereco_reset[3] => resetFlipFlop.IN1
+endereco_reset[4] => resetFlipFlop.IN1
+endereco_reset[5] => resetFlipFlop.IN1
+endereco_reset[6] => resetFlipFlop.IN1
+endereco_reset[7] => resetFlipFlop.IN0
+endereco_reset[8] => resetFlipFlop.IN1
 sw_ou_key => habilitaKey0.IN1
 sw_ou_key => habilitaKey1.IN1
 sw_ou_key => habilitaKey2.IN1
 sw_ou_key => habilitaKey3.IN1
 sw_ou_key => habilitaKeyFPGAReset.IN1
 saida[0] <= saidaFPGAReset.DB_MAX_OUTPUT_PORT_TYPE
-saida[1] <= saida[1].DB_MAX_OUTPUT_PORT_TYPE
-saida[2] <= saida[2].DB_MAX_OUTPUT_PORT_TYPE
-saida[3] <= saida[3].DB_MAX_OUTPUT_PORT_TYPE
-saida[4] <= saida[4].DB_MAX_OUTPUT_PORT_TYPE
-saida[5] <= saida[5].DB_MAX_OUTPUT_PORT_TYPE
-saida[6] <= saida[6].DB_MAX_OUTPUT_PORT_TYPE
-saida[7] <= saida[7].DB_MAX_OUTPUT_PORT_TYPE
+saida[1] <= saidaKey1Restante[0].DB_MAX_OUTPUT_PORT_TYPE
+saida[2] <= saidaKey1Restante[1].DB_MAX_OUTPUT_PORT_TYPE
+saida[3] <= saidaKey1Restante[2].DB_MAX_OUTPUT_PORT_TYPE
+saida[4] <= saidaKey1Restante[3].DB_MAX_OUTPUT_PORT_TYPE
+saida[5] <= saidaKey1Restante[4].DB_MAX_OUTPUT_PORT_TYPE
+saida[6] <= saidaKey1Restante[5].DB_MAX_OUTPUT_PORT_TYPE
+saida[7] <= saidaKey1Restante[6].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Aula08|logicaKey:LOGICAKEY|edgeDetector:DISCRIMINADORBORDA
+clk => saidaQ.CLK
+entrada => saida.IN1
+entrada => saidaQ.DATAIN
+saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Aula08|logicaKey:LOGICAKEY|flipFlop:FF
+DIN => DOUT~reg0.DATAIN
+DOUT <= DOUT~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ENABLE => DOUT~reg0.ENA
+CLK => DOUT~reg0.CLK
+RST => DOUT~reg0.ACLR
 
 
 |Aula08|logicaKey:LOGICAKEY|buffer_3_state:BUFFER3STATEKEY0
@@ -1732,10 +1768,58 @@ habilita => saida.OE
 saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
+|Aula08|logicaKey:LOGICAKEY|buffer_3_state_7portas:BUFFER3STATEKEY0RESTANTE
+entrada[0] => saida[0].DATAIN
+entrada[1] => saida[1].DATAIN
+entrada[2] => saida[2].DATAIN
+entrada[3] => saida[3].DATAIN
+entrada[4] => saida[4].DATAIN
+entrada[5] => saida[5].DATAIN
+entrada[6] => saida[6].DATAIN
+habilita => saida[0].OE
+habilita => saida[1].OE
+habilita => saida[2].OE
+habilita => saida[3].OE
+habilita => saida[4].OE
+habilita => saida[5].OE
+habilita => saida[6].OE
+saida[0] <= saida[0].DB_MAX_OUTPUT_PORT_TYPE
+saida[1] <= saida[1].DB_MAX_OUTPUT_PORT_TYPE
+saida[2] <= saida[2].DB_MAX_OUTPUT_PORT_TYPE
+saida[3] <= saida[3].DB_MAX_OUTPUT_PORT_TYPE
+saida[4] <= saida[4].DB_MAX_OUTPUT_PORT_TYPE
+saida[5] <= saida[5].DB_MAX_OUTPUT_PORT_TYPE
+saida[6] <= saida[6].DB_MAX_OUTPUT_PORT_TYPE
+
+
 |Aula08|logicaKey:LOGICAKEY|buffer_3_state:BUFFER3STATEKEY1
 entrada => saida.DATAIN
 habilita => saida.OE
 saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Aula08|logicaKey:LOGICAKEY|buffer_3_state_7portas:BUFFER3STATEKEY1RESTANTE
+entrada[0] => saida[0].DATAIN
+entrada[1] => saida[1].DATAIN
+entrada[2] => saida[2].DATAIN
+entrada[3] => saida[3].DATAIN
+entrada[4] => saida[4].DATAIN
+entrada[5] => saida[5].DATAIN
+entrada[6] => saida[6].DATAIN
+habilita => saida[0].OE
+habilita => saida[1].OE
+habilita => saida[2].OE
+habilita => saida[3].OE
+habilita => saida[4].OE
+habilita => saida[5].OE
+habilita => saida[6].OE
+saida[0] <= saida[0].DB_MAX_OUTPUT_PORT_TYPE
+saida[1] <= saida[1].DB_MAX_OUTPUT_PORT_TYPE
+saida[2] <= saida[2].DB_MAX_OUTPUT_PORT_TYPE
+saida[3] <= saida[3].DB_MAX_OUTPUT_PORT_TYPE
+saida[4] <= saida[4].DB_MAX_OUTPUT_PORT_TYPE
+saida[5] <= saida[5].DB_MAX_OUTPUT_PORT_TYPE
+saida[6] <= saida[6].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Aula08|logicaKey:LOGICAKEY|buffer_3_state:BUFFER3STATEKEY2
