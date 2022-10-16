@@ -1,5 +1,9 @@
-OpCode = { "NOP":"0", "LDA":"1", "SOMA":"2", "SUB":"3", "LDI":"4", "STA":"5",
-           "JMP":"6", "JEQ":"7", "CEQ":"8", "JSR":"9", "RET":"10", "ANDOP":"11"}
+OpCode = { "NOP":"0000", "LDA":"0001", "SOMA":"0010", "SUB":"0011", "LDI":"0100", "STA":"0101",
+           "JMP":"0110", "JEQ":"0111", "CEQ":"1000", "JSR":"1001", "RET":"1010", "ANDOP":"1011"}
+
+# MemoryMap = {"RAM":range(0,63), "LEDR0-7": 256, "LEDR8":257, "LEDR9":258, "HEX:0":288, "HEX1":289, "HEX2":290,
+#              "HEX3":291, "HEX4":292, "HEX5":293, "SW0-7":320, "SW8":321, "SW9":322, "KEY0":352, "KEY1":353, 
+#              "KEY2":354, "KEY3":355, "FPGA_RESET":356, "CLR-KEY1":510, "CLR-KEY2":511}
 
 lines, lineinfo, lineadr, labels = [], [], [], {}
 
@@ -22,7 +26,10 @@ for i in range(0,len(lines)):
     line = lines[i]
     line = line.split(";",1)[0]
     for k,d in OpCode.items():
-        line = line.replace(k, bin(int(d))) #Passa os minemonicos para o código binário
+        line = line.replace(k, d) #Passa os minemonicos para o código binário
+
+    # for k,d in MemoryMap.items():
+    #     line = line.replace(k, bin(int(d))) #Passa os minemonicos para o código binário
 
     if "@" in line:
         num = line.split("@",1)[1]
@@ -33,14 +40,15 @@ for i in range(0,len(lines)):
         line = line.split("$",1)[0]
         line += bin(int(num))
 
+
+
     
     line = line.replace("0b", "")
     line = line.replace(" ", "")
 
     if len(line) > 0:
         for l in range(0, int(sys.argv[2])-len(line)):
-            line = "0"+line
-
+            line = line[:4]+"0"+line[4:]
         f.write("tmp("+str(i)+") := "+'"'+line+'"'+";\n")
 
 
