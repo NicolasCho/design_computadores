@@ -21,10 +21,21 @@ f.close()
 try: f = open("VHDL.txt", 'w')
 except: print("ERROR: Can't find file \'VHDL.txt\'."); exit(1)
 
+for i in range(0, len(lines)):
+    line = lines[i]
+    if line.split(" ")[0] not in OpCode:
+        if line.split(" ")[0] != "":
+            labels[line.split(" ")[0]] = "@"+str(i)
+
 
 for i in range(0,len(lines)):
     line = lines[i]
     line = line.split(";",1)[0]
+
+    if line.split(" ")[0] in OpCode:
+        for k,d in labels.items():
+            line = line.replace(k, d) #Passa os minemonicos para o código binário
+
     for k,d in OpCode.items():
         line = line.replace(k, d) #Passa os minemonicos para o código binário
 
@@ -35,6 +46,7 @@ for i in range(0,len(lines)):
         num = line.split("@",1)[1]
         line = line.split("@",1)[0]
         line += bin(int(num))
+
     elif "$" in line:
         num = line.split("$",1)[1]
         line = line.split("$",1)[0]
@@ -42,11 +54,11 @@ for i in range(0,len(lines)):
 
 
 
-    
+    #Limpa sinais da coversao para binario 
     line = line.replace("0b", "")
     line = line.replace(" ", "")
 
-    if len(line) > 0:
+    if len(line) > 0 and line.split(" ")[0] not in labels:
         for l in range(0, int(sys.argv[2])-len(line)):
             line = line[:4]+"0"+line[4:]
         f.write("tmp("+str(i)+") := "+'"'+line+'"'+";\n")
