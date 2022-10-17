@@ -1,0 +1,66 @@
+LDI $0 ; INICIO DO SETUP
+STA HEX0
+STA HEX1
+STA HEX2
+STA HEX3
+STA HEX4
+STA HEX5
+STA LEDR0-7
+STA LEDR8
+STA LEDR9
+STA @0
+STA @1
+STA @2 
+STA @3; FIM DO SETUP
+
+
+LDI $0 
+STA @0 
+STA @2 
+LDI $1 
+STA @4 ;mem 4 constante 1 
+NOP 
+LDA KEY0
+STA HEX0
+CEQ @0 
+JEQ @27
+JSR @48
+NOP 
+JMP @21
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+STA CLR-KEY2
+LDA @0  ; MEN[0]
+SOMA @1 
+STA @0 ; MEN[0]
+STA LEDR9
+JSR @58
+
+RET 
+
+
+LDI $10
+CEQ @2
+JEQ @63
+NOP
+RET
+
+
+JMP @61
