@@ -19,6 +19,8 @@ STA @4 ; VALOR 1
 LDI $10
 STA @5 ; VALOR 10
 
+LDI $0
+STA @6 ;FLAG
 
 START
 NOP 
@@ -82,4 +84,6 @@ RET
 ZERO
 LDI $0
 STA @2
+
+
 RET
