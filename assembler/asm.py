@@ -4,8 +4,8 @@ OpCode = { "NOP":"0000", "LDA":"0001", "SOMA":"0010", "SUB":"0011", "LDI":"0100"
 Regs = {"RegA":'"00"', "RegB":'"01"', "RegC":'"10"', "RegD":'"11"'}
 
 MemoryMap = {"LEDR0-7": "@256", "LEDR8":"@257", "LEDR9":"@258", "HEX0":"@288", "HEX1":"@289", "HEX2":"@290",
-             "HEX3":"@291", "HEX4":"@292", "HEX5":"@293", "SW0_7":"@320", "SW8":"@321", "SW9":"@322", "CLR-KEY0":"@511",
-            "KEY0":"@352", "KEY1":"@353", "KEY2":"@354", "KEY3":"@355", "FPGA_RESET":"@356"}
+             "HEX3":"@291", "HEX4":"@292", "HEX5":"@293", "SW0_7":"@320", "SW8":"@321", "SW9":"@322", "CLR-KEY1":"@510"
+             ,"CLR-KEY0":"@511", "KEY0":"@352", "KEY1":"@353", "KEY2":"@354", "KEY3":"@355", "FPGA_RESET":"@356"}
 
 
 import sys                                          
@@ -120,6 +120,7 @@ def acha_labels(arq_leitura):
             if line.split(" ")[0] != "":
                 labels[line.split(" ")[0]] = "@"+str(i)  
 
+    # retirado de https://www.geeksforgeeks.org/python-program-to-sort-dictionary-by-key-lengths/
     # sorting using sort()
     # external to render logic 
     test_dict_list = list(labels.items())
