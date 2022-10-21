@@ -17,12 +17,15 @@ end entity;
 architecture comportamento of logicaKey is
   signal saidaDiscriminador : std_logic;
   signal saidaDiscriminadorKey1 : std_logic;
+  signal saidaDiscriminadorFPGA : std_logic;
   
   signal saidaFlipFlop : std_logic;
   signal saidaFlipFlopKey1 : std_logic;
+  signal saidaFlipFlopFPGA : std_logic;
   
   signal resetFlipFlop : std_logic;
   signal resetFlipFlopKey1 : std_logic;
+  signal resetFlipFlopFPGA : std_logic;
 
   signal habilitaKey0 : std_logic;
   signal habilitaKey1 : std_logic;
@@ -51,6 +54,10 @@ resetFlipFlopKey1 <= (endereco_reset(8) and endereco_reset(7) and endereco_reset
                   endereco_reset(4) and endereco_reset(3) and endereco_reset(2) and endereco_reset(1) and
 						(not endereco_reset(0)) and WR);
 
+resetFlipFlopFPGA <= (endereco_reset(8) and endereco_reset(7) and endereco_reset(6) and endereco_reset(5) and
+                  endereco_reset(4) and endereco_reset(3) and endereco_reset(2) and (not endereco_reset(1)) and
+						(not endereco_reset(0)) and WR);
+
 						
 DISCRIMINADORBORDA : entity work.edgeDetector(bordaSubida)
           port map(clk => CLK,
@@ -62,24 +69,30 @@ DISCRIMINADORBORDA1 : entity work.edgeDetector(bordaSubida)
 			         entrada => KEY(1),
 						saida => saidaDiscriminadorKey1);
 						
+DISCRIMINADORBORDAFPGA : entity work.edgeDetector(bordaSubida)
+          port map(clk => CLK,
+			         entrada => FPGA_reset,
+						saida => saidaDiscriminadorFPGA);
+						
 FF : entity work.flipFlop
 		    port map (DIN => '1', DOUT => saidaFlipFlop, ENABLE => '1', CLK => saidaDiscriminador, RST => resetFlipFlop);
 
 FF1 : entity work.flipFlop
 		    port map (DIN => '1', DOUT => saidaFlipFlopKey1, ENABLE => '1', CLK => saidaDiscriminadorKey1, RST => resetFlipFlopKey1);
 
+FFFPGA : entity work.flipFlop
+		    port map (DIN => '1', DOUT => saidaFlipFlopFPGA, ENABLE => '1', CLK => saidaDiscriminadorFPGA, RST => resetFlipFlopFPGA);
+			 
 BUFFER3STATEKEY0 : entity work.buffer_3_state
           port map (entrada => saidaFlipFlop, 
 						habilita => habilitaKey0, 
 						saida => saidaKey0); 	 	
-
 			
 BUFFER3STATEKEY1 : entity work.buffer_3_state
           port map (entrada => saidaFlipFlopKey1, 
 						habilita => habilitaKey1, 
 						saida => saidaKey1);
 
-						
 BUFFER3STATEKEY2 : entity work.buffer_3_state
           port map (entrada => KEY(2), 
 						habilita => habilitaKey2, 
@@ -91,7 +104,7 @@ BUFFER3STATEKEY3 : entity work.buffer_3_state
 						saida => saidaKey3);
 						
 BUFFER3STATEFPGARESET : entity work.buffer_3_state
-          port map (entrada => FPGA_reset, 
+          port map (entrada => saidaFlipFlopFPGA, 
 						habilita => habilitaKeyFPGAReset, 
 						saida => saidaFPGAReset);						
 
