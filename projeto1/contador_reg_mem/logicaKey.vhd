@@ -16,8 +16,13 @@ end entity;
 
 architecture comportamento of logicaKey is
   signal saidaDiscriminador : std_logic;
+  signal saidaDiscriminadorKey1 : std_logic;
+  
   signal saidaFlipFlop : std_logic;
+  signal saidaFlipFlopKey1 : std_logic;
+  
   signal resetFlipFlop : std_logic;
+  signal resetFlipFlopKey1 : std_logic;
 
   signal habilitaKey0 : std_logic;
   signal habilitaKey1 : std_logic;
@@ -41,15 +46,27 @@ habilitaKeyFPGAReset <= (RD and bloco and endereco(4) and sw_ou_key);
 resetFlipFlop <= (endereco_reset(8) and endereco_reset(7) and endereco_reset(6) and endereco_reset(5) and
                   endereco_reset(4) and endereco_reset(3) and endereco_reset(2) and endereco_reset(1) and
 						endereco_reset(0) and WR);
+						
+resetFlipFlopKey1 <= (endereco_reset(8) and endereco_reset(7) and endereco_reset(6) and endereco_reset(5) and
+                  endereco_reset(4) and endereco_reset(3) and endereco_reset(2) and endereco_reset(1) and
+						(not endereco_reset(0)) and WR);
 
+						
 DISCRIMINADORBORDA : entity work.edgeDetector(bordaSubida)
           port map(clk => CLK,
 			         entrada => KEY(0),
 						saida => saidaDiscriminador);
 						
+DISCRIMINADORBORDA1 : entity work.edgeDetector(bordaSubida)
+          port map(clk => CLK,
+			         entrada => KEY(1),
+						saida => saidaDiscriminadorKey1);
+						
 FF : entity work.flipFlop
 		    port map (DIN => '1', DOUT => saidaFlipFlop, ENABLE => '1', CLK => saidaDiscriminador, RST => resetFlipFlop);
 
+FF1 : entity work.flipFlop
+		    port map (DIN => '1', DOUT => saidaFlipFlopKey1, ENABLE => '1', CLK => saidaDiscriminadorKey1, RST => resetFlipFlopKey1);
 
 BUFFER3STATEKEY0 : entity work.buffer_3_state
           port map (entrada => saidaFlipFlop, 
@@ -58,7 +75,7 @@ BUFFER3STATEKEY0 : entity work.buffer_3_state
 
 			
 BUFFER3STATEKEY1 : entity work.buffer_3_state
-          port map (entrada => KEY(1), 
+          port map (entrada => saidaFlipFlopKey1, 
 						habilita => habilitaKey1, 
 						saida => saidaKey1);
 
