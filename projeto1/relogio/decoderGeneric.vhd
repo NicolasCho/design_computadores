@@ -21,7 +21,9 @@ architecture comportamento of decoderGeneric is
   constant JSR  : std_logic_vector(3 downto 0) := "1001";
   constant RET  : std_logic_vector(3 downto 0) := "1010";
   constant ANDOP: std_logic_vector(3 downto 0) := "1011";
-  
+  constant ADDI : std_logic_vector(3 downto 0) := "1100";
+  constant SUBI : std_logic_vector(3 downto 0) := "1101";
+  constant ANDI : std_logic_vector(3 downto 0) := "1110";
 
   begin
 saida <= "000000000000" when entrada = NOP else
@@ -36,5 +38,8 @@ saida <= "000000000000" when entrada = NOP else
 			"100100000000" when entrada = JSR else
 			"001000000000" when entrada = RET else
 			"000000111010" when entrada = ANDOP else
+			"000001101000" when entrada = ADDI else
+			"000001100000" when entrada = SUBI else
+			"000001111000" when entrada = ANDI else
          "000000000000";  -- NOP para os entradas Indefinidas
 end architecture;
