@@ -1,5 +1,5 @@
 Flow report for RegistradorMemoria
-Thu Oct 20 00:24:32 2022
+Sun Oct 23 17:28:29 2022
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Thu Oct 20 00:24:18 2022       ;
+; Flow Status                     ; Successful - Sun Oct 23 17:28:22 2022       ;
 ; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                   ; RegistradorMemoria                          ;
 ; Top-level Entity Name           ; RegistradorMemoria                          ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CEBA4F23C7                                 ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 107 / 18,480 ( < 1 % )                      ;
-; Total registers                 ; 96                                          ;
+; Logic utilization (in ALMs)     ; 443 / 18,480 ( 2 % )                        ;
+; Total registers                 ; 609                                         ;
 ; Total pins                      ; 77 / 224 ( 34 % )                           ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0 / 3,153,920 ( 0 % )                       ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/20/2022 00:22:49 ;
+; Start date & time ; 10/23/2022 17:27:19 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RegistradorMemoria  ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 93180997048841.166623616948956         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 167690722558231.166655683903580        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -98,11 +98,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:20     ; 1.0                     ; 4855 MB             ; 00:00:41                           ;
-; Fitter               ; 00:00:57     ; 1.0                     ; 6281 MB             ; 00:01:24                           ;
-; Assembler            ; 00:00:08     ; 1.0                     ; 4817 MB             ; 00:00:07                           ;
-; Timing Analyzer      ; 00:00:12     ; 1.2                     ; 5075 MB             ; 00:00:13                           ;
-; Total                ; 00:01:37     ; --                      ; --                  ; 00:02:25                           ;
+; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 4850 MB             ; 00:00:22                           ;
+; Fitter               ; 00:00:48     ; 1.1                     ; 6280 MB             ; 00:01:34                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 4824 MB             ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:06     ; 1.6                     ; 5088 MB             ; 00:00:09                           ;
+; Total                ; 00:01:08     ; --                      ; --                  ; 00:02:08                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -111,10 +111,10 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-AQAQ3GK  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; DESKTOP-AQAQ3GK  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; DESKTOP-AQAQ3GK  ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; DESKTOP-AQAQ3GK  ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; LAPTOP-Q0EMDAIH  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; LAPTOP-Q0EMDAIH  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; LAPTOP-Q0EMDAIH  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; LAPTOP-Q0EMDAIH  ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 

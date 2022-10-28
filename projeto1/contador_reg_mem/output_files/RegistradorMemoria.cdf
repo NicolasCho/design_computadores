@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(5CEBA4F23) Path("C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/output_files/") File("RegistradorMemoria.sof") MfrSpec(OpMask(1));
+		Device PartName(5CEBA4F23) Path("D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto1/contador_reg_mem/output_files/") File("RegistradorMemoria.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

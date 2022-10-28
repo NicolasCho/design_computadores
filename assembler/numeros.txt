@@ -1,0 +1,341 @@
+LDI RegA '0' x"00"
+STA RegA '1' x"20"
+STA RegA '1' x"21"
+STA RegA '1' x"22"
+STA RegA '1' x"23"
+STA RegA '1' x"24"
+STA RegA '1' x"25"
+STA RegA '1' x"00"
+STA RegA '1' x"01"
+STA RegA '1' x"02"
+STA RegA '0' x"00"
+STA RegA '0' x"01"
+STA RegA '0' x"02"
+STA RegA '0' x"03"
+STA RegA '0' x"04"
+STA RegA '0' x"05"
+STA RegA '0' x"06"
+STA RegA '1' x"ff"
+STA RegA '1' x"fe"
+LDI RegA '0' x"01"
+STA RegA '0' x"0e"
+
+LDI RegA '0' x"0a"
+STA RegA '0' x"0f"
+
+LDI RegA '0' x"00"
+STA RegA '0' x"10"
+
+LDI RegA '0' x"14"
+STA RegA '0' x"08"
+STA RegA '0' x"09"
+STA RegA '0' x"0a"
+STA RegA '0' x"0b"
+STA RegA '0' x"0c"
+STA RegA '0' x"0d"
+
+
+
+
+JSR '0' x"43"
+
+LDA RegA '1' x"61"
+ANDOP '0' x"0e"
+CEQ RegA '0' x"06"
+JEQ '0' x"2e"
+JSR '0' x"aa"
+
+
+JSR '1' x"0f"
+
+LDA RegA '1' x"60"
+ANDOP '0' x"0e"
+CEQ RegA '0' x"06"
+JEQ '0' x"37"
+JSR '0' x"58"
+
+
+LDA RegA '1' x"64"
+ANDOP '0' x"0e"
+CEQ RegA '0' x"06"
+JEQ '0' x"3e"
+JSR '1' x"46"
+
+
+JMP '0' x"25"
+
+
+
+LDA RegC '0' x"00"
+STA RegC '1' x"20"
+NOP '0' x"00"
+LDA RegC '0' x"01"
+STA RegC '1' x"21"
+NOP '0' x"00"
+LDA RegC '0' x"02"
+STA RegC '1' x"22"
+NOP '0' x"00"
+LDA RegC '0' x"03"
+STA RegC '1' x"23"
+NOP '0' x"00"
+LDA RegC '0' x"04"
+STA RegC '1' x"24"
+NOP '0' x"00"
+LDA RegC '0' x"05"
+STA RegC '1' x"25"
+RET '0' x"00"
+
+
+
+STA RegA '1' x"ff"
+LDA RegA '0' x"10"
+CEQ RegA '0' x"0e"
+JEQ '0' x"a6"
+
+LDA RegA '0' x"00"
+SOMA RegA '0' x"0e"
+STA RegA '0' x"00"
+CEQ RegA '0' x"0f"
+JEQ '0' x"66"
+NOP '0' x"00"
+RET '0' x"00"
+
+
+LDI RegA '0' x"00"
+STA RegA '0' x"00"
+LDA RegA '0' x"01"
+SOMA RegA '0' x"0e"
+STA RegA '0' x"01"
+CEQ RegA '0' x"0f"
+JEQ '0' x"71"
+NOP '0' x"00"
+RET '0' x"00"
+
+
+LDI RegA '0' x"00"
+STA RegA '0' x"01"
+LDA RegA '0' x"02"
+SOMA RegA '0' x"0e"
+STA RegA '0' x"02"
+CEQ RegA '0' x"0f"
+JEQ '0' x"7c"
+NOP '0' x"00"
+RET '0' x"00"
+
+
+LDI RegA '0' x"00"
+STA RegA '0' x"02"
+LDA RegA '0' x"03"
+SOMA RegA '0' x"0e"
+STA RegA '0' x"03"
+CEQ RegA '0' x"0f"
+JEQ '0' x"87"
+NOP '0' x"00"
+RET '0' x"00"
+
+
+LDI RegA '0' x"00"
+STA RegA '0' x"03"
+LDA RegA '0' x"04"
+SOMA RegA '0' x"0e"
+STA RegA '0' x"04"
+CEQ RegA '0' x"0f"
+JEQ '0' x"92"
+NOP '0' x"00"
+RET '0' x"00"
+
+
+LDI RegA '0' x"00"
+STA RegA '0' x"04"
+LDA RegA '0' x"05"
+SOMA RegA '0' x"0e"
+STA RegA '0' x"05"
+CEQ RegA '0' x"0f"
+JEQ '0' x"9d"
+NOP '0' x"00"
+RET '0' x"00"
+
+
+LDI RegA '0' x"00"
+STA RegA '0' x"02"
+
+LDI RegA '0' x"01"
+STA RegA '1' x"02"
+STA RegA '0' x"10"
+
+
+
+RET '0' x"00"
+
+
+
+STA RegA '1' x"fe"
+
+LDI RegA '0' x"01"
+STA RegA '1' x"01"
+STA RegA '1' x"02"
+
+
+LDI RegA '0' x"01"
+STA RegA '1' x"00"
+LDA RegA '1' x"40"
+STA RegA '0' x"08"
+
+LDA RegA '1' x"61"
+ANDOP '0' x"0e"
+CEQ RegA '0' x"06"
+JEQ '0' x"b1"
+
+LDI RegA '0' x"00"
+STA RegA '1' x"00"
+STA RegA '1' x"fe"
+
+
+LDI RegA '0' x"02"
+STA RegA '1' x"00"
+LDA RegA '1' x"40"
+STA RegA '0' x"09"
+
+LDA RegA '1' x"61"
+ANDOP '0' x"0e"
+CEQ RegA '0' x"06"
+JEQ '0' x"c0"
+
+LDI RegA '0' x"00"
+STA RegA '1' x"00"
+STA RegA '1' x"fe"
+
+
+LDI RegA '0' x"04"
+STA RegA '1' x"00"
+LDA RegA '1' x"40"
+STA RegA '0' x"0a"
+
+LDA RegA '1' x"61"
+ANDOP '0' x"0e"
+CEQ RegA '0' x"06"
+JEQ '0' x"cf"
+
+LDI RegA '0' x"00"
+STA RegA '1' x"00"
+STA RegA '1' x"fe"
+
+
+LDI RegA '0' x"08"
+STA RegA '1' x"00"
+LDA RegA '1' x"40"
+STA RegA '0' x"0b"
+
+LDA RegA '1' x"61"
+ANDOP '0' x"0e"
+CEQ RegA '0' x"06"
+JEQ '0' x"de"
+
+LDI RegA '0' x"00"
+STA RegA '1' x"00"
+STA RegA '1' x"fe"
+
+
+LDI RegA '0' x"10"
+STA RegA '1' x"00"
+LDA RegA '1' x"40"
+STA RegA '0' x"0c"
+
+LDA RegA '1' x"61"
+ANDOP '0' x"0e"
+CEQ RegA '0' x"06"
+JEQ '0' x"ed"
+
+LDI RegA '0' x"00"
+STA RegA '1' x"00"
+STA RegA '1' x"fe"
+
+
+LDI RegA '0' x"20"
+STA RegA '1' x"00"
+LDA RegA '1' x"40"
+STA RegA '0' x"0d"
+
+LDA RegA '1' x"61"
+ANDOP '0' x"0e"
+CEQ RegA '0' x"06"
+JEQ '0' x"fc"
+
+LDI RegA '0' x"00"
+STA RegA '1' x"00"
+STA RegA '1' x"fe"
+
+STA RegA '1' x"01"
+STA RegA '1' x"02"
+JMP '0' x"25"
+
+
+
+LDA RegB '0' x"05"
+CEQ RegB '0' x"0d"
+JEQ '1' x"18"
+LDI RegB '0' x"00"
+STA RegB '0' x"10"
+RET '0' x"00"
+
+
+LDA RegB '0' x"04"
+CEQ RegB '0' x"0c"
+JEQ '1' x"20"
+LDI RegB '0' x"00"
+STA RegB '0' x"10"
+RET '0' x"00"
+
+
+LDA RegB '0' x"03"
+CEQ RegB '0' x"0b"
+JEQ '1' x"28"
+LDI RegB '0' x"00"
+STA RegB '0' x"10"
+RET '0' x"00"
+
+
+LDA RegB '0' x"02"
+CEQ RegB '0' x"0a"
+JEQ '1' x"30"
+LDI RegB '0' x"00"
+STA RegB '0' x"10"
+RET '0' x"00"
+
+
+LDA RegB '0' x"01"
+CEQ RegB '0' x"09"
+JEQ '1' x"38"
+LDI RegB '0' x"00"
+STA RegB '0' x"10"
+RET '0' x"00"
+
+
+LDA RegB '0' x"00"
+CEQ RegB '0' x"08"
+JEQ '1' x"40"
+LDI RegB '0' x"00"
+STA RegB '0' x"10"
+RET '0' x"00"
+
+
+LDI RegB '0' x"01"
+STA RegB '0' x"10"
+STA RegB '1' x"01"
+RET '0' x"00"
+
+
+STA RegA '1' x"fc"
+LDI RegA '0' x"00"
+STA RegA '0' x"00"
+STA RegA '0' x"01"
+STA RegA '0' x"02"
+STA RegA '0' x"03"
+STA RegA '0' x"04"
+STA RegA '0' x"05"
+STA RegA '0' x"10"
+STA RegA '1' x"01"
+STA RegA '1' x"02"
+STA RegA '1' x"00"
+
+RET '0' x"00"

@@ -1,12 +1,12 @@
-Fitter Status : Successful - Thu Oct 20 00:24:07 2022
+Fitter Status : Successful - Sun Oct 23 17:28:18 2022
 Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 Revision Name : RegistradorMemoria
 Top-level Entity Name : RegistradorMemoria
 Family : Cyclone V
 Device : 5CEBA4F23C7
 Timing Models : Final
-Logic utilization (in ALMs) : 107 / 18,480 ( < 1 % )
-Total registers : 96
+Logic utilization (in ALMs) : 443 / 18,480 ( 2 % )
+Total registers : 609
 Total pins : 77 / 224 ( 34 % )
 Total virtual pins : 0
 Total block memory bits : 0 / 3,153,920 ( 0 % )

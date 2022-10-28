@@ -1925,17 +1925,21 @@ saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
 
 |RegistradorMemoria|logicaKey:LOGICAKEY
 CLK => edgedetector:DISCRIMINADORBORDA.clk
+CLK => edgedetector:DISCRIMINADORBORDA1.clk
+CLK => edgedetector:DISCRIMINADORBORDAFPGA.clk
 KEY[0] => edgedetector:DISCRIMINADORBORDA.entrada
-KEY[1] => buffer_3_state:BUFFER3STATEKEY1.entrada
+KEY[1] => edgedetector:DISCRIMINADORBORDA1.entrada
 KEY[2] => buffer_3_state:BUFFER3STATEKEY2.entrada
 KEY[3] => buffer_3_state:BUFFER3STATEKEY3.entrada
-FPGA_reset => buffer_3_state:BUFFER3STATEFPGARESET.entrada
+FPGA_reset => edgedetector:DISCRIMINADORBORDAFPGA.entrada
 RD => habilitaKey0.IN0
 RD => habilitaKey1.IN0
 RD => habilitaKey2.IN0
 RD => habilitaKey3.IN0
 RD => habilitaKeyFPGAReset.IN0
 WR => resetFlipFlop.IN1
+WR => resetFlipFlopKey1.IN1
+WR => resetFlipFlopFPGA.IN1
 bloco => habilitaKey0.IN1
 bloco => habilitaKey1.IN1
 bloco => habilitaKey2.IN1
@@ -1947,14 +1951,32 @@ endereco[2] => habilitaKey2.IN1
 endereco[3] => habilitaKey3.IN1
 endereco[4] => habilitaKeyFPGAReset.IN1
 endereco_reset[0] => resetFlipFlop.IN1
+endereco_reset[0] => resetFlipFlopKey1.IN1
+endereco_reset[0] => resetFlipFlopFPGA.IN1
 endereco_reset[1] => resetFlipFlop.IN1
+endereco_reset[1] => resetFlipFlopKey1.IN1
+endereco_reset[1] => resetFlipFlopFPGA.IN1
 endereco_reset[2] => resetFlipFlop.IN1
+endereco_reset[2] => resetFlipFlopKey1.IN1
+endereco_reset[2] => resetFlipFlopFPGA.IN1
 endereco_reset[3] => resetFlipFlop.IN1
+endereco_reset[3] => resetFlipFlopKey1.IN1
+endereco_reset[3] => resetFlipFlopFPGA.IN1
 endereco_reset[4] => resetFlipFlop.IN1
+endereco_reset[4] => resetFlipFlopKey1.IN1
+endereco_reset[4] => resetFlipFlopFPGA.IN1
 endereco_reset[5] => resetFlipFlop.IN1
+endereco_reset[5] => resetFlipFlopKey1.IN1
+endereco_reset[5] => resetFlipFlopFPGA.IN1
 endereco_reset[6] => resetFlipFlop.IN1
+endereco_reset[6] => resetFlipFlopKey1.IN1
+endereco_reset[6] => resetFlipFlopFPGA.IN1
 endereco_reset[7] => resetFlipFlop.IN0
+endereco_reset[7] => resetFlipFlopKey1.IN0
+endereco_reset[7] => resetFlipFlopFPGA.IN0
 endereco_reset[8] => resetFlipFlop.IN1
+endereco_reset[8] => resetFlipFlopKey1.IN1
+endereco_reset[8] => resetFlipFlopFPGA.IN1
 sw_ou_key => habilitaKey0.IN1
 sw_ou_key => habilitaKey1.IN1
 sw_ou_key => habilitaKey2.IN1
@@ -1970,7 +1992,37 @@ entrada => saidaQ.DATAIN
 saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
+|RegistradorMemoria|logicaKey:LOGICAKEY|edgeDetector:DISCRIMINADORBORDA1
+clk => saidaQ.CLK
+entrada => saida.IN1
+entrada => saidaQ.DATAIN
+saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RegistradorMemoria|logicaKey:LOGICAKEY|edgeDetector:DISCRIMINADORBORDAFPGA
+clk => saidaQ.CLK
+entrada => saida.IN1
+entrada => saidaQ.DATAIN
+saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
+
+
 |RegistradorMemoria|logicaKey:LOGICAKEY|flipFlop:FF
+DIN => DOUT~reg0.DATAIN
+DOUT <= DOUT~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ENABLE => DOUT~reg0.ENA
+CLK => DOUT~reg0.CLK
+RST => DOUT~reg0.ACLR
+
+
+|RegistradorMemoria|logicaKey:LOGICAKEY|flipFlop:FF1
+DIN => DOUT~reg0.DATAIN
+DOUT <= DOUT~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ENABLE => DOUT~reg0.ENA
+CLK => DOUT~reg0.CLK
+RST => DOUT~reg0.ACLR
+
+
+|RegistradorMemoria|logicaKey:LOGICAKEY|flipFlop:FFFPGA
 DIN => DOUT~reg0.DATAIN
 DOUT <= DOUT~reg0.DB_MAX_OUTPUT_PORT_TYPE
 ENABLE => DOUT~reg0.ENA

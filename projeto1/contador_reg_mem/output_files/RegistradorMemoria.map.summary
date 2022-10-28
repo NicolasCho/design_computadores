@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Thu Oct 20 00:23:08 2022
+Analysis & Synthesis Status : Successful - Sun Oct 23 17:27:29 2022
 Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 Revision Name : RegistradorMemoria
 Top-level Entity Name : RegistradorMemoria
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 87
+Total registers : 595
 Total pins : 77
 Total virtual pins : 0
 Total block memory bits : 0
