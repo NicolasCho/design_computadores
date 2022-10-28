@@ -1,0 +1,38 @@
+Quartus Prime Archive log --	C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/RegistradorMemoria.qarlog
+
+Archive:	C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/RegistradorMemoria.qar
+Date:		Sun Oct 23 19:52:53 2022
+Quartus Prime		20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/CPU.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/RegistradorMemoria.qpf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/RegistradorMemoria.qsf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/RegistradorMemoria.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/ULASomaSub.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/Waveform.vwf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/bancoRegistradores.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/buffer_3_state.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/buffer_3_state_8portas.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/conversorHex7Seg.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/decoder3x8.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/decoderGeneric.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/display7Seg.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/edgeDetector.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/flipFlop.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/logicaDesvio.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/logicaDisplay.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/logicaKey.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/logicaLED.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/logicaSW.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/memoriaRAM.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/memoriaROM.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/muxGenerico2x1.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/muxGenerico4x1.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/registradorGenerico.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/contador_reg_mem/somaConstante.vhd
+c:/intelfpga_lite/20.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 27 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

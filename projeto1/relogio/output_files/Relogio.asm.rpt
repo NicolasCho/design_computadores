@@ -1,5 +1,5 @@
 Assembler report for Relogio
-Fri Oct 28 11:38:58 2022
+Fri Oct 28 14:04:08 2022
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -10,7 +10,7 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto1/relogio/output_files/Relogio.sof
+  5. Assembler Device Options: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/output_files/Relogio.sof
   6. Assembler Messages
 
 
@@ -38,7 +38,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Fri Oct 28 11:38:58 2022 ;
+; Assembler Status      ; Successful - Fri Oct 28 14:04:08 2022 ;
 ; Revision Name         ; Relogio                               ;
 ; Top-level Entity Name ; Relogio                               ;
 ; Family                ; Cyclone V                             ;
@@ -53,23 +53,23 @@ https://fpgasoftware.intel.com/eula.
 +--------+---------+---------------+
 
 
-+----------------------------------------------------------------------------------------------+
-; Assembler Generated Files                                                                    ;
-+----------------------------------------------------------------------------------------------+
-; File Name                                                                                    ;
-+----------------------------------------------------------------------------------------------+
-; D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto1/relogio/output_files/Relogio.sof ;
-+----------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Assembler Generated Files                                                                                      ;
++----------------------------------------------------------------------------------------------------------------+
+; File Name                                                                                                      ;
++----------------------------------------------------------------------------------------------------------------+
+; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/output_files/Relogio.sof ;
++----------------------------------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto1/relogio/output_files/Relogio.sof ;
-+----------------+-------------------------------------------------------------------------------------------------------+
-; Option         ; Setting                                                                                               ;
-+----------------+-------------------------------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x01011C9B                                                                                            ;
-; Checksum       ; 0x01011C9B                                                                                            ;
-+----------------+-------------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/output_files/Relogio.sof ;
++----------------+-------------------------------------------------------------------------------------------------------------------------+
+; Option         ; Setting                                                                                                                 ;
++----------------+-------------------------------------------------------------------------------------------------------------------------+
+; JTAG usercode  ; 0x01023643                                                                                                              ;
+; Checksum       ; 0x01023643                                                                                                              ;
++----------------+-------------------------------------------------------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -78,14 +78,14 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Fri Oct 28 11:38:49 2022
+    Info: Processing started: Fri Oct 28 14:03:59 2022
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Relogio -c Relogio
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4845 megabytes
-    Info: Processing ended: Fri Oct 28 11:38:58 2022
+    Info: Peak virtual memory: 4843 megabytes
+    Info: Processing ended: Fri Oct 28 14:04:08 2022
     Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Total CPU time (on all processors): 00:00:08
 
 

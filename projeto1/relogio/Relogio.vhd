@@ -69,8 +69,6 @@ architecture arquitetura of Relogio is
   signal saidaKEY: std_logic;
 
 begin
-CLK <= CLOCK_50;
-
 --Fragmentando os enderecos
 entradaDecoderBlocos <= saidaEnderecosCPU (8 downto 6);
 entradaDecoderEnderecos <= saidaEnderecosCPU (2 downto 0);
@@ -81,6 +79,11 @@ enderecoRAM <= saidaEnderecosCPU (5 downto 0);
 barramentoLeitura <= saidaRAM;
 barramentoLeitura <= saidaSW;
 barramentoLeitura(0) <= saidaKEY;
+
+DIVISORCLOCK : entity work.divisorGenerico
+            generic map (divisor => 25000000)   -- divide por 10.
+            port map (clk => CLOCK_50, saida_clk => CLK);
+
 
 -- O port map completo da CPU.
 CPU :  entity work.CPU  generic map (larguraDados => larguraDados, larguraEnderecos => larguraEnderecos, larguraInstrucao => larguraInstrucao)
