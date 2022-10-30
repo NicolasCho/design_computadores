@@ -8,7 +8,8 @@ MemoryMap = {"LEDR0-7": "@256", "LEDR8":"@257", "LEDR9":"@258", "HEX0":"@288", "
              ,"CLR-KEY0":"@511", "KEY0":"@352", "KEY1":"@353", "KEY2":"@354", "KEY3":"@355", "FPGA_RESET":"@356"}
 
 
-import sys                                          
+import sys 
+import os                                         
 
 def troca_memory_map(arq_leitura, arquivo):
     lines = linhas_arquivo(arq_leitura)
@@ -153,7 +154,7 @@ def linhas_arquivo(arquivo):
 
 def main():
 
-    if len(sys.argv) < 2: print('USAGE: asm.py <sourcefile>'); exit(1)
+    if len(sys.argv) < 2: print('USAGE: asm.py <sourcefile> <flag debug: -d>'); exit(1)
 
 
 
@@ -164,6 +165,13 @@ def main():
     troca_numeros("labels.txt", "numeros.txt")
     troca_reg("numeros.txt", "reg.txt")
     assembly_para_vhdl("reg.txt", "VHDL.txt")
+    
+    if len(sys.argv) == 2:
+        os.remove("no_comments.txt")
+        os.remove("memory_map.txt")
+        os.remove("labels.txt")
+        os.remove("reg.txt")
+    
 
 if __name__ == "__main__":
     main()
