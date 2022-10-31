@@ -81,7 +81,7 @@ barramentoLeitura <= saidaSW;
 barramentoLeitura(0) <= saidaKEY;
 
 DIVISORCLOCK : entity work.divisorGenerico
-            generic map (divisor => 25000000)   -- divide por 10.
+            generic map (divisor => 415000)   -- divide por 10.
             port map (clk => CLOCK_50, saida_clk => CLK);
 
 
