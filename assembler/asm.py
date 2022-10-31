@@ -131,6 +131,7 @@ def acha_labels(arq_leitura):
     res = {ele[0] : ele[1]  for ele in test_dict_list} 
     return dict(reversed(list(res.items())))
 
+
 def assembly_para_vhdl(arq_leitura, arquivo):
     lines = linhas_arquivo(arq_leitura)
     f = open(arquivo, 'w')
@@ -157,7 +158,6 @@ def main():
     if len(sys.argv) < 2: print('USAGE: asm.py <sourcefile> <flag debug: -d>'); exit(1)
 
 
-
     labels = acha_labels(sys.argv[1])
     remove_comentarios(sys.argv[1], "no_comments.txt")
     troca_memory_map("no_comments.txt", "memory_map.txt")
@@ -171,6 +171,7 @@ def main():
         os.remove("memory_map.txt")
         os.remove("labels.txt")
         os.remove("reg.txt")
+        os.remove("numeros.txt")
     
 
 if __name__ == "__main__":
