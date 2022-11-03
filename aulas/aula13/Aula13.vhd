@@ -11,9 +11,10 @@ entity Aula13 is
   port   (
     CLOCK_50 : in std_logic;
     PC_OUT: out std_logic_vector(larguraEnderecos-1 downto 0);
+	 KEY: in std_logic_vector(3 downto 0);
     EntradaA_ULA	 : out std_logic_vector (larguraDados-1 downto 0);
 	 EntradaB_ULA	 : out std_logic_vector (larguraDados-1 downto 0);
-	 Saida_ULA	 : out std_logic_vector (larguraDados-1 downto 0)
+	 Saida_ULA_leitura	 : out std_logic_vector (larguraDados-1 downto 0)
   );
 end entity;
 
@@ -72,9 +73,9 @@ ROM : entity work.ROMMIPS   generic map (dataWidth => larguraInstrucao, addrWidt
 	
 BANCO_REGISTRADORES : entity work.bancoReg generic map (larguraDados => larguraDados, larguraEndBancoRegs => 5)
 			port map (clk   	=> CLK,
-					  enderecoA => Rs,
-					  enderecoB => Rt,
-					  enderecoC => Rd,
+					  enderecoA => Rs_IN,
+					  enderecoB => Rt_IN,
+					  enderecoC => Rd_IN,
 					  dadoEscritaC  => Saida_ULA,
 					  escreveC => HabilitaRd,
 					  saidaA   => Rs_OUT,
@@ -106,6 +107,6 @@ Operacao_ULA  		<= controle(2 downto 0);
 PC_OUT <= EnderecoROM;
 EntradaA_ULA <= Rs_OUT;
 EntradaB_ULA <= Rt_OUT;
-Saida_ULA	<=Saida_ULA;
+Saida_ULA_leitura	<=Saida_ULA;
 
 end architecture;
