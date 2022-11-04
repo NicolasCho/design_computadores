@@ -10,7 +10,7 @@ z2
 cModel Technology
 Z0 dC:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula13/simulation/qsim
 Eaula13
-Z1 w1667439762
+Z1 w1667571853
 Z2 DPx8 cyclonev 18 cyclonev_atom_pack 0 22 ^K2eeK[IVbX]]MLcdOEI91
 Z3 DPx8 cyclonev 19 cyclonev_components 0 22 GFL[QAd@dAZF:`jjOGn9>2
 Z4 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 3dzZ?YU_4FC5UU0cTXRET1
@@ -20,7 +20,7 @@ Z7 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
 Z8 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z9 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 Z10 DPx6 altera 28 altera_primitives_components 0 22 VSD=32;3391kSOd?PDZYj3
-!i122 2
+!i122 8
 R0
 Z11 8Aula13.vho
 Z12 FAula13.vho
@@ -30,9 +30,9 @@ Vg_z^FVhJCV[<T;6N1Xm?T0
 !s100 ;bYXz_ne;REl[3^OHM:bg2
 Z13 OV;C;2020.1;71
 32
-Z14 !s110 1667439763
+Z14 !s110 1667571855
 !i10b 1
-Z15 !s108 1667439763.000000
+Z15 !s108 1667571855.000000
 Z16 !s90 -work|work|Aula13.vho|
 Z17 !s107 Aula13.vho|
 !i113 1
@@ -49,11 +49,11 @@ R8
 R9
 R10
 DEx4 work 6 aula13 0 22 g_z^FVhJCV[<T;6N1Xm?T0
-!i122 2
-l887
-L50 9217
-VaVeAlDld>WBfab07@^22T2
-!s100 <eDX=>1Tf]=aj81HCAfE60
+!i122 8
+l1196
+L50 12389
+VU`b@BHYga`nJKe1c7:YTB1
+!s100 Q81a[NQUb3>9IiYbU5SfS1
 R13
 32
 R14
@@ -65,10 +65,10 @@ R17
 R18
 R19
 Eaula13_vhd_vec_tst
-Z20 w1667439761
+Z20 w1667571852
 R8
 R9
-!i122 3
+!i122 9
 R0
 Z21 8Waveform.vwf.vht
 Z22 FWaveform.vwf.vht
@@ -90,7 +90,7 @@ Aaula13_arch
 R8
 R9
 Z25 DEx4 work 18 aula13_vhd_vec_tst 0 22 VfHV;ST:JTU`GZ^HaR<QO1
-!i122 3
+!i122 9
 l53
 Z26 L34 47
 Z27 VL9>J@m[d;LXj>EH6X2V`V3
