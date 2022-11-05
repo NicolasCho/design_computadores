@@ -119,7 +119,8 @@ def acha_labels(arq_leitura):
 
         if line.split(" ")[0] not in OpCode:
             if line.split(" ")[0] != "":
-                labels[line.split(" ")[0]] = "@"+str(i)  
+                labels[line.split(" ")[0]] = "@"+str(i-len(labels))  
+                
 
     # retirado de https://www.geeksforgeeks.org/python-program-to-sort-dictionary-by-key-lengths/
     # sorting using sort()
@@ -142,6 +143,15 @@ def assembly_para_vhdl(arq_leitura, arquivo):
             f.write("tmp("+str(i)+") := "+line+";\n")
     f.close()
 
+def remove_espacos(arq_leitura, arquivo):
+    f = open(arq_leitura,'r')
+    t = open(arquivo, 'w')
+    for line in f:
+        if not line.isspace():
+            t.write(line)
+    f.close()
+    t.close()
+
 def linhas_arquivo(arquivo):
     lines = []
     try: f = open(arquivo, 'r')                     
@@ -158,20 +168,23 @@ def main():
     if len(sys.argv) < 2: print('USAGE: asm.py <sourcefile> <flag debug: -d>'); exit(1)
 
 
-    labels = acha_labels(sys.argv[1])
-    remove_comentarios(sys.argv[1], "no_comments.txt")
-    troca_memory_map("no_comments.txt", "memory_map.txt")
-    troca_labels("memory_map.txt", labels, "labels.txt")
-    troca_numeros("labels.txt", "numeros.txt")
-    troca_reg("numeros.txt", "reg.txt")
-    assembly_para_vhdl("reg.txt", "VHDL.txt")
+    remove_espacos(sys.argv[1], "testes/sem_espacos.txt")       
+    labels = acha_labels("testes/sem_espacos.txt")   
+    remove_comentarios("testes/sem_espacos.txt", "testes/no_comments.txt")
+    troca_memory_map("testes/no_comments.txt", "testes/memory_map.txt")
+    troca_labels("testes/memory_map.txt", labels, "testes/labels.txt")
+    remove_espacos("testes/labels.txt", "testes/sem_espacos.txt")
+    troca_numeros("testes/sem_espacos.txt", "testes/numeros.txt")
+    troca_reg("testes/numeros.txt", "testes/reg.txt")
+    assembly_para_vhdl("testes/reg.txt", "VHDL.txt")
     
     if len(sys.argv) == 2:
-        os.remove("no_comments.txt")
-        os.remove("memory_map.txt")
-        os.remove("labels.txt")
-        os.remove("reg.txt")
-        os.remove("numeros.txt")
+        os.remove("testes/no_comments.txt")
+        os.remove("testes/memory_map.txt")
+        os.remove("testes/labels.txt")
+        os.remove("testes/reg.txt")
+        os.remove("testes/numeros.txt")
+        os.remove("testes/sem_espacos.txt")
     
 
 if __name__ == "__main__":
