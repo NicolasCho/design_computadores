@@ -1,0 +1,39 @@
+Quartus Prime Archive log --	C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/Relogio.qarlog
+
+Archive:	C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/Relogio.qar
+Date:		Sun Nov 06 19:40:07 2022
+Quartus Prime		20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/CPU.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/Relogio.qpf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/Relogio.qsf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/Relogio.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/ULASomaSub.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/bancoRegistradores.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/buffer_3_state.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/buffer_3_state_8portas.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/conversorHex7Seg.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/decoder3x8.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/decoderGeneric.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/display7Seg.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/divisorGenerico.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/edgeDetector.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/flipFlop.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/logicaDesvio.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/logicaDisplay.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/logicaKey.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/logicaLED.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/logicaSW.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/memoriaRAM.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/memoriaROM.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/muxCLK2x1.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/muxGenerico2x1.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/muxGenerico4x1.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/registradorGenerico.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto1/relogio/somaConstante.vhd
+c:/intelfpga_lite/20.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 28 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

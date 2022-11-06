@@ -88,7 +88,7 @@ DIVISORCLOCK1 : entity work.divisorGenerico
             port map (clk => CLOCK_50, saida_clk => CLK1);
 				
 DIVISORCLOCK2 : entity work.divisorGenerico
-            generic map (divisor => 415)   -- divide por 830000.
+            generic map (divisor => 2075)   -- divide por 830000.
             port map (clk => CLOCK_50, saida_clk => CLK2);
 
 --Mux para selecionar uma base de tempo				
