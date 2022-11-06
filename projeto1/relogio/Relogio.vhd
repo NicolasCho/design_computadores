@@ -82,6 +82,7 @@ barramentoLeitura <= saidaRAM;
 barramentoLeitura <= saidaSW;
 barramentoLeitura(0) <= saidaKEY;
 
+--Bases de tempo
 DIVISORCLOCK1 : entity work.divisorGenerico
             generic map (divisor => 415000)   -- divide por 830000.
             port map (clk => CLOCK_50, saida_clk => CLK1);
@@ -90,6 +91,7 @@ DIVISORCLOCK2 : entity work.divisorGenerico
             generic map (divisor => 415)   -- divide por 830000.
             port map (clk => CLOCK_50, saida_clk => CLK2);
 
+--Mux para selecionar uma base de tempo				
 MUXCLK : entity work.muxCLK2x1
 				port map (entradaA_MUX => CLK1, entradaB_MUX => CLK2, seletor_MUX => saidaSW9, saida_MUX => CLK);
 
