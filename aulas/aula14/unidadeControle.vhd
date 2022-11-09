@@ -16,15 +16,21 @@ architecture comportamento of unidadeControle is
   constant NOROP : std_logic_vector(5 downto 0) := 6x"27";
   constant SLT   : std_logic_vector(5 downto 0) := 6x"2a";
   
+  constant LW    : std_logic_vector(5 downto 0) := 6x"23";
+  constant SW    : std_logic_vector(5 downto 0) := 6x"2b";
+  constant BEQ   : std_logic_vector(5 downto 0) := 6x"04";
   
   constant R_TYPE: std_logic_vector(5 downto 0) := 6x"0";
 
   begin
-saida <= '1'&"000" when (funct = SUB   and opCode = R_TYPE) else
-			'1'&"001" when (funct = SOMA  and opCode = R_TYPE) else
-			'1'&"010" when (funct = NOROP and opCode = R_TYPE) else
-         '1'&"011" when (funct = ANDOP and opCode = R_TYPE) else
-			'1'&"100" when (funct = OROP  and opCode = R_TYPE) else
-			'1'&"101" when (funct = SLT   and opCode = R_TYPE) else
-         '0'&"000";  
+saida <= '1'&"000"&'0'&"000" when (funct = SUB   and opCode = R_TYPE) else
+			'1'&"001"&'0'&"000" when (funct = SOMA  and opCode = R_TYPE) else
+			'1'&"010"&'0'&"000" when (funct = NOROP and opCode = R_TYPE) else
+         '1'&"011"&'0'&"000" when (funct = ANDOP and opCode = R_TYPE) else
+			'1'&"100"&'0'&"000" when (funct = OROP  and opCode = R_TYPE) else
+			'1'&"101"&'0'&"000" when (funct = SLT   and opCode = R_TYPE) else
+			'1'&"001"&'0'&"110" when (opCode = LW) else
+			'1'&"001"&'0'&"101" when (opCode = SW) else
+			'1'&"110"&'1'&"000" when (opCode = BEQ) else
+         '0'&"110"&'0'&"000";  
 end architecture;

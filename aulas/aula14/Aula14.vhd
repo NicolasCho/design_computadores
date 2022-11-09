@@ -21,19 +21,22 @@ end entity;
 
 architecture arquitetura of Aula14 is
 
--- Faltam alguns sinais:
-  --signal SaidaMUX : std_logic_vector (larguraDados-1 downto 0);
-  signal Saida_ULA : std_logic_vector (larguraDados-1 downto 0);
+  signal CLK : std_logic;
   signal EnderecoROM : std_logic_vector (larguraEnderecos-1 downto 0);
   signal proxPC : std_logic_vector (larguraEnderecos-1 downto 0);
-  signal CLK : std_logic;
+  signal saidaMUXPC : std_logic_vector (larguraEnderecos-1 downto 0);
+  
+  signal Saida_ULA : std_logic_vector (larguraDados-1 downto 0);
+  signal flagEQ : std_logic;
+  signal saidaExtensor : std_logic_vector (larguraDados-1 downto 0);
+  signal saidaRAM :  std_logic_vector (larguraDados-1 downto 0);
+  signal saidaShifter :  std_logic_vector (larguraDados-1 downto 0);
+  signal saidaSomador : std_logic_vector (larguraDados-1 downto 0);
+  
   
   signal Rs_OUT : std_logic_vector (larguraDados-1 downto 0);
   signal Rt_OUT : std_logic_vector (larguraDados-1 downto 0);
-  
-  signal saidaExtensor : std_logic_vector (larguraDados-1 downto 0);
-  signal saidaRAM :  std_logic_vector (larguraDados-1 downto 0);
-
+ 
   
   signal formato_Instrucao : std_logic_vector (larguraInstrucao-1 downto 0);
   --Instrucao
@@ -45,13 +48,16 @@ architecture arquitetura of Aula14 is
   signal funct : std_logic_vector (5 downto 0);
   
   
-  signal controle: std_logic_vector(6 downto 0);
+  signal controle: std_logic_vector(7 downto 0);
   --controle
   signal HabilitaRd : std_logic;
   signal Operacao_ULA : std_logic_vector(2 downto 0);
+  signal habilitaBEQ : std_logic;
   signal habilitaRAM : std_logic;
   signal habLeituraRAM: std_logic;
   signal habilitaEscritaRAM: std_logic;
+  
+  signal PCSelectorMUX : std_logic;
   
 begin
 
@@ -64,10 +70,28 @@ else generate
 detectorSub0: work.edgeDetector(bordaSubida)
         port map (clk => CLOCK_50, entrada => (not KEY(0)), saida => CLK);
 end generate;
-																									
--- O port map completo do Program Counter.
+
+-- Manipulando a instrucao
+opCode <= formato_Instrucao (31 downto 26);
+Rs_IN  <= formato_Instrucao (25 downto 21);
+Rt_IN  <= formato_Instrucao (20 downto 16);
+--Rd_IN  <= formato_Instrucao (15 downto 11);
+imediato <= formato_Instrucao (15 downto 0);
+funct  <= formato_Instrucao (5 downto 0);
+		
+-- Pontos de controle
+HabilitaRd    		<= controle(7);
+Operacao_ULA  		<= controle(6 downto 4);
+habilitaBEQ       <= controle(3);
+habilitaRAM			<= controle(2);
+habLeituraRAM		<= controle(1);
+habilitaEscritaRAM<= controle(0);
+
+PCSelectorMUX <= habilitaBEQ and flagEQ;
+
+																								
 PC : entity work.registradorGenerico   generic map (larguraDados => larguraEnderecos)
-          port map (DIN => proxPC, DOUT => EnderecoROM, ENABLE => '1', CLK => CLK, RST => '0');
+          port map (DIN => saidaMUXPC, DOUT => EnderecoROM, ENABLE => '1', CLK => CLK, RST => '0');
 
 			 
 incrementaPC :  entity work.somaConstante  generic map (larguraDados => larguraEnderecos, constante => 4)
@@ -88,9 +112,8 @@ BANCO_REGISTRADORES : entity work.bancoReg generic map (larguraDados => larguraD
 					  saidaA   => Rs_OUT,
 					  saidaB   => Rt_OUT);
 	
--- O port map completo da ULA:
 ULA : entity work.ULA  generic map(larguraDados => larguraDados)
-          port map (entradaA => Rs_OUT, entradaB => saidaExtensor, saida => Saida_ULA, 
+          port map (entradaA => Rs_OUT, entradaB => saidaExtensor, saida => Saida_ULA, flagEQ => flagEQ,
 							seletor => Operacao_ULA);
 
 			 
@@ -100,8 +123,19 @@ UNIDADE_CONTROLE : entity work.unidadeControle
 			 
 EXTENSOR_SINAL : entity work.estendeSinalGenerico generic map(larguraDadoEntrada => 16, larguraDadoSaida => 32)
 			 port map (estendeSinal_IN => imediato,
-							estendeSinal_OUT => saidaExtensor)
+							estendeSinal_OUT => saidaExtensor);
 							
+SHIFTER : entity work.shifter generic map(larguraDado => 32)
+			 port map (shifter_IN => saidaExtensor,
+							shifter_OUT => saidaShifter);
+							
+SOMADOR: entity work.somadorGenerico generic map (	larguraDados => 32)
+			 port map (entradaA => proxPC, entradaB => saidaShifter, saida => saidaSomador);
+
+MUXPC : entity work.muxGenerico2x1 generic map (larguraDados => 32)
+			 port map (entradaA_MUX => proxPC, entradab_MUX => saidaSomador, seletor_MUX => PCSelectorMUX,
+							saida_MUX => saidaMUXPC);
+													
 RAM : entity work.RAMMIPS generic map(dataWidth => 32, addrWidth => 32, memoryAddrWidth => 6)
 			 port map (clk      => CLK,
 						  Endereco => Saida_ULA,
@@ -111,22 +145,6 @@ RAM : entity work.RAMMIPS generic map(dataWidth => 32, addrWidth => 32, memoryAd
 						  re       => habLeituraRAM,
 						  habilita => habilitaRAM
 					    );
-
-		
--- Manipulando a instrucao
-opCode <= formato_Instrucao (31 downto 26);
-Rs_IN  <= formato_Instrucao (25 downto 21);
-Rt_IN  <= formato_Instrucao (20 downto 16);
---Rd_IN  <= formato_Instrucao (15 downto 11);
-imediato <= formato_Instrucao (15 downto 0);
-funct  <= formato_Instrucao (5 downto 0);
-		
--- Pontos de controle
-HabilitaRd    		<= controle(6);
-Operacao_ULA  		<= controle(5 downto 3);
-habilitaRAM			<= controle(2);
-habLeituraRAM		<= controle(1);
-habilitaEscritaRAM<= controle(0);
 
 
 PC_OUT <= EnderecoROM;
