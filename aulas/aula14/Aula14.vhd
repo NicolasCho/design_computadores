@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity Aula13 is
+entity Aula14 is
   -- Total de bits das entradas e saidas
   generic ( larguraDados : natural := 32;
         larguraEnderecos : natural := 32;
@@ -19,7 +19,7 @@ entity Aula13 is
 end entity;
 
 
-architecture arquitetura of Aula13 is
+architecture arquitetura of Aula14 is
 
 -- Faltam alguns sinais:
   --signal SaidaMUX : std_logic_vector (larguraDados-1 downto 0);
@@ -30,6 +30,9 @@ architecture arquitetura of Aula13 is
   
   signal Rs_OUT : std_logic_vector (larguraDados-1 downto 0);
   signal Rt_OUT : std_logic_vector (larguraDados-1 downto 0);
+  
+  signal saidaExtensor : std_logic_vector (larguraDados-1 downto 0);
+  signal saidaRAM :  std_logic_vector (larguraDados-1 downto 0);
 
   
   signal formato_Instrucao : std_logic_vector (larguraInstrucao-1 downto 0);
@@ -37,14 +40,18 @@ architecture arquitetura of Aula13 is
   signal opCode : std_logic_vector (5 downto 0);
   signal Rs_IN : std_logic_vector (4 downto 0);
   signal Rt_IN : std_logic_vector (4 downto 0);
-  signal Rd_IN : std_logic_vector (4 downto 0);
+  --signal Rd_IN : std_logic_vector (4 downto 0);
+  signal imediato: std_logic_vector(15 downto 0);
   signal funct : std_logic_vector (5 downto 0);
   
   
-  signal controle: std_logic_vector(3 downto 0);
+  signal controle: std_logic_vector(6 downto 0);
   --controle
   signal HabilitaRd : std_logic;
   signal Operacao_ULA : std_logic_vector(2 downto 0);
+  signal habilitaRAM : std_logic;
+  signal habLeituraRAM: std_logic;
+  signal habilitaEscritaRAM: std_logic;
   
 begin
 
@@ -75,33 +82,51 @@ BANCO_REGISTRADORES : entity work.bancoReg generic map (larguraDados => larguraD
 			port map (clk   	=> CLK,
 					  enderecoA => Rs_IN,
 					  enderecoB => Rt_IN,
-					  enderecoC => Rd_IN,
-					  dadoEscritaC  => Saida_ULA,
+					  enderecoC => Rt_IN,
+					  dadoEscritaC  => saidaRAM,
 					  escreveC => HabilitaRd,
 					  saidaA   => Rs_OUT,
 					  saidaB   => Rt_OUT);
 	
 -- O port map completo da ULA:
 ULA : entity work.ULA  generic map(larguraDados => larguraDados)
-          port map (entradaA => Rs_OUT, entradaB => Rt_OUT, saida => Saida_ULA, 
+          port map (entradaA => Rs_OUT, entradaB => saidaExtensor, saida => Saida_ULA, 
 							seletor => Operacao_ULA);
 
 			 
 UNIDADE_CONTROLE : entity work.unidadeControle  
           port map (opCode => opCode, funct => funct, saida => controle);
+			 
+			 
+EXTENSOR_SINAL : entity work.estendeSinalGenerico generic map(larguraDadoEntrada => 16, larguraDadoSaida => 32)
+			 port map (estendeSinal_IN => imediato,
+							estendeSinal_OUT => saidaExtensor)
+							
+RAM : entity work.RAMMIPS generic map(dataWidth => 32, addrWidth => 32, memoryAddrWidth => 6)
+			 port map (clk      => CLK,
+						  Endereco => Saida_ULA,
+						  Dado_in  => Rt_OUT,
+						  Dado_out => saidaRAM,
+						  we       => habilitaEscritaRAM,
+						  re       => habLeituraRAM,
+						  habilita => habilitaRAM
+					    );
 
 		
 -- Manipulando a instrucao
 opCode <= formato_Instrucao (31 downto 26);
 Rs_IN  <= formato_Instrucao (25 downto 21);
 Rt_IN  <= formato_Instrucao (20 downto 16);
-Rd_IN  <= formato_Instrucao (15 downto 11);
+--Rd_IN  <= formato_Instrucao (15 downto 11);
+imediato <= formato_Instrucao (15 downto 0);
 funct  <= formato_Instrucao (5 downto 0);
 		
 -- Pontos de controle
-HabilitaRd    		<= controle(3);
-Operacao_ULA  		<= controle(2 downto 0);
-
+HabilitaRd    		<= controle(6);
+Operacao_ULA  		<= controle(5 downto 3);
+habilitaRAM			<= controle(2);
+habLeituraRAM		<= controle(1);
+habilitaEscritaRAM<= controle(0);
 
 
 PC_OUT <= EnderecoROM;

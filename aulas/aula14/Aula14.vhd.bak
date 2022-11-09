@@ -22,7 +22,7 @@ end entity;
 architecture arquitetura of Aula13 is
 
 -- Faltam alguns sinais:
-  --signal SaidaMUX : std_logic_vector (larguraDados-1 downto 0);
+  signal SaidaMUX : std_logic_vector (larguraDados-1 downto 0);
   signal Saida_ULA : std_logic_vector (larguraDados-1 downto 0);
   signal EnderecoROM : std_logic_vector (larguraEnderecos-1 downto 0);
   signal proxPC : std_logic_vector (larguraEnderecos-1 downto 0);
