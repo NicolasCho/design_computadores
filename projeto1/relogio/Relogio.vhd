@@ -27,8 +27,8 @@ end entity;
 
 architecture arquitetura of Relogio is
   signal CLK : std_logic;
-  signal CLK1 : std_logic;
-  signal CLK2 : std_logic;
+  --signal CLK1 : std_logic;
+  --signal CLK2 : std_logic;
   
   signal barramentoLeitura : std_logic_vector(larguraDados-1 downto 0);
   
@@ -82,18 +82,21 @@ barramentoLeitura <= saidaRAM;
 barramentoLeitura <= saidaSW;
 barramentoLeitura(0) <= saidaKEY;
 
+detectorSub0: work.edgeDetector(bordaSubida)
+        port map (clk => CLOCK_50, entrada => (not KEY(0)), saida => CLK);
+
 --Bases de tempo
-DIVISORCLOCK1 : entity work.divisorGenerico
-            generic map (divisor => 415000)   -- divide por 830000.
-            port map (clk => CLOCK_50, saida_clk => CLK1);
+--DIVISORCLOCK1 : entity work.divisorGenerico
+--            generic map (divisor => 415000)   -- divide por 830000.
+ --           port map (clk => CLOCK_50, saida_clk => CLK1);
 				
-DIVISORCLOCK2 : entity work.divisorGenerico
-            generic map (divisor => 2075)   -- divide por 830000.
-            port map (clk => CLOCK_50, saida_clk => CLK2);
+--DIVISORCLOCK2 : entity work.divisorGenerico
+ --           generic map (divisor => 2075)   -- divide por 830000.
+   --         port map (clk => CLOCK_50, saida_clk => CLK2);
 
 --Mux para selecionar uma base de tempo				
-MUXCLK : entity work.muxCLK2x1
-				port map (entradaA_MUX => CLK1, entradaB_MUX => CLK2, seletor_MUX => saidaSW9, saida_MUX => CLK);
+--MUXCLK : entity work.muxCLK2x1
+	--			port map (entradaA_MUX => CLK1, entradaB_MUX => CLK2, seletor_MUX => saidaSW9, saida_MUX => CLK);
 
 
 -- O port map completo da CPU.

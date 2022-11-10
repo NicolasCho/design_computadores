@@ -1,6 +1,5 @@
 |Relogio
-CLOCK_50 => divisorgenerico:DIVISORCLOCK1.clk
-CLOCK_50 => divisorgenerico:DIVISORCLOCK2.clk
+CLOCK_50 => edgedetector:detectorSub0.clk
 SW[0] => logicasw:LOGICASW.SW[0]
 SW[1] => logicasw:LOGICASW.SW[1]
 SW[2] => logicasw:LOGICASW.SW[2]
@@ -10,9 +9,9 @@ SW[5] => logicasw:LOGICASW.SW[5]
 SW[6] => logicasw:LOGICASW.SW[6]
 SW[7] => logicasw:LOGICASW.SW[7]
 SW[8] => logicasw:LOGICASW.SW[8]
-SW[9] => muxclk2x1:MUXCLK.seletor_MUX
 SW[9] => logicasw:LOGICASW.SW[9]
 KEY[0] => logicakey:LOGICAKEY.KEY[0]
+KEY[0] => edgedetector:detectorSub0.entrada
 KEY[1] => logicakey:LOGICAKEY.KEY[1]
 KEY[2] => logicakey:LOGICAKEY.KEY[2]
 KEY[3] => logicakey:LOGICAKEY.KEY[3]
@@ -80,52 +79,11 @@ PC[7] << cpu:CPU.ROM_Address[7]
 PC[8] << cpu:CPU.ROM_Address[8]
 
 
-|Relogio|divisorGenerico:DIVISORCLOCK1
-clk => tick.CLK
-clk => contador[0].CLK
-clk => contador[1].CLK
-clk => contador[2].CLK
-clk => contador[3].CLK
-clk => contador[4].CLK
-clk => contador[5].CLK
-clk => contador[6].CLK
-clk => contador[7].CLK
-clk => contador[8].CLK
-clk => contador[9].CLK
-clk => contador[10].CLK
-clk => contador[11].CLK
-clk => contador[12].CLK
-clk => contador[13].CLK
-clk => contador[14].CLK
-clk => contador[15].CLK
-clk => contador[16].CLK
-clk => contador[17].CLK
-clk => contador[18].CLK
-saida_clk <= tick.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|Relogio|divisorGenerico:DIVISORCLOCK2
-clk => tick.CLK
-clk => contador[0].CLK
-clk => contador[1].CLK
-clk => contador[2].CLK
-clk => contador[3].CLK
-clk => contador[4].CLK
-clk => contador[5].CLK
-clk => contador[6].CLK
-clk => contador[7].CLK
-clk => contador[8].CLK
-clk => contador[9].CLK
-clk => contador[10].CLK
-clk => contador[11].CLK
-saida_clk <= tick.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|Relogio|muxCLK2x1:MUXCLK
-entradaA_MUX => saida_MUX.DATAA
-entradaB_MUX => saida_MUX.DATAB
-seletor_MUX => saida_MUX.OUTPUTSELECT
-saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
+|Relogio|edgeDetector:detectorSub0
+clk => saidaQ.CLK
+entrada => saida.IN1
+entrada => saidaQ.DATAIN
+saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Relogio|CPU:CPU
