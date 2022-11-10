@@ -12,9 +12,13 @@ entity Aula14 is
     CLOCK_50 : in std_logic;
     PC_OUT: out std_logic_vector(larguraEnderecos-1 downto 0);
 	 KEY: in std_logic_vector(3 downto 0);
-    EntradaA_ULA	 : out std_logic_vector (larguraDados-1 downto 0);
-	 EntradaB_ULA	 : out std_logic_vector (larguraDados-1 downto 0);
-	 Saida_ULA_leitura	 : out std_logic_vector (larguraDados-1 downto 0)
+	 
+	 EntradaA_ULA : out std_logic_vector (larguraDados-1 downto 0);
+	 EntradaB_ULA : out std_logic_vector (larguraDados-1 downto 0);
+	 Saida_ULA_leitura	 : out std_logic_vector (larguraDados-1 downto 0);
+	 LeituraFlagEQ : out std_logic;
+	 EscritaRAM : out std_logic_vector (larguraDados-1 downto 0);
+	 LeituraRAM : out std_logic_vector (larguraDados-1 downto 0)
   );
 end entity;
 
@@ -33,6 +37,8 @@ architecture arquitetura of Aula14 is
   signal saidaShifter :  std_logic_vector (larguraDados-1 downto 0);
   signal saidaSomador : std_logic_vector (larguraDados-1 downto 0);
   
+  signal saidaMuxRtImediato : std_logic_vector (larguraDados-1 downto 0);
+  
   
   signal Rs_OUT : std_logic_vector (larguraDados-1 downto 0);
   signal Rt_OUT : std_logic_vector (larguraDados-1 downto 0);
@@ -48,9 +54,10 @@ architecture arquitetura of Aula14 is
   signal funct : std_logic_vector (5 downto 0);
   
   
-  signal controle: std_logic_vector(7 downto 0);
+  signal controle: std_logic_vector(8 downto 0);
   --controle
-  signal HabilitaRd : std_logic;
+  signal habEscritaReg : std_logic;
+  signal muxControleRtImediato : std_logic;
   signal Operacao_ULA : std_logic_vector(2 downto 0);
   signal habilitaBEQ : std_logic;
   signal habilitaRAM : std_logic;
@@ -80,7 +87,8 @@ imediato <= formato_Instrucao (15 downto 0);
 funct  <= formato_Instrucao (5 downto 0);
 		
 -- Pontos de controle
-HabilitaRd    		<= controle(7);
+habEscritaReg    		<= controle(8);
+muxControleRtImediato <= controle(7);
 Operacao_ULA  		<= controle(6 downto 4);
 habilitaBEQ       <= controle(3);
 habilitaRAM			<= controle(2);
@@ -108,12 +116,16 @@ BANCO_REGISTRADORES : entity work.bancoReg generic map (larguraDados => larguraD
 					  enderecoB => Rt_IN,
 					  enderecoC => Rt_IN,
 					  dadoEscritaC  => saidaRAM,
-					  escreveC => HabilitaRd,
+					  escreveC => habEscritaReg,
 					  saidaA   => Rs_OUT,
 					  saidaB   => Rt_OUT);
+					  
+MUX_RT_IMEDIATO : entity work.muxGenerico2x1  generic map (larguraDados => 32)
+			 port map (entradaA_MUX => Rt_OUT, entradab_MUX => saidaExtensor, seletor_MUX => muxControleRtImediato,
+							saida_MUX => saidaMuxRtImediato);
 	
 ULA : entity work.ULA  generic map(larguraDados => larguraDados)
-          port map (entradaA => Rs_OUT, entradaB => saidaExtensor, saida => Saida_ULA, flagEQ => flagEQ,
+          port map (entradaA => Rs_OUT, entradaB => saidaMuxRtImediato, saida => Saida_ULA, flagEQ => flagEQ,
 							seletor => Operacao_ULA);
 
 			 
@@ -148,8 +160,12 @@ RAM : entity work.RAMMIPS generic map(dataWidth => 32, addrWidth => 32, memoryAd
 
 
 PC_OUT <= EnderecoROM;
-EntradaA_ULA <= Rs_OUT;
-EntradaB_ULA <= Rt_OUT;
 Saida_ULA_leitura	<=Saida_ULA;
+
+EntradaA_ULA <= Rs_OUT;
+EntradaB_ULA <= saidaMuxRtImediato;
+EscritaRAM <= Rt_OUT;
+LeituraRAM <= saidaRAM;
+LeituraFlagEQ <= flagEQ;
 
 end architecture;

@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 entity unidadeControle is
   port ( opCode : in std_logic_vector(5 downto 0);
 			funct : in std_logic_vector(5 downto 0);
-         saida : out std_logic_vector(3 downto 0)
+         saida : out std_logic_vector(8 downto 0)
   );
 end entity;
 
@@ -23,14 +23,14 @@ architecture comportamento of unidadeControle is
   constant R_TYPE: std_logic_vector(5 downto 0) := 6x"0";
 
   begin
-saida <= '1'&"000"&'0'&"000" when (funct = SUB   and opCode = R_TYPE) else
-			'1'&"001"&'0'&"000" when (funct = SOMA  and opCode = R_TYPE) else
-			'1'&"010"&'0'&"000" when (funct = NOROP and opCode = R_TYPE) else
-         '1'&"011"&'0'&"000" when (funct = ANDOP and opCode = R_TYPE) else
-			'1'&"100"&'0'&"000" when (funct = OROP  and opCode = R_TYPE) else
-			'1'&"101"&'0'&"000" when (funct = SLT   and opCode = R_TYPE) else
-			'1'&"001"&'0'&"110" when (opCode = LW) else
-			'1'&"001"&'0'&"101" when (opCode = SW) else
-			'1'&"110"&'1'&"000" when (opCode = BEQ) else
-         '0'&"110"&'0'&"000";  
+saida <= '1'&'0'&"000"&'0'&"000" when (funct = SUB   and opCode = R_TYPE) else
+			'1'&'0'&"001"&'0'&"000" when (funct = SOMA  and opCode = R_TYPE) else
+			'1'&'0'&"010"&'0'&"000" when (funct = NOROP and opCode = R_TYPE) else
+         '1'&'0'&"011"&'0'&"000" when (funct = ANDOP and opCode = R_TYPE) else
+			'1'&'0'&"100"&'0'&"000" when (funct = OROP  and opCode = R_TYPE) else
+			'1'&'0'&"101"&'0'&"000" when (funct = SLT   and opCode = R_TYPE) else
+			'1'&'1'&"001"&'0'&"110" when (opCode = LW) else
+			'0'&'1'&"001"&'0'&"101" when (opCode = SW) else
+			'0'&'0'&"110"&'1'&"000" when (opCode = BEQ) else
+         '0'&'0'&"110"&'0'&"000";  
 end architecture;
