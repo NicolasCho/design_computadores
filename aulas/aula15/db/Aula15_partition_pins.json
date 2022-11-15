@@ -124,11 +124,131 @@
 					"strict" : false
 				},
 				{
+					"name" : "EntradaA_ULA[0]",
+					"strict" : false
+				},
+				{
 					"name" : "EntradaA_ULA[1]",
 					"strict" : false
 				},
 				{
+					"name" : "EntradaA_ULA[2]",
+					"strict" : false
+				},
+				{
 					"name" : "EntradaA_ULA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[4]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[5]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[7]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[8]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[9]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[10]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[11]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[12]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[13]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[14]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[15]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[16]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[17]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[18]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[19]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[20]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[21]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[22]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[23]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[24]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[25]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[26]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[27]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[28]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[29]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[30]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaA_ULA[31]",
 					"strict" : false
 				},
 				{
@@ -145,6 +265,118 @@
 				},
 				{
 					"name" : "EntradaB_ULA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[4]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[5]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[7]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[8]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[9]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[10]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[11]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[12]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[13]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[14]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[15]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[16]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[17]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[18]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[19]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[20]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[21]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[22]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[23]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[24]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[25]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[26]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[27]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[28]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[29]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[30]",
+					"strict" : false
+				},
+				{
+					"name" : "EntradaB_ULA[31]",
 					"strict" : false
 				},
 				{
@@ -293,6 +525,246 @@
 				},
 				{
 					"name" : "EscritaRAM[3]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[4]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[5]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[6]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[7]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[8]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[9]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[10]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[11]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[12]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[13]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[14]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[15]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[16]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[17]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[18]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[19]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[20]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[21]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[22]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[23]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[24]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[25]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[26]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[27]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[28]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[29]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[30]",
+					"strict" : false
+				},
+				{
+					"name" : "EscritaRAM[31]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[0]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[1]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[2]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[3]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[4]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[5]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[6]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[7]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[8]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[9]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[10]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[11]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[12]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[13]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[14]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[15]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[16]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[17]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[18]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[19]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[20]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[21]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[22]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[23]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[24]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[25]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[26]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[27]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[28]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[29]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[30]",
+					"strict" : false
+				},
+				{
+					"name" : "LeituraRAM[31]",
 					"strict" : false
 				},
 				{

@@ -31,6 +31,6 @@ saida <= '1'&'0'&"000"&'0'&"000" when (funct = SUB   and opCode = R_TYPE) else
 			'1'&'0'&"101"&'0'&"000" when (funct = SLT   and opCode = R_TYPE) else
 			'1'&'1'&"001"&'0'&"110" when (opCode = LW) else
 			'0'&'1'&"001"&'0'&"101" when (opCode = SW) else
-			'0'&'0'&"110"&'1'&"000" when (opCode = BEQ) else
+			'0'&'0'&"000"&'1'&"000" when (opCode = BEQ) else
          '0'&'0'&"110"&'0'&"000";  
 end architecture;
