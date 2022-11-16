@@ -1,0 +1,29 @@
+Quartus Prime Archive log --	C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/Aula15.qarlog
+
+Archive:	C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/Aula15.qar
+Date:		Sat Nov 12 17:31:10 2022
+Quartus Prime		20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/Aula15.qpf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/Aula15.qsf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/Aula15.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/RAMMIPS.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/ROMMIPS.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/ROMcontent.mif
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/ULA.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/Waveform.vwf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/bancoReg.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/edgeDetector.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/estendeSinalGenerico.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/muxGenerico2x1.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/registradorGenerico.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/shifter.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/somaConstante.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/somadorGenerico.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/aulas/aula15/unidadeControle.vhd
+c:/intelfpga_lite/20.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 18 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
