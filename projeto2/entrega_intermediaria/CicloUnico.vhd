@@ -6,19 +6,11 @@ entity CicloUnico is
   generic ( larguraDados : natural := 32;
         larguraEnderecos : natural := 32;
 		  larguraInstrucao : natural := 32;
-        simulacao : boolean := TRUE -- para gravar na placa, altere de TRUE para FALSE
+        simulacao : boolean := FALSE -- para gravar na placa, altere de TRUE para FALSE
   );
   port   (
     CLOCK_50 : in std_logic;
-    PC_OUT: out std_logic_vector(larguraEnderecos-1 downto 0);
-	 KEY: in std_logic_vector(3 downto 0);
-	 
-	 EntradaA_ULA : out std_logic_vector (larguraDados-1 downto 0);
-	 EntradaB_ULA : out std_logic_vector (larguraDados-1 downto 0);
-	 Saida_ULA_leitura	 : out std_logic_vector (larguraDados-1 downto 0);
-	 LeituraFlagEQ : out std_logic;
-	 EscritaRAM : out std_logic_vector (larguraDados-1 downto 0);
-	 LeituraRAM : out std_logic_vector (larguraDados-1 downto 0)
+	 KEY: in std_logic_vector(3 downto 0)
   );
 end entity;
 
@@ -31,7 +23,7 @@ architecture arquitetura of CicloUnico is
   signal proxPC : std_logic_vector (larguraEnderecos-1 downto 0);
   
   signal Saida_ULA : std_logic_vector (larguraDados-1 downto 0);
-  signal flagEQ : std_logic;
+  signal signalBEQ : std_logic;
   signal saidaExtensor : std_logic_vector (larguraDados-1 downto 0);
   signal saidaRAM :  std_logic_vector (larguraDados-1 downto 0);
   signal saidaShifter :  std_logic_vector (larguraDados-1 downto 0);
@@ -58,20 +50,20 @@ architecture arquitetura of CicloUnico is
   signal imediatoJ : std_logic_vector(25 downto 0); 
   signal funct : std_logic_vector (5 downto 0);
   
-  signal controle: std_logic_vector(11 downto 0);
+  signal controle: std_logic_vector(8 downto 0);
   --controle
   signal muxPC_BEQ_JMP : std_logic;
   signal muxControleRtRd : std_logic;
   signal habEscritaReg : std_logic;
   signal muxControleRtImediato : std_logic;
-  signal Operacao_ULA : std_logic_vector(2 downto 0);
+  signal controleTipoR : std_logic;
   signal muxControleULARAM : std_logic;	
   signal habilitaBEQ : std_logic;
-  signal habilitaRAM : std_logic;
   signal habLeituraRAM: std_logic;
   signal habilitaEscritaRAM: std_logic;
   
   signal PCSelectorMUX : std_logic;
+  signal ULACtrl : std_logic_vector (2 downto 0);
   
 begin
 
@@ -95,18 +87,17 @@ imediato  <= formato_Instrucao (15 downto 0);
 funct     <= formato_Instrucao (5 downto 0);
 		
 -- Pontos de controle
-muxPC_BEQ_JMP     <= controle(11);
-muxControleRtRd   <= controle(10);
-habEscritaReg     <= controle(9);
-muxControleRtImediato <= controle(8);
-Operacao_ULA  		<= controle(7 downto 5);
-muxControleULARAM <= controle(4);
-habilitaBEQ       <= controle(3);
-habilitaRAM			<= controle(2);
+muxPC_BEQ_JMP     <= controle(8);
+muxControleRtRd   <= controle(7);
+habEscritaReg     <= controle(6);
+muxControleRtImediato <= controle(5);
+controleTipoR     <= controle(4);
+muxControleULARAM <= controle(3);
+habilitaBEQ       <= controle(2);
 habLeituraRAM		<= controle(1);
 habilitaEscritaRAM<= controle(0);
 
-PCSelectorMUX <= habilitaBEQ and flagEQ;
+PCSelectorMUX <= habilitaBEQ and signalBEQ;
 concatenaImediatoJPC <= saidaIncrementaPC(31 downto 28) & imediatoJ & "00";
 																								
 PC : entity work.registradorGenerico   generic map (larguraDados => larguraEnderecos)
@@ -140,8 +131,10 @@ MUX_RT_IMEDIATO : entity work.muxGenerico2x1  generic map (larguraDados => 32)
 							saida_MUX => saidaMuxRtImediato);
 	
 ULA : entity work.ULA  generic map(larguraDados => larguraDados)
-          port map (entradaA => Rs_OUT, entradaB => saidaMuxRtImediato, saida => Saida_ULA, flagEQ => flagEQ,
-							seletor => Operacao_ULA);
+          port map (entradaA => Rs_OUT, entradaB => saidaMuxRtImediato, 
+							Seletor => ULACtrl(1 downto 0), InverteB => ULACtrl(2),
+							saida => Saida_ULA, signalBEQ => signalBEQ);
+							
 
 MUX_ULA_RAM : entity work.muxGenerico2x1  generic map (larguraDados => 32)
 			 port map (entradaA_MUX => Saida_ULA, entradaB_MUX => saidaRAM, seletor_MUX => muxControleULARAM,
@@ -149,7 +142,10 @@ MUX_ULA_RAM : entity work.muxGenerico2x1  generic map (larguraDados => 32)
 							
 			 
 UNIDADE_CONTROLE : entity work.unidadeControle  
-          port map (opCode => opCode, funct => funct, saida => controle);
+          port map (opCode => opCode, saida => controle);
+			 
+UNIDADE_CONTROLE_ULA : entity work.unidadeControleULA  
+          port map (opCode => opCode, funct => funct, tipoR => controleTipoR, saida => ULACtrl);
 			 
 			 
 EXTENSOR_SINAL : entity work.estendeSinalGenerico generic map(larguraDadoEntrada => 16, larguraDadoSaida => 32)
@@ -178,18 +174,8 @@ RAM : entity work.RAMMIPS generic map(dataWidth => 32, addrWidth => 32, memoryAd
 						  Dado_in  => Rt_OUT,
 						  Dado_out => saidaRAM,
 						  we       => habilitaEscritaRAM,
-						  re       => habLeituraRAM,
-						  habilita => habilitaRAM
+						  re       => habLeituraRAM
 					    );
 
-
-PC_OUT <= EnderecoROM;
-Saida_ULA_leitura	<=Saida_ULA;
-
-EntradaA_ULA <= Rs_OUT;
-EntradaB_ULA <= saidaMuxRtImediato;
-EscritaRAM <= Rt_OUT;
-LeituraRAM <= saidaRAM;
-LeituraFlagEQ <= flagEQ;
 
 end architecture;

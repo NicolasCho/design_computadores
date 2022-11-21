@@ -25,7 +25,7 @@ architecture comportamento of ULA_bit_final is
 	signal entradaMuxD : std_logic;
 
 begin
-	MUX2_1 : entity work.muxGenerico2x1
+	MUX2_1 : entity work.muxGenerico2x1_1bit
 	port map (entradaA_MUX => EntradaB, entradaB_MUX => not EntradaB, seletor_MUX => InverteB,
 					saida_MUX => saidaMuxEntradaB);
 
@@ -33,7 +33,7 @@ begin
 	port map (entradaA => EntradaA, entradaB => saidaMuxEntradaB, carryIn => CarryIn, carryOut => carryOut,
 					Saida => saidaSomador);
 
-	MUX4_1 : entity work.muxGenerico4x1
+	MUX4_1 : entity work.muxGenerico4x1_1bit
 	port map (entradaA_MUX => entradaMuxA, entradaB_MUX => entradaMuxB, entradaC_MUX => entradaMuxC, entradaD_MUX => entradaMuxD,
 					seletor_MUX => Seletor,
 				saida_MUX => saidaMuxEntradaB);
