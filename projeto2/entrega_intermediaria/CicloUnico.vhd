@@ -10,7 +10,15 @@ entity CicloUnico is
   );
   port   (
     CLOCK_50 : in std_logic;
-	 KEY: in std_logic_vector(3 downto 0)
+	 KEY   : in  std_logic_vector(3 downto 0);
+	 SW    : in  std_logic_vector(9 downto 0);
+	 LEDR  : out std_logic_vector(9 downto 0);
+	 HEX0  : out std_logic_vector(6 downto 0);
+	 HEX1  : out std_logic_vector(6 downto 0);
+	 HEX2  : out std_logic_vector(6 downto 0);
+	 HEX3  : out std_logic_vector(6 downto 0);
+	 HEX4  : out std_logic_vector(6 downto 0);
+	 HEX5  : out std_logic_vector(6 downto 0)
   );
 end entity;
 
@@ -34,6 +42,7 @@ architecture arquitetura of CicloUnico is
   signal saidaMuxRtImediato : std_logic_vector (larguraDados-1 downto 0);
   signal saidaMuxULARAM : std_logic_vector (larguraDados-1 downto 0);
   signal saidaMuxImediatoPC : std_logic_vector (larguraEnderecos-1 downto 0);
+  signal saidaMuxPCULA : std_logic_vector(larguraDados-1 downto 0);
   
   
   signal Rs_OUT : std_logic_vector (larguraDados-1 downto 0);
@@ -70,12 +79,10 @@ begin
 -- Instanciando os componentes:
 
 -- Para simular, fica mais simples tirar o edgeDetector
-gravar:  if simulacao generate
-CLK <= KEY(0);
-else generate
+
 detectorSub0: work.edgeDetector(bordaSubida)
         port map (clk => CLOCK_50, entrada => (not KEY(0)), saida => CLK);
-end generate;
+
 
 -- Manipulando a instrucao
 opCode    <= formato_Instrucao (31 downto 26);
@@ -177,5 +184,20 @@ RAM : entity work.RAMMIPS generic map(dataWidth => 32, addrWidth => 32, memoryAd
 						  re       => habLeituraRAM
 					    );
 
+MUX_PC_ULA : entity work.muxGenerico2x1 generic map (larguraDados => 32)
+			 port map (entradaA_MUX => EnderecoROM, entradaB_MUX => Saida_ULA, 
+			 seletor_MUX => SW(0), saida_MUX => saidaMuxPCULA);
+						 
+DISPLAY : entity work.logicaDisplay  
+			port map(dado => saidaMuxPCULA(23 downto 0),
+						hex0 => HEX0,
+						hex1 => HEX1,
+						hex2 => HEX2,
+						hex3 => HEX3,
+						hex4 => HEX4,
+						hex5 => HEX5);
+
+LEDR(3 downto 0) <= saidaMuxPCULA(27 downto 24);
+LEDR(7 downto 4) <= saidaMuxPCULA(31 downto 28);
 
 end architecture;

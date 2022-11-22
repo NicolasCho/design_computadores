@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CicloUnico
-Mon Nov 21 10:06:55 2022
+Tue Nov 22 17:20:42 2022
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -13,30 +13,34 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Parameter Settings for User Entity Instance: Top-level Entity: |CicloUnico
- 10. Parameter Settings for User Entity Instance: registradorGenerico:PC
- 11. Parameter Settings for User Entity Instance: somaConstante:incrementaPC
- 12. Parameter Settings for User Entity Instance: ROMMIPS:ROM
- 13. Parameter Settings for User Entity Instance: muxGenerico2x1:MUX_RT_RD
- 14. Parameter Settings for User Entity Instance: bancoReg:BANCO_REGISTRADORES
- 15. Parameter Settings for User Entity Instance: muxGenerico2x1:MUX_RT_IMEDIATO
- 16. Parameter Settings for User Entity Instance: ULA:ULA
- 17. Parameter Settings for User Entity Instance: muxGenerico2x1:MUX_ULA_RAM
- 18. Parameter Settings for User Entity Instance: unidadeControleULA:UNIDADE_CONTROLE_ULA|muxGenerico2x1:MUX2_1
- 19. Parameter Settings for User Entity Instance: estendeSinalGenerico:EXTENSOR_SINAL
- 20. Parameter Settings for User Entity Instance: shifter:SHIFTER
- 21. Parameter Settings for User Entity Instance: somadorGenerico:SOMADOR
- 22. Parameter Settings for User Entity Instance: muxGenerico2x1:MUXPC
- 23. Parameter Settings for User Entity Instance: muxGenerico2x1:MUX_PC_BEQ_JMP
- 24. Parameter Settings for User Entity Instance: RAMMIPS:RAM
- 25. Port Connectivity Checks: "muxGenerico2x1:MUX_PC_BEQ_JMP"
- 26. Port Connectivity Checks: "ULA:ULA|ULA_bit_inicial:BIT31|muxGenerico4x1_1bit:MUX4_1"
- 27. Port Connectivity Checks: "ULA:ULA|ULA_1_bit:BIT1|muxGenerico4x1_1bit:MUX4_1"
- 28. Port Connectivity Checks: "registradorGenerico:PC"
- 29. Post-Synthesis Netlist Statistics for Top Partition
- 30. Elapsed Time Per Partition
- 31. Analysis & Synthesis Messages
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: Top-level Entity: |CicloUnico
+ 12. Parameter Settings for User Entity Instance: registradorGenerico:PC
+ 13. Parameter Settings for User Entity Instance: somaConstante:incrementaPC
+ 14. Parameter Settings for User Entity Instance: ROMMIPS:ROM
+ 15. Parameter Settings for User Entity Instance: muxGenerico2x1:MUX_RT_RD
+ 16. Parameter Settings for User Entity Instance: bancoReg:BANCO_REGISTRADORES
+ 17. Parameter Settings for User Entity Instance: muxGenerico2x1:MUX_RT_IMEDIATO
+ 18. Parameter Settings for User Entity Instance: ULA:ULA
+ 19. Parameter Settings for User Entity Instance: muxGenerico2x1:MUX_ULA_RAM
+ 20. Parameter Settings for User Entity Instance: unidadeControleULA:UNIDADE_CONTROLE_ULA|muxGenerico2x1:MUX2_1
+ 21. Parameter Settings for User Entity Instance: estendeSinalGenerico:EXTENSOR_SINAL
+ 22. Parameter Settings for User Entity Instance: shifter:SHIFTER
+ 23. Parameter Settings for User Entity Instance: somadorGenerico:SOMADOR
+ 24. Parameter Settings for User Entity Instance: muxGenerico2x1:MUXPC
+ 25. Parameter Settings for User Entity Instance: muxGenerico2x1:MUX_PC_BEQ_JMP
+ 26. Parameter Settings for User Entity Instance: RAMMIPS:RAM
+ 27. Parameter Settings for User Entity Instance: muxGenerico2x1:MUX_PC_ULA
+ 28. Port Connectivity Checks: "logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG"
+ 29. Port Connectivity Checks: "muxGenerico2x1:MUX_PC_BEQ_JMP"
+ 30. Port Connectivity Checks: "ULA:ULA|ULA_bit_inicial:BIT31|muxGenerico4x1_1bit:MUX4_1"
+ 31. Port Connectivity Checks: "ULA:ULA|ULA_1_bit:BIT1|muxGenerico4x1_1bit:MUX4_1"
+ 32. Port Connectivity Checks: "registradorGenerico:PC"
+ 33. Post-Synthesis Netlist Statistics for Top Partition
+ 34. Elapsed Time Per Partition
+ 35. Analysis & Synthesis Messages
 
 
 
@@ -63,14 +67,14 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Nov 21 10:06:55 2022       ;
+; Analysis & Synthesis Status     ; Successful - Tue Nov 22 17:20:42 2022       ;
 ; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                   ; CicloUnico                                  ;
 ; Top-level Entity Name           ; CicloUnico                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 0                                           ;
-; Total pins                      ; 5                                           ;
+; Total registers                 ; 31                                          ;
+; Total pins                      ; 67                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
 ; Total DSP Blocks                ; 0                                           ;
@@ -88,7 +92,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
-; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Device                                                                          ; 5CEBA4F23C7        ;                    ;
 ; Top-level entity name                                                           ; CicloUnico         ; CicloUnico         ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; VHDL Show LMF Mapping Messages                                                  ; Off                ;                    ;
@@ -180,10 +184,11 @@ https://fpgasoftware.intel.com/eula.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -192,6 +197,9 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                                                 ; Library ;
 +----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------------------------------------+---------+
+; logicaDisplay.vhd                ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/logicaDisplay.vhd        ;         ;
+; display7Seg.vhd                  ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/display7Seg.vhd          ;         ;
+; conversorHex7Seg.vhd             ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/conversorHex7Seg.vhd     ;         ;
 ; muxGenerico2x1.vhd               ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/muxGenerico2x1.vhd       ;         ;
 ; muxGenerico4x1_1bit.vhd          ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/muxGenerico4x1_1bit.vhd  ;         ;
 ; muxGenerico2x1_1bit.vhd          ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/muxGenerico2x1_1bit.vhd  ;         ;
@@ -217,41 +225,72 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary            ;
-+---------------------------------------------+----------+
-; Resource                                    ; Usage    ;
-+---------------------------------------------+----------+
-; Estimate of Logic utilization (ALMs needed) ; 0        ;
-;                                             ;          ;
-; Combinational ALUT usage for logic          ; 0        ;
-;     -- 7 input functions                    ; 0        ;
-;     -- 6 input functions                    ; 0        ;
-;     -- 5 input functions                    ; 0        ;
-;     -- 4 input functions                    ; 0        ;
-;     -- <=3 input functions                  ; 0        ;
-;                                             ;          ;
-; Dedicated logic registers                   ; 0        ;
-;                                             ;          ;
-; I/O pins                                    ; 5        ;
-;                                             ;          ;
-; Total DSP Blocks                            ; 0        ;
-;                                             ;          ;
-; Maximum fan-out node                        ; CLOCK_50 ;
-; Maximum fan-out                             ; 1        ;
-; Total fan-out                               ; 5        ;
-; Average fan-out                             ; 0.50     ;
-+---------------------------------------------+----------+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                   ;
++---------------------------------------------+---------------------------------+
+; Resource                                    ; Usage                           ;
++---------------------------------------------+---------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 76                              ;
+;                                             ;                                 ;
+; Combinational ALUT usage for logic          ; 141                             ;
+;     -- 7 input functions                    ; 0                               ;
+;     -- 6 input functions                    ; 10                              ;
+;     -- 5 input functions                    ; 0                               ;
+;     -- 4 input functions                    ; 64                              ;
+;     -- <=3 input functions                  ; 67                              ;
+;                                             ;                                 ;
+; Dedicated logic registers                   ; 31                              ;
+;                                             ;                                 ;
+; I/O pins                                    ; 67                              ;
+;                                             ;                                 ;
+; Total DSP Blocks                            ; 0                               ;
+;                                             ;                                 ;
+; Maximum fan-out node                        ; edgeDetector:detectorSub0|saida ;
+; Maximum fan-out                             ; 30                              ;
+; Total fan-out                               ; 661                             ;
+; Average fan-out                             ; 2.16                            ;
++---------------------------------------------+---------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; |CicloUnico                ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 5    ; 0            ; |CicloUnico         ; CicloUnico  ; work         ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                         ;
++-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                 ; Entity Name         ; Library Name ;
++-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------+---------------------+--------------+
+; |CicloUnico                             ; 141 (1)             ; 31 (0)                    ; 0                 ; 0          ; 67   ; 0            ; |CicloUnico                                                                         ; CicloUnico          ; work         ;
+;    |ROMMIPS:ROM|                        ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|ROMMIPS:ROM                                                             ; ROMMIPS             ; work         ;
+;    |edgeDetector:detectorSub0|          ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|edgeDetector:detectorSub0                                               ; edgeDetector        ; work         ;
+;    |logicaDisplay:DISPLAY|              ; 37 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY                                                   ; logicaDisplay       ; work         ;
+;       |display7Seg:DISPLAY0|            ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY0                              ; display7Seg         ; work         ;
+;          |conversorHex7Seg:DECODER7SEG| ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
+;       |display7Seg:DISPLAY1|            ; 7 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY1                              ; display7Seg         ; work         ;
+;          |conversorHex7Seg:DECODER7SEG| ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY1|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
+;       |display7Seg:DISPLAY2|            ; 7 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY2                              ; display7Seg         ; work         ;
+;          |conversorHex7Seg:DECODER7SEG| ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY2|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
+;       |display7Seg:DISPLAY3|            ; 7 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY3                              ; display7Seg         ; work         ;
+;          |conversorHex7Seg:DECODER7SEG| ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY3|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
+;       |display7Seg:DISPLAY4|            ; 7 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY4                              ; display7Seg         ; work         ;
+;          |conversorHex7Seg:DECODER7SEG| ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY4|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
+;       |display7Seg:DISPLAY5|            ; 7 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY5                              ; display7Seg         ; work         ;
+;          |conversorHex7Seg:DECODER7SEG| ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY5|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
+;    |muxGenerico2x1:MUX_PC_BEQ_JMP|      ; 30 (30)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|muxGenerico2x1:MUX_PC_BEQ_JMP                                           ; muxGenerico2x1      ; work         ;
+;    |registradorGenerico:PC|             ; 0 (0)               ; 30 (30)                   ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|registradorGenerico:PC                                                  ; registradorGenerico ; work         ;
+;    |somaConstante:incrementaPC|         ; 30 (30)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|somaConstante:incrementaPC                                              ; somaConstante       ; work         ;
+;    |somadorGenerico:SOMADOR|            ; 30 (30)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|somadorGenerico:SOMADOR                                                 ; somadorGenerico     ; work         ;
+;    |unidadeControle:UNIDADE_CONTROLE|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CicloUnico|unidadeControle:UNIDADE_CONTROLE                                        ; unidadeControle     ; work         ;
++-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                 ;
++---------------------------------------+--------------------------------------------+
+; Register name                         ; Reason for Removal                         ;
++---------------------------------------+--------------------------------------------+
+; registradorGenerico:PC|DOUT[0]        ; Merged with registradorGenerico:PC|DOUT[1] ;
+; registradorGenerico:PC|DOUT[1]        ; Stuck at GND due to stuck port data_in     ;
+; Total Number of Removed Registers = 2 ;                                            ;
++---------------------------------------+--------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -259,7 +298,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 31    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -267,6 +306,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |CicloUnico|registradorGenerico:PC|DOUT[20]         ;
+; 3:1                ; 21 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; Yes        ; |CicloUnico|registradorGenerico:PC|DOUT[7]          ;
+; 1:1                ; 30 bits   ; 0 LEs         ; 0 LEs                ; 0 LEs                  ; No         ; |CicloUnico|muxGenerico2x1:MUX_PC_ULA|saida_MUX[22] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
 
 
 +----------------------------------------------------------------------------+
@@ -439,6 +489,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: muxGenerico2x1:MUX_PC_ULA ;
++----------------+-------+-----------------------------------------------+
+; Parameter Name ; Value ; Type                                          ;
++----------------+-------+-----------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                ;
++----------------+-------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG" ;
++----------+-------+----------+-----------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                               ;
++----------+-------+----------+-----------------------------------------------------------------------+
+; apaga    ; Input ; Info     ; Stuck at GND                                                          ;
+; negativo ; Input ; Info     ; Stuck at GND                                                          ;
+; overflow ; Input ; Info     ; Stuck at GND                                                          ;
++----------+-------+----------+-----------------------------------------------------------------------+
+
+
 +-----------------------------------------------------------+
 ; Port Connectivity Checks: "muxGenerico2x1:MUX_PC_BEQ_JMP" ;
 +--------------------+-------+----------+-------------------+
@@ -478,14 +549,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
-+-------------------+---------------------------------+
-; Type              ; Count                           ;
-+-------------------+---------------------------------+
-; boundary_port     ; 5                               ;
-;                   ;                                 ;
-; Max LUT depth     ; 0.00                            ;
-; Average LUT depth ; 0.00                            ;
-+-------------------+---------------------------------+
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 31                          ;
+;     plain             ; 31                          ;
+; arriav_lcell_comb     ; 143                         ;
+;     arith             ; 60                          ;
+;         1 data inputs ; 30                          ;
+;         2 data inputs ; 25                          ;
+;         3 data inputs ; 2                           ;
+;         4 data inputs ; 3                           ;
+;     normal            ; 83                          ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 5                           ;
+;         3 data inputs ; 4                           ;
+;         4 data inputs ; 61                          ;
+;         6 data inputs ; 10                          ;
+; boundary_port         ; 67                          ;
+;                       ;                             ;
+; Max LUT depth         ; 5.90                        ;
+; Average LUT depth     ; 4.32                        ;
++-----------------------+-----------------------------+
 
 
 +-------------------------------+
@@ -503,10 +589,19 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Mon Nov 21 10:06:37 2022
+    Info: Processing started: Tue Nov 22 17:20:30 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CicloUnico -c CicloUnico
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file logicadisplay.vhd
+    Info (12022): Found design unit 1: logicaDisplay-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/logicaDisplay.vhd Line: 16
+    Info (12023): Found entity 1: logicaDisplay File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/logicaDisplay.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file display7seg.vhd
+    Info (12022): Found design unit 1: display7Seg-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/display7Seg.vhd Line: 12
+    Info (12023): Found entity 1: display7Seg File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/display7Seg.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file conversorhex7seg.vhd
+    Info (12022): Found design unit 1: conversorHex7Seg-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/conversorHex7Seg.vhd Line: 17
+    Info (12023): Found entity 1: conversorHex7Seg File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/conversorHex7Seg.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file muxgenerico2x1.vhd
     Info (12022): Found design unit 1: muxGenerico2x1-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/muxGenerico2x1.vhd Line: 14
     Info (12023): Found entity 1: muxGenerico2x1 File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/muxGenerico2x1.vhd Line: 4
@@ -563,7 +658,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file bancore
     Info (12022): Found design unit 1: bancoReg-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/bancoReg.vhd Line: 30
     Info (12023): Found entity 1: bancoReg File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/bancoReg.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file ciclounico.vhd
-    Info (12022): Found design unit 1: CicloUnico-arquitetura File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 18
+    Info (12022): Found design unit 1: CicloUnico-arquitetura File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 26
     Info (12023): Found entity 1: CicloUnico File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file unidadecontroleula.vhd
     Info (12022): Found design unit 1: unidadeControleULA-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/unidadeControleULA.vhd Line: 14
@@ -575,15 +670,16 @@ Info (12021): Found 2 design units, including 1 entities, in source file decoder
     Info (12022): Found design unit 1: decoderFunctULA-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/decoderFunctULA.vhd Line: 10
     Info (12023): Found entity 1: decoderFunctULA File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/decoderFunctULA.vhd Line: 4
 Info (12127): Elaborating entity "CicloUnico" for the top level hierarchy
-Info (12129): Elaborating entity "edgeDetector" using architecture "A:bordasubida" for hierarchy "edgeDetector:\gravar:detectorSub0" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 76
-Info (12128): Elaborating entity "registradorGenerico" for hierarchy "registradorGenerico:PC" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 103
-Info (12128): Elaborating entity "somaConstante" for hierarchy "somaConstante:incrementaPC" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 107
-Info (12128): Elaborating entity "ROMMIPS" for hierarchy "ROMMIPS:ROM" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 111
+Warning (10873): Using initial value X (don't care) for net "LEDR[9..8]" at CicloUnico.vhd(15) File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 15
+Info (12129): Elaborating entity "edgeDetector" using architecture "A:bordasubida" for hierarchy "edgeDetector:detectorSub0" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 83
+Info (12128): Elaborating entity "registradorGenerico" for hierarchy "registradorGenerico:PC" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 110
+Info (12128): Elaborating entity "somaConstante" for hierarchy "somaConstante:incrementaPC" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 114
+Info (12128): Elaborating entity "ROMMIPS" for hierarchy "ROMMIPS:ROM" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 118
 Warning (10541): VHDL Signal Declaration warning at ROMMIPS.vhd(18): used implicit default value for signal "memROM" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ROMMIPS.vhd Line: 18
-Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "muxGenerico2x1:MUX_RT_RD" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 115
-Info (12128): Elaborating entity "bancoReg" for hierarchy "bancoReg:BANCO_REGISTRADORES" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 119
-Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "muxGenerico2x1:MUX_RT_IMEDIATO" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 129
-Info (12128): Elaborating entity "ULA" for hierarchy "ULA:ULA" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 133
+Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "muxGenerico2x1:MUX_RT_RD" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 122
+Info (12128): Elaborating entity "bancoReg" for hierarchy "bancoReg:BANCO_REGISTRADORES" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 126
+Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "muxGenerico2x1:MUX_RT_IMEDIATO" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 136
+Info (12128): Elaborating entity "ULA" for hierarchy "ULA:ULA" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 140
 Info (12128): Elaborating entity "ULA_bit_final" for hierarchy "ULA:ULA|ULA_bit_final:BIT0" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ULA.vhd Line: 58
 Warning (10541): VHDL Signal Declaration warning at ULA_bit_final.vhd(14): used implicit default value for signal "Saida" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ULA_bit_final.vhd Line: 14
 Info (12128): Elaborating entity "muxGenerico2x1_1bit" for hierarchy "ULA:ULA|ULA_bit_final:BIT0|muxGenerico2x1_1bit:MUX2_1" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ULA_bit_final.vhd Line: 28
@@ -593,30 +689,49 @@ Info (12128): Elaborating entity "ULA_1_bit" for hierarchy "ULA:ULA|ULA_1_bit:BI
 Warning (10541): VHDL Signal Declaration warning at ULA_1_bit.vhd(13): used implicit default value for signal "Saida" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ULA_1_bit.vhd Line: 13
 Info (12128): Elaborating entity "ULA_bit_inicial" for hierarchy "ULA:ULA|ULA_bit_inicial:BIT31" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ULA.vhd Line: 182
 Warning (10541): VHDL Signal Declaration warning at ULA_bit_inicial.vhd(13): used implicit default value for signal "Saida" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ULA_bit_inicial.vhd Line: 13
-Info (12128): Elaborating entity "unidadeControle" for hierarchy "unidadeControle:UNIDADE_CONTROLE" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 144
-Info (12128): Elaborating entity "unidadeControleULA" for hierarchy "unidadeControleULA:UNIDADE_CONTROLE_ULA" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 147
+Info (12128): Elaborating entity "unidadeControle" for hierarchy "unidadeControle:UNIDADE_CONTROLE" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 151
+Info (12128): Elaborating entity "unidadeControleULA" for hierarchy "unidadeControleULA:UNIDADE_CONTROLE_ULA" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 154
 Info (12128): Elaborating entity "decoderOpCodeULA" for hierarchy "unidadeControleULA:UNIDADE_CONTROLE_ULA|decoderOpCodeULA:DECODER_OPCODE" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/unidadeControleULA.vhd Line: 19
 Info (12128): Elaborating entity "decoderFunctULA" for hierarchy "unidadeControleULA:UNIDADE_CONTROLE_ULA|decoderFunctULA:DECODER_FUNCT" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/unidadeControleULA.vhd Line: 22
 Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "unidadeControleULA:UNIDADE_CONTROLE_ULA|muxGenerico2x1:MUX2_1" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/unidadeControleULA.vhd Line: 25
-Info (12128): Elaborating entity "estendeSinalGenerico" for hierarchy "estendeSinalGenerico:EXTENSOR_SINAL" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 151
-Info (12128): Elaborating entity "shifter" for hierarchy "shifter:SHIFTER" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 155
-Info (12128): Elaborating entity "somadorGenerico" for hierarchy "somadorGenerico:SOMADOR" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 160
-Info (12128): Elaborating entity "RAMMIPS" for hierarchy "RAMMIPS:RAM" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 171
+Info (12128): Elaborating entity "estendeSinalGenerico" for hierarchy "estendeSinalGenerico:EXTENSOR_SINAL" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 158
+Info (12128): Elaborating entity "shifter" for hierarchy "shifter:SHIFTER" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 162
+Info (12128): Elaborating entity "somadorGenerico" for hierarchy "somadorGenerico:SOMADOR" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 167
+Info (12128): Elaborating entity "RAMMIPS" for hierarchy "RAMMIPS:RAM" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 178
+Info (12128): Elaborating entity "logicaDisplay" for hierarchy "logicaDisplay:DISPLAY" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 191
+Info (12128): Elaborating entity "display7Seg" for hierarchy "logicaDisplay:DISPLAY|display7Seg:DISPLAY0" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/logicaDisplay.vhd Line: 27
+Info (12128): Elaborating entity "conversorHex7Seg" for hierarchy "logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/display7Seg.vhd Line: 18
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276004): RAM logic "ROMMIPS:ROM|memROM" is uninferred due to inappropriate RAM size File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ROMMIPS.vhd Line: 18
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 15
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 15
+    Warning (13410): Pin "HEX0[5]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 16
+Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 5 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "CLOCK_50" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 12
-    Warning (15610): No output dependent on input pin "KEY[0]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 13
+Warning (21074): Design contains 13 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 13
     Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 13
     Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 13
-Info (21057): Implemented 5 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 5 input pins
-    Info (21059): Implemented 0 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 4860 megabytes
-    Info: Processing ended: Mon Nov 21 10:06:55 2022
-    Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:00:40
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd Line: 14
+Info (21057): Implemented 208 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 52 output pins
+    Info (21061): Implemented 141 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 24 warnings
+    Info: Peak virtual memory: 4852 megabytes
+    Info: Processing ended: Tue Nov 22 17:20:42 2022
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:26
 
 
