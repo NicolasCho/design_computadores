@@ -1,5 +1,5 @@
 Fitter report for CicloUnico
-Tue Nov 22 17:21:07 2022
+Wed Nov 23 15:59:38 2022
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -26,16 +26,17 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
  18. Delay Chain Summary
  19. Pad To Core Delay Chain Fanout
  20. Control Signals
- 21. Routing Usage Summary
- 22. I/O Rules Summary
- 23. I/O Rules Details
- 24. I/O Rules Matrix
- 25. Fitter Device Options
- 26. Operating Settings and Conditions
- 27. Estimated Delay Added for Hold Timing Summary
- 28. Estimated Delay Added for Hold Timing Details
- 29. Fitter Messages
- 30. Fitter Suppressed Messages
+ 21. Non-Global High Fan-Out Signals
+ 22. Routing Usage Summary
+ 23. I/O Rules Summary
+ 24. I/O Rules Details
+ 25. I/O Rules Matrix
+ 26. Fitter Device Options
+ 27. Operating Settings and Conditions
+ 28. Estimated Delay Added for Hold Timing Summary
+ 29. Estimated Delay Added for Hold Timing Details
+ 30. Fitter Messages
+ 31. Fitter Suppressed Messages
 
 
 
@@ -62,15 +63,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Tue Nov 22 17:21:07 2022       ;
+; Fitter Status                   ; Successful - Wed Nov 23 15:59:37 2022       ;
 ; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                   ; CicloUnico                                  ;
 ; Top-level Entity Name           ; CicloUnico                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CEBA4F23C7                                 ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 74 / 18,480 ( < 1 % )                       ;
-; Total registers                 ; 42                                          ;
+; Logic utilization (in ALMs)     ; 1,278 / 18,480 ( 7 % )                      ;
+; Total registers                 ; 2159                                        ;
 ; Total pins                      ; 67 / 224 ( 30 % )                           ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0 / 3,153,920 ( 0 % )                       ;
@@ -152,34 +153,39 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.02        ;
+; Average used               ; 1.16        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.9%      ;
-;     Processor 3            ;   0.8%      ;
-;     Processor 4            ;   0.8%      ;
+;     Processor 2            ;   5.5%      ;
+;     Processor 3            ;   5.2%      ;
+;     Processor 4            ;   5.0%      ;
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fitter Netlist Optimizations                                                                                                                                                                                                                    ;
-+---------------------------------+------------+---------------------------------------------------+--------------------------+-----------+----------------+-------------------------------------------+------------------+-----------------------+
-; Node                            ; Action     ; Operation                                         ; Reason                   ; Node Port ; Node Port Name ; Destination Node                          ; Destination Port ; Destination Port Name ;
-+---------------------------------+------------+---------------------------------------------------+--------------------------+-----------+----------------+-------------------------------------------+------------------+-----------------------+
-; registradorGenerico:PC|DOUT[3]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[3]~DUPLICATE  ;                  ;                       ;
-; registradorGenerico:PC|DOUT[4]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[4]~DUPLICATE  ;                  ;                       ;
-; registradorGenerico:PC|DOUT[5]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[5]~DUPLICATE  ;                  ;                       ;
-; registradorGenerico:PC|DOUT[7]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[7]~DUPLICATE  ;                  ;                       ;
-; registradorGenerico:PC|DOUT[8]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[8]~DUPLICATE  ;                  ;                       ;
-; registradorGenerico:PC|DOUT[9]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[9]~DUPLICATE  ;                  ;                       ;
-; registradorGenerico:PC|DOUT[11] ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[11]~DUPLICATE ;                  ;                       ;
-; registradorGenerico:PC|DOUT[13] ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[13]~DUPLICATE ;                  ;                       ;
-; registradorGenerico:PC|DOUT[16] ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[16]~DUPLICATE ;                  ;                       ;
-; registradorGenerico:PC|DOUT[21] ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[21]~DUPLICATE ;                  ;                       ;
-; registradorGenerico:PC|DOUT[22] ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[22]~DUPLICATE ;                  ;                       ;
-+---------------------------------+------------+---------------------------------------------------+--------------------------+-----------+----------------+-------------------------------------------+------------------+-----------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Netlist Optimizations                                                                                                                                                                                                                                             ;
++----------------------------------------------+------------+---------------------------------------------------+--------------------------+-----------+----------------+-------------------------------------------------------+------------------+-----------------------+
+; Node                                         ; Action     ; Operation                                         ; Reason                   ; Node Port ; Node Port Name ; Destination Node                                      ; Destination Port ; Destination Port Name ;
++----------------------------------------------+------------+---------------------------------------------------+--------------------------+-----------+----------------+-------------------------------------------------------+------------------+-----------------------+
+; bancoReg:BANCO_REGISTRADORES|registrador~51  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; bancoReg:BANCO_REGISTRADORES|registrador~51DUPLICATE  ;                  ;                       ;
+; bancoReg:BANCO_REGISTRADORES|registrador~295 ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; bancoReg:BANCO_REGISTRADORES|registrador~295DUPLICATE ;                  ;                       ;
+; bancoReg:BANCO_REGISTRADORES|registrador~305 ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; bancoReg:BANCO_REGISTRADORES|registrador~305DUPLICATE ;                  ;                       ;
+; bancoReg:BANCO_REGISTRADORES|registrador~306 ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; bancoReg:BANCO_REGISTRADORES|registrador~306DUPLICATE ;                  ;                       ;
+; bancoReg:BANCO_REGISTRADORES|registrador~317 ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; bancoReg:BANCO_REGISTRADORES|registrador~317DUPLICATE ;                  ;                       ;
+; bancoReg:BANCO_REGISTRADORES|registrador~319 ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; bancoReg:BANCO_REGISTRADORES|registrador~319DUPLICATE ;                  ;                       ;
+; bancoReg:BANCO_REGISTRADORES|registrador~321 ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; bancoReg:BANCO_REGISTRADORES|registrador~321DUPLICATE ;                  ;                       ;
+; bancoReg:BANCO_REGISTRADORES|registrador~323 ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; bancoReg:BANCO_REGISTRADORES|registrador~323DUPLICATE ;                  ;                       ;
+; registradorGenerico:PC|DOUT[2]               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[2]~DUPLICATE              ;                  ;                       ;
+; registradorGenerico:PC|DOUT[3]               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[3]~DUPLICATE              ;                  ;                       ;
+; registradorGenerico:PC|DOUT[4]               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[4]~DUPLICATE              ;                  ;                       ;
+; registradorGenerico:PC|DOUT[5]               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[5]~DUPLICATE              ;                  ;                       ;
+; registradorGenerico:PC|DOUT[6]               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[6]~DUPLICATE              ;                  ;                       ;
+; registradorGenerico:PC|DOUT[7]               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[7]~DUPLICATE              ;                  ;                       ;
+; registradorGenerico:PC|DOUT[15]              ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[15]~DUPLICATE             ;                  ;                       ;
+; registradorGenerico:PC|DOUT[20]              ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization ;           ;                ; registradorGenerico:PC|DOUT[20]~DUPLICATE             ;                  ;                       ;
++----------------------------------------------+------------+---------------------------------------------------+--------------------------+-----------+----------------+-------------------------------------------------------+------------------+-----------------------+
 
 
 +----------------------------------------------------------------------------------------------+
@@ -192,19 +198,19 @@ https://fpgasoftware.intel.com/eula.
 +--------------+----------------+--------------+--------------+---------------+----------------+
 
 
-+--------------------------------------------------------------------------------------------------+
-; Incremental Compilation Preservation Summary                                                     ;
-+---------------------+--------------------+----------------------------+--------------------------+
-; Type                ; Total [A + B]      ; From Design Partitions [A] ; From Rapid Recompile [B] ;
-+---------------------+--------------------+----------------------------+--------------------------+
-; Placement (by node) ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 307 ) ; 0.00 % ( 0 / 307 )         ; 0.00 % ( 0 / 307 )       ;
-;     -- Achieved     ; 0.00 % ( 0 / 307 ) ; 0.00 % ( 0 / 307 )         ; 0.00 % ( 0 / 307 )       ;
-;                     ;                    ;                            ;                          ;
-; Routing (by net)    ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
-;     -- Achieved     ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
-+---------------------+--------------------+----------------------------+--------------------------+
++---------------------------------------------------------------------------------------------------+
+; Incremental Compilation Preservation Summary                                                      ;
++---------------------+---------------------+----------------------------+--------------------------+
+; Type                ; Total [A + B]       ; From Design Partitions [A] ; From Rapid Recompile [B] ;
++---------------------+---------------------+----------------------------+--------------------------+
+; Placement (by node) ;                     ;                            ;                          ;
+;     -- Requested    ; 0.00 % ( 0 / 3591 ) ; 0.00 % ( 0 / 3591 )        ; 0.00 % ( 0 / 3591 )      ;
+;     -- Achieved     ; 0.00 % ( 0 / 3591 ) ; 0.00 % ( 0 / 3591 )        ; 0.00 % ( 0 / 3591 )      ;
+;                     ;                     ;                            ;                          ;
+; Routing (by net)    ;                     ;                            ;                          ;
+;     -- Requested    ; 0.00 % ( 0 / 0 )    ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
+;     -- Achieved     ; 0.00 % ( 0 / 0 )    ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
++---------------------+---------------------+----------------------------+--------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -222,7 +228,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 307 )    ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 3591 )   ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 0 )      ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -233,164 +239,164 @@ https://fpgasoftware.intel.com/eula.
 The pin-out file can be found in C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/output_files/CicloUnico.pin.
 
 
-+------------------------------------------------------------------------------------------+
-; Fitter Resource Usage Summary                                                            ;
-+-------------------------------------------------------------+--------------------+-------+
-; Resource                                                    ; Usage              ; %     ;
-+-------------------------------------------------------------+--------------------+-------+
-; Logic utilization (ALMs needed / total ALMs on device)      ; 74 / 18,480        ; < 1 % ;
-; ALMs needed [=A-B+C]                                        ; 74                 ;       ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 76 / 18,480        ; < 1 % ;
-;         [a] ALMs used for LUT logic and registers           ; 16                 ;       ;
-;         [b] ALMs used for LUT logic                         ; 60                 ;       ;
-;         [c] ALMs used for registers                         ; 0                  ;       ;
-;         [d] ALMs used for memory (up to half of total ALMs) ; 0                  ;       ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 2 / 18,480         ; < 1 % ;
-;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 18,480         ; 0 %   ;
-;         [a] Due to location constrained logic               ; 0                  ;       ;
-;         [b] Due to LAB-wide signal conflicts                ; 0                  ;       ;
-;         [c] Due to LAB input limits                         ; 0                  ;       ;
-;         [d] Due to virtual I/Os                             ; 0                  ;       ;
-;                                                             ;                    ;       ;
-; Difficulty packing design                                   ; Low                ;       ;
-;                                                             ;                    ;       ;
-; Total LABs:  partially or completely used                   ; 13 / 1,848         ; < 1 % ;
-;     -- Logic LABs                                           ; 13                 ;       ;
-;     -- Memory LABs (up to half of total LABs)               ; 0                  ;       ;
-;                                                             ;                    ;       ;
-; Combinational ALUT usage for logic                          ; 142                ;       ;
-;     -- 7 input functions                                    ; 0                  ;       ;
-;     -- 6 input functions                                    ; 10                 ;       ;
-;     -- 5 input functions                                    ; 0                  ;       ;
-;     -- 4 input functions                                    ; 64                 ;       ;
-;     -- <=3 input functions                                  ; 68                 ;       ;
-; Combinational ALUT usage for route-throughs                 ; 0                  ;       ;
-;                                                             ;                    ;       ;
-; Dedicated logic registers                                   ; 42                 ;       ;
-;     -- By type:                                             ;                    ;       ;
-;         -- Primary logic registers                          ; 31 / 36,960        ; < 1 % ;
-;         -- Secondary logic registers                        ; 11 / 36,960        ; < 1 % ;
-;     -- By function:                                         ;                    ;       ;
-;         -- Design implementation registers                  ; 31                 ;       ;
-;         -- Routing optimization registers                   ; 11                 ;       ;
-;                                                             ;                    ;       ;
-; Virtual pins                                                ; 0                  ;       ;
-; I/O pins                                                    ; 67 / 224           ; 30 %  ;
-;     -- Clock pins                                           ; 4 / 9              ; 44 %  ;
-;     -- Dedicated input pins                                 ; 0 / 11             ; 0 %   ;
-;                                                             ;                    ;       ;
-; M10K blocks                                                 ; 0 / 308            ; 0 %   ;
-; Total MLAB memory bits                                      ; 0                  ;       ;
-; Total block memory bits                                     ; 0 / 3,153,920      ; 0 %   ;
-; Total block memory implementation bits                      ; 0 / 3,153,920      ; 0 %   ;
-;                                                             ;                    ;       ;
-; Total DSP Blocks                                            ; 0 / 66             ; 0 %   ;
-;                                                             ;                    ;       ;
-; Fractional PLLs                                             ; 0 / 4              ; 0 %   ;
-; Global signals                                              ; 0                  ;       ;
-;     -- Global clocks                                        ; 0 / 16             ; 0 %   ;
-;     -- Quadrant clocks                                      ; 0 / 88             ; 0 %   ;
-; SERDES Transmitters                                         ; 0 / 68             ; 0 %   ;
-; SERDES Receivers                                            ; 0 / 68             ; 0 %   ;
-; JTAGs                                                       ; 0 / 1              ; 0 %   ;
-; ASMI blocks                                                 ; 0 / 1              ; 0 %   ;
-; CRC blocks                                                  ; 0 / 1              ; 0 %   ;
-; Remote update blocks                                        ; 0 / 1              ; 0 %   ;
-; Oscillator blocks                                           ; 0 / 1              ; 0 %   ;
-; Impedance control blocks                                    ; 0 / 3              ; 0 %   ;
-; Average interconnect usage (total/H/V)                      ; 0.2% / 0.2% / 0.1% ;       ;
-; Peak interconnect usage (total/H/V)                         ; 1.7% / 1.9% / 1.2% ;       ;
-; Maximum fan-out                                             ; 41                 ;       ;
-; Highest non-global fan-out                                  ; 41                 ;       ;
-; Total fan-out                                               ; 683                ;       ;
-; Average fan-out                                             ; 2.15               ;       ;
-+-------------------------------------------------------------+--------------------+-------+
++---------------------------------------------------------------------------------------------+
+; Fitter Resource Usage Summary                                                               ;
++-------------------------------------------------------------+-----------------------+-------+
+; Resource                                                    ; Usage                 ; %     ;
++-------------------------------------------------------------+-----------------------+-------+
+; Logic utilization (ALMs needed / total ALMs on device)      ; 1,278 / 18,480        ; 7 %   ;
+; ALMs needed [=A-B+C]                                        ; 1,278                 ;       ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 1,659 / 18,480        ; 9 %   ;
+;         [a] ALMs used for LUT logic and registers           ; 299                   ;       ;
+;         [b] ALMs used for LUT logic                         ; 648                   ;       ;
+;         [c] ALMs used for registers                         ; 712                   ;       ;
+;         [d] ALMs used for memory (up to half of total ALMs) ; 0                     ;       ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 384 / 18,480          ; 2 %   ;
+;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 3 / 18,480            ; < 1 % ;
+;         [a] Due to location constrained logic               ; 0                     ;       ;
+;         [b] Due to LAB-wide signal conflicts                ; 0                     ;       ;
+;         [c] Due to LAB input limits                         ; 3                     ;       ;
+;         [d] Due to virtual I/Os                             ; 0                     ;       ;
+;                                                             ;                       ;       ;
+; Difficulty packing design                                   ; Low                   ;       ;
+;                                                             ;                       ;       ;
+; Total LABs:  partially or completely used                   ; 250 / 1,848           ; 14 %  ;
+;     -- Logic LABs                                           ; 250                   ;       ;
+;     -- Memory LABs (up to half of total LABs)               ; 0                     ;       ;
+;                                                             ;                       ;       ;
+; Combinational ALUT usage for logic                          ; 1,314                 ;       ;
+;     -- 7 input functions                                    ; 2                     ;       ;
+;     -- 6 input functions                                    ; 852                   ;       ;
+;     -- 5 input functions                                    ; 58                    ;       ;
+;     -- 4 input functions                                    ; 128                   ;       ;
+;     -- <=3 input functions                                  ; 274                   ;       ;
+; Combinational ALUT usage for route-throughs                 ; 770                   ;       ;
+;                                                             ;                       ;       ;
+; Dedicated logic registers                                   ; 2,159                 ;       ;
+;     -- By type:                                             ;                       ;       ;
+;         -- Primary logic registers                          ; 2,021 / 36,960        ; 5 %   ;
+;         -- Secondary logic registers                        ; 138 / 36,960          ; < 1 % ;
+;     -- By function:                                         ;                       ;       ;
+;         -- Design implementation registers                  ; 2,143                 ;       ;
+;         -- Routing optimization registers                   ; 16                    ;       ;
+;                                                             ;                       ;       ;
+; Virtual pins                                                ; 0                     ;       ;
+; I/O pins                                                    ; 67 / 224              ; 30 %  ;
+;     -- Clock pins                                           ; 4 / 9                 ; 44 %  ;
+;     -- Dedicated input pins                                 ; 0 / 11                ; 0 %   ;
+;                                                             ;                       ;       ;
+; M10K blocks                                                 ; 0 / 308               ; 0 %   ;
+; Total MLAB memory bits                                      ; 0                     ;       ;
+; Total block memory bits                                     ; 0 / 3,153,920         ; 0 %   ;
+; Total block memory implementation bits                      ; 0 / 3,153,920         ; 0 %   ;
+;                                                             ;                       ;       ;
+; Total DSP Blocks                                            ; 0 / 66                ; 0 %   ;
+;                                                             ;                       ;       ;
+; Fractional PLLs                                             ; 0 / 4                 ; 0 %   ;
+; Global signals                                              ; 0                     ;       ;
+;     -- Global clocks                                        ; 0 / 16                ; 0 %   ;
+;     -- Quadrant clocks                                      ; 0 / 88                ; 0 %   ;
+; SERDES Transmitters                                         ; 0 / 68                ; 0 %   ;
+; SERDES Receivers                                            ; 0 / 68                ; 0 %   ;
+; JTAGs                                                       ; 0 / 1                 ; 0 %   ;
+; ASMI blocks                                                 ; 0 / 1                 ; 0 %   ;
+; CRC blocks                                                  ; 0 / 1                 ; 0 %   ;
+; Remote update blocks                                        ; 0 / 1                 ; 0 %   ;
+; Oscillator blocks                                           ; 0 / 1                 ; 0 %   ;
+; Impedance control blocks                                    ; 0 / 3                 ; 0 %   ;
+; Average interconnect usage (total/H/V)                      ; 3.9% / 3.9% / 4.0%    ;       ;
+; Peak interconnect usage (total/H/V)                         ; 37.4% / 37.3% / 37.6% ;       ;
+; Maximum fan-out                                             ; 2158                  ;       ;
+; Highest non-global fan-out                                  ; 2158                  ;       ;
+; Total fan-out                                               ; 13935                 ;       ;
+; Average fan-out                                             ; 3.18                  ;       ;
++-------------------------------------------------------------+-----------------------+-------+
 
 
-+---------------------------------------------------------------------------------------------------------------------+
-; Fitter Partition Statistics                                                                                         ;
-+-------------------------------------------------------------+----------------------+--------------------------------+
-; Statistic                                                   ; Top                  ; hard_block:auto_generated_inst ;
-+-------------------------------------------------------------+----------------------+--------------------------------+
-; Logic utilization (ALMs needed / total ALMs on device)      ; 74 / 18480 ( < 1 % ) ; 0 / 18480 ( 0 % )              ;
-; ALMs needed [=A-B+C]                                        ; 74                   ; 0                              ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 76 / 18480 ( < 1 % ) ; 0 / 18480 ( 0 % )              ;
-;         [a] ALMs used for LUT logic and registers           ; 16                   ; 0                              ;
-;         [b] ALMs used for LUT logic                         ; 60                   ; 0                              ;
-;         [c] ALMs used for registers                         ; 0                    ; 0                              ;
-;         [d] ALMs used for memory (up to half of total ALMs) ; 0                    ; 0                              ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 2 / 18480 ( < 1 % )  ; 0 / 18480 ( 0 % )              ;
-;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 18480 ( 0 % )    ; 0 / 18480 ( 0 % )              ;
-;         [a] Due to location constrained logic               ; 0                    ; 0                              ;
-;         [b] Due to LAB-wide signal conflicts                ; 0                    ; 0                              ;
-;         [c] Due to LAB input limits                         ; 0                    ; 0                              ;
-;         [d] Due to virtual I/Os                             ; 0                    ; 0                              ;
-;                                                             ;                      ;                                ;
-; Difficulty packing design                                   ; Low                  ; Low                            ;
-;                                                             ;                      ;                                ;
-; Total LABs:  partially or completely used                   ; 13 / 1848 ( < 1 % )  ; 0 / 1848 ( 0 % )               ;
-;     -- Logic LABs                                           ; 13                   ; 0                              ;
-;     -- Memory LABs (up to half of total LABs)               ; 0                    ; 0                              ;
-;                                                             ;                      ;                                ;
-; Combinational ALUT usage for logic                          ; 142                  ; 0                              ;
-;     -- 7 input functions                                    ; 0                    ; 0                              ;
-;     -- 6 input functions                                    ; 10                   ; 0                              ;
-;     -- 5 input functions                                    ; 0                    ; 0                              ;
-;     -- 4 input functions                                    ; 64                   ; 0                              ;
-;     -- <=3 input functions                                  ; 68                   ; 0                              ;
-; Combinational ALUT usage for route-throughs                 ; 0                    ; 0                              ;
-; Memory ALUT usage                                           ; 0                    ; 0                              ;
-;     -- 64-address deep                                      ; 0                    ; 0                              ;
-;     -- 32-address deep                                      ; 0                    ; 0                              ;
-;                                                             ;                      ;                                ;
-; Dedicated logic registers                                   ; 0                    ; 0                              ;
-;     -- By type:                                             ;                      ;                                ;
-;         -- Primary logic registers                          ; 31 / 36960 ( < 1 % ) ; 0 / 36960 ( 0 % )              ;
-;         -- Secondary logic registers                        ; 11 / 36960 ( < 1 % ) ; 0 / 36960 ( 0 % )              ;
-;     -- By function:                                         ;                      ;                                ;
-;         -- Design implementation registers                  ; 31                   ; 0                              ;
-;         -- Routing optimization registers                   ; 11                   ; 0                              ;
-;                                                             ;                      ;                                ;
-;                                                             ;                      ;                                ;
-; Virtual pins                                                ; 0                    ; 0                              ;
-; I/O pins                                                    ; 67                   ; 0                              ;
-; I/O registers                                               ; 0                    ; 0                              ;
-; Total block memory bits                                     ; 0                    ; 0                              ;
-; Total block memory implementation bits                      ; 0                    ; 0                              ;
-;                                                             ;                      ;                                ;
-; Connections                                                 ;                      ;                                ;
-;     -- Input Connections                                    ; 0                    ; 0                              ;
-;     -- Registered Input Connections                         ; 0                    ; 0                              ;
-;     -- Output Connections                                   ; 0                    ; 0                              ;
-;     -- Registered Output Connections                        ; 0                    ; 0                              ;
-;                                                             ;                      ;                                ;
-; Internal Connections                                        ;                      ;                                ;
-;     -- Total Connections                                    ; 683                  ; 0                              ;
-;     -- Registered Connections                               ; 245                  ; 0                              ;
-;                                                             ;                      ;                                ;
-; External Connections                                        ;                      ;                                ;
-;     -- Top                                                  ; 0                    ; 0                              ;
-;     -- hard_block:auto_generated_inst                       ; 0                    ; 0                              ;
-;                                                             ;                      ;                                ;
-; Partition Interface                                         ;                      ;                                ;
-;     -- Input Ports                                          ; 15                   ; 0                              ;
-;     -- Output Ports                                         ; 52                   ; 0                              ;
-;     -- Bidir Ports                                          ; 0                    ; 0                              ;
-;                                                             ;                      ;                                ;
-; Registered Ports                                            ;                      ;                                ;
-;     -- Registered Input Ports                               ; 0                    ; 0                              ;
-;     -- Registered Output Ports                              ; 0                    ; 0                              ;
-;                                                             ;                      ;                                ;
-; Port Connectivity                                           ;                      ;                                ;
-;     -- Input Ports driven by GND                            ; 0                    ; 0                              ;
-;     -- Output Ports driven by GND                           ; 0                    ; 0                              ;
-;     -- Input Ports driven by VCC                            ; 0                    ; 0                              ;
-;     -- Output Ports driven by VCC                           ; 0                    ; 0                              ;
-;     -- Input Ports with no Source                           ; 0                    ; 0                              ;
-;     -- Output Ports with no Source                          ; 0                    ; 0                              ;
-;     -- Input Ports with no Fanout                           ; 0                    ; 0                              ;
-;     -- Output Ports with no Fanout                          ; 0                    ; 0                              ;
-+-------------------------------------------------------------+----------------------+--------------------------------+
++----------------------------------------------------------------------------------------------------------------------+
+; Fitter Partition Statistics                                                                                          ;
++-------------------------------------------------------------+-----------------------+--------------------------------+
+; Statistic                                                   ; Top                   ; hard_block:auto_generated_inst ;
++-------------------------------------------------------------+-----------------------+--------------------------------+
+; Logic utilization (ALMs needed / total ALMs on device)      ; 1278 / 18480 ( 7 % )  ; 0 / 18480 ( 0 % )              ;
+; ALMs needed [=A-B+C]                                        ; 1278                  ; 0                              ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 1659 / 18480 ( 9 % )  ; 0 / 18480 ( 0 % )              ;
+;         [a] ALMs used for LUT logic and registers           ; 299                   ; 0                              ;
+;         [b] ALMs used for LUT logic                         ; 648                   ; 0                              ;
+;         [c] ALMs used for registers                         ; 712                   ; 0                              ;
+;         [d] ALMs used for memory (up to half of total ALMs) ; 0                     ; 0                              ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 384 / 18480 ( 2 % )   ; 0 / 18480 ( 0 % )              ;
+;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 3 / 18480 ( < 1 % )   ; 0 / 18480 ( 0 % )              ;
+;         [a] Due to location constrained logic               ; 0                     ; 0                              ;
+;         [b] Due to LAB-wide signal conflicts                ; 0                     ; 0                              ;
+;         [c] Due to LAB input limits                         ; 3                     ; 0                              ;
+;         [d] Due to virtual I/Os                             ; 0                     ; 0                              ;
+;                                                             ;                       ;                                ;
+; Difficulty packing design                                   ; Low                   ; Low                            ;
+;                                                             ;                       ;                                ;
+; Total LABs:  partially or completely used                   ; 250 / 1848 ( 14 % )   ; 0 / 1848 ( 0 % )               ;
+;     -- Logic LABs                                           ; 250                   ; 0                              ;
+;     -- Memory LABs (up to half of total LABs)               ; 0                     ; 0                              ;
+;                                                             ;                       ;                                ;
+; Combinational ALUT usage for logic                          ; 1314                  ; 0                              ;
+;     -- 7 input functions                                    ; 2                     ; 0                              ;
+;     -- 6 input functions                                    ; 852                   ; 0                              ;
+;     -- 5 input functions                                    ; 58                    ; 0                              ;
+;     -- 4 input functions                                    ; 128                   ; 0                              ;
+;     -- <=3 input functions                                  ; 274                   ; 0                              ;
+; Combinational ALUT usage for route-throughs                 ; 770                   ; 0                              ;
+; Memory ALUT usage                                           ; 0                     ; 0                              ;
+;     -- 64-address deep                                      ; 0                     ; 0                              ;
+;     -- 32-address deep                                      ; 0                     ; 0                              ;
+;                                                             ;                       ;                                ;
+; Dedicated logic registers                                   ; 0                     ; 0                              ;
+;     -- By type:                                             ;                       ;                                ;
+;         -- Primary logic registers                          ; 2021 / 36960 ( 5 % )  ; 0 / 36960 ( 0 % )              ;
+;         -- Secondary logic registers                        ; 138 / 36960 ( < 1 % ) ; 0 / 36960 ( 0 % )              ;
+;     -- By function:                                         ;                       ;                                ;
+;         -- Design implementation registers                  ; 2143                  ; 0                              ;
+;         -- Routing optimization registers                   ; 16                    ; 0                              ;
+;                                                             ;                       ;                                ;
+;                                                             ;                       ;                                ;
+; Virtual pins                                                ; 0                     ; 0                              ;
+; I/O pins                                                    ; 67                    ; 0                              ;
+; I/O registers                                               ; 0                     ; 0                              ;
+; Total block memory bits                                     ; 0                     ; 0                              ;
+; Total block memory implementation bits                      ; 0                     ; 0                              ;
+;                                                             ;                       ;                                ;
+; Connections                                                 ;                       ;                                ;
+;     -- Input Connections                                    ; 0                     ; 0                              ;
+;     -- Registered Input Connections                         ; 0                     ; 0                              ;
+;     -- Output Connections                                   ; 0                     ; 0                              ;
+;     -- Registered Output Connections                        ; 0                     ; 0                              ;
+;                                                             ;                       ;                                ;
+; Internal Connections                                        ;                       ;                                ;
+;     -- Total Connections                                    ; 13935                 ; 0                              ;
+;     -- Registered Connections                               ; 2371                  ; 0                              ;
+;                                                             ;                       ;                                ;
+; External Connections                                        ;                       ;                                ;
+;     -- Top                                                  ; 0                     ; 0                              ;
+;     -- hard_block:auto_generated_inst                       ; 0                     ; 0                              ;
+;                                                             ;                       ;                                ;
+; Partition Interface                                         ;                       ;                                ;
+;     -- Input Ports                                          ; 15                    ; 0                              ;
+;     -- Output Ports                                         ; 52                    ; 0                              ;
+;     -- Bidir Ports                                          ; 0                     ; 0                              ;
+;                                                             ;                       ;                                ;
+; Registered Ports                                            ;                       ;                                ;
+;     -- Registered Input Ports                               ; 0                     ; 0                              ;
+;     -- Registered Output Ports                              ; 0                     ; 0                              ;
+;                                                             ;                       ;                                ;
+; Port Connectivity                                           ;                       ;                                ;
+;     -- Input Ports driven by GND                            ; 0                     ; 0                              ;
+;     -- Output Ports driven by GND                           ; 0                     ; 0                              ;
+;     -- Input Ports driven by VCC                            ; 0                     ; 0                              ;
+;     -- Output Ports driven by VCC                           ; 0                     ; 0                              ;
+;     -- Input Ports with no Source                           ; 0                     ; 0                              ;
+;     -- Output Ports with no Source                          ; 0                     ; 0                              ;
+;     -- Input Ports with no Fanout                           ; 0                     ; 0                              ;
+;     -- Output Ports with no Fanout                          ; 0                     ; 0                              ;
++-------------------------------------------------------------+-----------------------+--------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -403,7 +409,7 @@ The pin-out file can be found in C:/Users/nicol/Desktop/insper/6_semestre/descom
 ; KEY[1]   ; W9    ; 3A       ; 11           ; 0            ; 34           ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; KEY[2]   ; M7    ; 3A       ; 14           ; 0            ; 0            ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; KEY[3]   ; M6    ; 3A       ; 14           ; 0            ; 17           ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
-; SW[0]    ; U13   ; 4A       ; 33           ; 0            ; 40           ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
+; SW[0]    ; U13   ; 4A       ; 33           ; 0            ; 40           ; 59                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; SW[1]    ; V13   ; 4A       ; 33           ; 0            ; 57           ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; SW[2]    ; T13   ; 4A       ; 34           ; 0            ; 0            ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; SW[3]    ; T12   ; 4A       ; 34           ; 0            ; 17           ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
@@ -985,33 +991,158 @@ The pin-out file can be found in C:/Users/nicol/Desktop/insper/6_semestre/descom
 Note: Pin directions (input, output or bidir) are based on device operating in user mode.
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                                                                                                                                       ;
-+-----------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-------------------------------------------------------------------------------------+---------------------+--------------+
-; Compilation Hierarchy Node              ; ALMs needed [=A-B+C] ; [A] ALMs used in final placement ; [B] Estimate of ALMs recoverable by dense packing ; [C] Estimate of ALMs unavailable ; ALMs used for memory ; Combinational ALUTs ; Dedicated Logic Registers ; I/O Registers ; Block Memory Bits ; M10Ks ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                 ; Entity Name         ; Library Name ;
-+-----------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-------------------------------------------------------------------------------------+---------------------+--------------+
-; |CicloUnico                             ; 74.0 (1.0)           ; 75.0 (1.5)                       ; 1.0 (0.5)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 142 (2)             ; 42 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 67   ; 0            ; |CicloUnico                                                                         ; CicloUnico          ; work         ;
-;    |ROMMIPS:ROM|                        ; 4.8 (4.8)            ; 5.0 (5.0)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 10 (10)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ROMMIPS:ROM                                                             ; ROMMIPS             ; work         ;
-;    |edgeDetector:detectorSub0|          ; 0.8 (0.8)            ; 0.8 (0.8)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 1 (1)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|edgeDetector:detectorSub0                                               ; edgeDetector        ; work         ;
-;    |logicaDisplay:DISPLAY|              ; 17.3 (0.0)           ; 17.3 (0.0)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 37 (0)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY                                                   ; logicaDisplay       ; work         ;
-;       |display7Seg:DISPLAY0|            ; 1.0 (0.0)            ; 1.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY0                              ; display7Seg         ; work         ;
-;          |conversorHex7Seg:DECODER7SEG| ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
-;       |display7Seg:DISPLAY1|            ; 3.5 (0.0)            ; 3.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY1                              ; display7Seg         ; work         ;
-;          |conversorHex7Seg:DECODER7SEG| ; 3.5 (3.5)            ; 3.5 (3.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY1|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
-;       |display7Seg:DISPLAY2|            ; 2.7 (0.0)            ; 2.7 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY2                              ; display7Seg         ; work         ;
-;          |conversorHex7Seg:DECODER7SEG| ; 2.7 (2.7)            ; 2.7 (2.7)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY2|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
-;       |display7Seg:DISPLAY3|            ; 3.3 (0.0)            ; 3.3 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY3                              ; display7Seg         ; work         ;
-;          |conversorHex7Seg:DECODER7SEG| ; 3.3 (3.3)            ; 3.3 (3.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY3|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
-;       |display7Seg:DISPLAY4|            ; 3.5 (0.0)            ; 3.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY4                              ; display7Seg         ; work         ;
-;          |conversorHex7Seg:DECODER7SEG| ; 3.5 (3.5)            ; 3.5 (3.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY4|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
-;       |display7Seg:DISPLAY5|            ; 3.3 (0.0)            ; 3.3 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY5                              ; display7Seg         ; work         ;
-;          |conversorHex7Seg:DECODER7SEG| ; 3.3 (3.3)            ; 3.3 (3.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY5|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
-;    |muxGenerico2x1:MUX_PC_BEQ_JMP|      ; 9.6 (9.6)            ; 9.6 (9.6)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 30 (30)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|muxGenerico2x1:MUX_PC_BEQ_JMP                                           ; muxGenerico2x1      ; work         ;
-;    |registradorGenerico:PC|             ; 8.3 (8.3)            ; 10.5 (10.5)                      ; 2.2 (2.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 41 (41)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|registradorGenerico:PC                                                  ; registradorGenerico ; work         ;
-;    |somaConstante:incrementaPC|         ; 14.7 (14.7)          ; 14.7 (14.7)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 30 (30)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|somaConstante:incrementaPC                                              ; somaConstante       ; work         ;
-;    |somadorGenerico:SOMADOR|            ; 15.0 (15.0)          ; 15.0 (15.0)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 30 (30)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|somadorGenerico:SOMADOR                                                 ; somadorGenerico     ; work         ;
-;    |unidadeControle:UNIDADE_CONTROLE|   ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|unidadeControle:UNIDADE_CONTROLE                                        ; unidadeControle     ; work         ;
-+-----------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-------------------------------------------------------------------------------------+---------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
++----------------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                   ; ALMs needed [=A-B+C] ; [A] ALMs used in final placement ; [B] Estimate of ALMs recoverable by dense packing ; [C] Estimate of ALMs unavailable ; ALMs used for memory ; Combinational ALUTs ; Dedicated Logic Registers ; I/O Registers ; Block Memory Bits ; M10Ks ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                 ; Entity Name         ; Library Name ;
++----------------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-------------------------------------------------------------------------------------+---------------------+--------------+
+; |CicloUnico                                  ; 1277.5 (8.8)         ; 1658.0 (9.2)                     ; 383.5 (0.3)                                       ; 3.0 (0.0)                        ; 0.0 (0.0)            ; 1314 (14)           ; 2159 (0)                  ; 0 (0)         ; 0                 ; 0     ; 0          ; 67   ; 0            ; |CicloUnico                                                                         ; CicloUnico          ; work         ;
+;    |RAMMIPS:RAM|                             ; 981.5 (981.5)        ; 1348.3 (1348.3)                  ; 369.0 (369.0)                                     ; 2.1 (2.1)                        ; 0.0 (0.0)            ; 798 (798)           ; 2048 (2048)               ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|RAMMIPS:RAM                                                             ; RAMMIPS             ; work         ;
+;    |ROMMIPS:ROM|                             ; 9.2 (9.2)            ; 9.2 (9.2)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 15 (15)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ROMMIPS:ROM                                                             ; ROMMIPS             ; work         ;
+;    |ULA:ULA|                                 ; 87.4 (0.0)           ; 87.4 (0.0)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 143 (0)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA                                                                 ; ULA                 ; work         ;
+;       |ULA_1_bit:BIT1|                       ; 1.0 (0.0)            ; 1.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT1                                                  ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT1|muxGenerico2x1_1bit:MUX2_1                       ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT1|muxGenerico4x1_1bit:MUX4_1                       ; muxGenerico4x1_1bit ; work         ;
+;       |ULA_1_bit:BIT10|                      ; 3.8 (0.0)            ; 3.8 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT10                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT10|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 2.0 (2.0)            ; 2.0 (2.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 4 (4)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT10|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.3 (1.3)            ; 1.3 (1.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT10|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT11|                      ; 1.0 (0.0)            ; 1.3 (0.0)                        ; 0.3 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT11                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT11|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 0.5 (0.5)            ; 1.0 (1.0)                        ; 0.5 (0.5)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT11|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;       |ULA_1_bit:BIT12|                      ; 2.2 (0.0)            ; 2.5 (0.0)                        ; 0.3 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT12                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT12|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.2 (1.2)            ; 1.3 (1.3)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 3 (3)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT12|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 0.5 (0.5)            ; 0.7 (0.7)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT12|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT13|                      ; 3.3 (0.0)            ; 3.7 (0.0)                        ; 0.3 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT13                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.3 (0.3)            ; 0.5 (0.5)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT13|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.5 (1.5)            ; 1.7 (1.7)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT13|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.5 (1.5)            ; 1.5 (1.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT13|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT14|                      ; 1.2 (0.0)            ; 2.0 (0.0)                        ; 0.8 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT14                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 1.0 (1.0)                        ; 0.5 (0.5)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT14|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 0.7 (0.7)            ; 1.0 (1.0)                        ; 0.3 (0.3)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT14|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;       |ULA_1_bit:BIT15|                      ; 4.0 (0.0)            ; 4.5 (0.0)                        ; 0.5 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT15                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.3 (0.3)            ; 0.5 (0.5)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT15|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 2.2 (2.2)            ; 2.5 (2.5)                        ; 0.3 (0.3)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 4 (4)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT15|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.5 (1.5)            ; 1.5 (1.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT15|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT16|                      ; 0.8 (0.0)            ; 1.0 (0.0)                        ; 0.2 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT16                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.3 (0.3)            ; 0.5 (0.5)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT16|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT16|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;       |ULA_1_bit:BIT17|                      ; 2.7 (0.0)            ; 2.7 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT17                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT17|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.7 (1.7)            ; 1.7 (1.7)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 3 (3)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT17|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT17|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT18|                      ; 3.0 (0.0)            ; 3.3 (0.0)                        ; 0.3 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT18                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.3 (0.3)            ; 0.5 (0.5)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT18|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.2 (1.2)            ; 1.2 (1.2)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT18|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.2 (1.2)            ; 1.7 (1.7)                        ; 0.5 (0.5)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT18|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT19|                      ; 0.8 (0.0)            ; 0.8 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT19                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT19|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT19|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;       |ULA_1_bit:BIT2|                       ; 3.2 (0.0)            ; 3.8 (0.0)                        ; 0.7 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT2                                                  ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT2|muxGenerico2x1_1bit:MUX2_1                       ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.7 (1.7)            ; 2.3 (2.3)                        ; 0.7 (0.7)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (5)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT2|muxGenerico4x1_1bit:MUX4_1                       ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT2|somadorCompleto:SOMADOR                          ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT20|                      ; 3.8 (0.0)            ; 3.8 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT20                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT20|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 2.2 (2.2)            ; 2.2 (2.2)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 4 (4)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT20|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.2 (1.2)            ; 1.3 (1.3)                        ; 0.1 (0.1)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT20|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT21|                      ; 1.5 (0.0)            ; 1.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT21                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT21|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT21|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;       |ULA_1_bit:BIT22|                      ; 2.3 (0.0)            ; 2.5 (0.0)                        ; 0.2 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT22                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.3 (0.3)            ; 0.5 (0.5)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT22|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.0 (1.0)            ; 1.5 (1.5)                        ; 0.5 (0.5)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 3 (3)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT22|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT22|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT23|                      ; 3.2 (0.0)            ; 3.2 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT23                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.3 (0.3)            ; 0.5 (0.5)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT23|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.2 (1.2)            ; 1.2 (1.2)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT23|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.3 (1.3)            ; 1.5 (1.5)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT23|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT24|                      ; 1.3 (0.0)            ; 1.5 (0.0)                        ; 0.2 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT24                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.3 (0.3)            ; 0.5 (0.5)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT24|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT24|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;       |ULA_1_bit:BIT25|                      ; 3.7 (0.0)            ; 3.7 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 6 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT25                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT25|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 2.0 (2.0)            ; 2.0 (2.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 3 (3)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT25|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.2 (1.2)            ; 1.2 (1.2)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT25|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT26|                      ; 1.2 (0.0)            ; 1.3 (0.0)                        ; 0.2 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT26                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT26|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 0.7 (0.7)            ; 1.0 (1.0)                        ; 0.3 (0.3)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT26|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;       |ULA_1_bit:BIT27|                      ; 4.2 (0.0)            ; 4.3 (0.0)                        ; 0.2 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 6 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT27                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT27|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.3 (1.3)            ; 1.5 (1.5)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT27|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 2.3 (2.3)            ; 2.3 (2.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 3 (3)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT27|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT28|                      ; 2.8 (0.0)            ; 2.8 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 6 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT28                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT28|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 3 (3)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT28|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.5 (1.5)            ; 1.5 (1.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT28|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT29|                      ; 1.7 (0.0)            ; 1.7 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 3 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT29                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT29|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 0.7 (0.7)            ; 0.7 (0.7)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT29|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT29|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT3|                       ; 4.0 (0.0)            ; 4.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT3                                                  ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT3|muxGenerico2x1_1bit:MUX2_1                       ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.3 (1.3)            ; 1.3 (1.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT3|muxGenerico4x1_1bit:MUX4_1                       ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.7 (1.7)            ; 1.7 (1.7)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT3|somadorCompleto:SOMADOR                          ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT30|                      ; 4.5 (0.0)            ; 4.7 (0.0)                        ; 0.2 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT30                                                 ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT30|muxGenerico2x1_1bit:MUX2_1                      ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 2.5 (2.5)            ; 2.7 (2.7)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 4 (4)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT30|muxGenerico4x1_1bit:MUX4_1                      ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.5 (1.5)            ; 1.5 (1.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT30|somadorCompleto:SOMADOR                         ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT4|                       ; 1.2 (0.0)            ; 1.2 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT4                                                  ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT4|muxGenerico2x1_1bit:MUX2_1                       ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 0.7 (0.7)            ; 0.7 (0.7)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT4|muxGenerico4x1_1bit:MUX4_1                       ; muxGenerico4x1_1bit ; work         ;
+;       |ULA_1_bit:BIT5|                       ; 4.2 (0.0)            ; 4.2 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 8 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT5                                                  ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT5|muxGenerico2x1_1bit:MUX2_1                       ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.5 (1.5)            ; 1.5 (1.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 4 (4)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT5|muxGenerico4x1_1bit:MUX4_1                       ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.7 (1.7)            ; 1.7 (1.7)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT5|somadorCompleto:SOMADOR                          ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT6|                       ; 1.0 (0.0)            ; 1.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT6                                                  ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT6|muxGenerico2x1_1bit:MUX2_1                       ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT6|muxGenerico4x1_1bit:MUX4_1                       ; muxGenerico4x1_1bit ; work         ;
+;       |ULA_1_bit:BIT7|                       ; 3.0 (0.0)            ; 3.5 (0.0)                        ; 0.5 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT7                                                  ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT7|muxGenerico2x1_1bit:MUX2_1                       ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.8 (1.8)            ; 2.0 (2.0)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 3 (3)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT7|muxGenerico4x1_1bit:MUX4_1                       ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 0.7 (0.7)            ; 1.0 (1.0)                        ; 0.3 (0.3)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT7|somadorCompleto:SOMADOR                          ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT8|                       ; 3.5 (0.0)            ; 3.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT8                                                  ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT8|muxGenerico2x1_1bit:MUX2_1                       ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 1.5 (1.5)            ; 1.5 (1.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT8|muxGenerico4x1_1bit:MUX4_1                       ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 1.5 (1.5)            ; 1.5 (1.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT8|somadorCompleto:SOMADOR                          ; somadorCompleto     ; work         ;
+;       |ULA_1_bit:BIT9|                       ; 1.0 (0.0)            ; 1.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT9                                                  ; ULA_1_bit           ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT9|muxGenerico2x1_1bit:MUX2_1                       ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_1_bit:BIT9|muxGenerico4x1_1bit:MUX4_1                       ; muxGenerico4x1_1bit ; work         ;
+;       |ULA_bit_final:BIT0|                   ; 3.8 (0.0)            ; 3.8 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 6 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_bit_final:BIT0                                              ; ULA_bit_final       ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 3.3 (3.3)            ; 3.3 (3.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (5)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_bit_final:BIT0|muxGenerico4x1_1bit:MUX4_1                   ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_bit_final:BIT0|somadorCompleto:SOMADOR                      ; somadorCompleto     ; work         ;
+;       |ULA_bit_inicial:BIT31|                ; 3.8 (0.0)            ; 3.8 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 6 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_bit_inicial:BIT31                                           ; ULA_bit_inicial     ; work         ;
+;          |muxGenerico2x1_1bit:MUX2_1|        ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_bit_inicial:BIT31|muxGenerico2x1_1bit:MUX2_1                ; muxGenerico2x1_1bit ; work         ;
+;          |muxGenerico4x1_1bit:MUX4_1|        ; 2.8 (2.8)            ; 2.8 (2.8)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 4 (4)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_bit_inicial:BIT31|muxGenerico4x1_1bit:MUX4_1                ; muxGenerico4x1_1bit ; work         ;
+;          |somadorCompleto:SOMADOR|           ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|ULA:ULA|ULA_bit_inicial:BIT31|somadorCompleto:SOMADOR                   ; somadorCompleto     ; work         ;
+;    |bancoReg:BANCO_REGISTRADORES|            ; 67.2 (67.2)          ; 80.9 (80.9)                      ; 13.8 (13.8)                                       ; 0.1 (0.1)                        ; 0.0 (0.0)            ; 131 (131)           ; 72 (72)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|bancoReg:BANCO_REGISTRADORES                                            ; bancoReg            ; work         ;
+;    |edgeDetector:\gravar:detectorSub0|       ; 0.8 (0.8)            ; 0.8 (0.8)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 1 (1)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|edgeDetector:\gravar:detectorSub0                                       ; edgeDetector        ; work         ;
+;    |logicaDisplay:DISPLAY|                   ; 31.8 (0.0)           ; 34.0 (0.0)                       ; 2.3 (0.0)                                         ; 0.1 (0.0)                        ; 0.0 (0.0)            ; 42 (0)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY                                                   ; logicaDisplay       ; work         ;
+;       |display7Seg:DISPLAY0|                 ; 4.5 (0.0)            ; 6.0 (0.0)                        ; 1.5 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY0                              ; display7Seg         ; work         ;
+;          |conversorHex7Seg:DECODER7SEG|      ; 4.5 (4.5)            ; 6.0 (6.0)                        ; 1.5 (1.5)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
+;       |display7Seg:DISPLAY1|                 ; 5.0 (0.0)            ; 5.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY1                              ; display7Seg         ; work         ;
+;          |conversorHex7Seg:DECODER7SEG|      ; 5.0 (5.0)            ; 5.0 (5.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY1|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
+;       |display7Seg:DISPLAY2|                 ; 6.0 (0.0)            ; 6.5 (0.0)                        ; 0.5 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY2                              ; display7Seg         ; work         ;
+;          |conversorHex7Seg:DECODER7SEG|      ; 6.0 (6.0)            ; 6.5 (6.5)                        ; 0.5 (0.5)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY2|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
+;       |display7Seg:DISPLAY3|                 ; 5.1 (0.0)            ; 5.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.1 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY3                              ; display7Seg         ; work         ;
+;          |conversorHex7Seg:DECODER7SEG|      ; 5.1 (5.1)            ; 5.0 (5.0)                        ; 0.0 (0.0)                                         ; 0.1 (0.1)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY3|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
+;       |display7Seg:DISPLAY4|                 ; 5.0 (0.0)            ; 5.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY4                              ; display7Seg         ; work         ;
+;          |conversorHex7Seg:DECODER7SEG|      ; 5.0 (5.0)            ; 5.0 (5.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY4|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
+;       |display7Seg:DISPLAY5|                 ; 6.2 (0.0)            ; 6.5 (0.0)                        ; 0.3 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY5                              ; display7Seg         ; work         ;
+;          |conversorHex7Seg:DECODER7SEG|      ; 6.2 (6.2)            ; 6.5 (6.5)                        ; 0.3 (0.3)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|logicaDisplay:DISPLAY|display7Seg:DISPLAY5|conversorHex7Seg:DECODER7SEG ; conversorHex7Seg    ; work         ;
+;    |muxGenerico2x1:MUX_PC_BEQ_JMP|           ; 11.6 (11.6)          ; 12.2 (12.2)                      ; 0.9 (0.9)                                         ; 0.2 (0.2)                        ; 0.0 (0.0)            ; 34 (34)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|muxGenerico2x1:MUX_PC_BEQ_JMP                                           ; muxGenerico2x1      ; work         ;
+;    |muxGenerico2x1:MUX_PC_ULA|               ; 19.6 (19.6)          ; 19.5 (19.5)                      ; 0.0 (0.0)                                         ; 0.1 (0.1)                        ; 0.0 (0.0)            ; 31 (31)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|muxGenerico2x1:MUX_PC_ULA                                               ; muxGenerico2x1      ; work         ;
+;    |muxGenerico2x1:MUX_ULA_RAM|              ; 11.6 (11.6)          ; 13.0 (13.0)                      ; 1.4 (1.4)                                         ; 0.1 (0.1)                        ; 0.0 (0.0)            ; 32 (32)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|muxGenerico2x1:MUX_ULA_RAM                                              ; muxGenerico2x1      ; work         ;
+;    |registradorGenerico:PC|                  ; 8.2 (8.2)            ; 9.5 (9.5)                        ; 1.5 (1.5)                                         ; 0.2 (0.2)                        ; 0.0 (0.0)            ; 0 (0)               ; 38 (38)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|registradorGenerico:PC                                                  ; registradorGenerico ; work         ;
+;    |somaConstante:incrementaPC|              ; 15.0 (15.0)          ; 15.0 (15.0)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 30 (30)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|somaConstante:incrementaPC                                              ; somaConstante       ; work         ;
+;    |somadorGenerico:SOMADOR|                 ; 12.5 (12.5)          ; 12.5 (12.5)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 30 (30)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|somadorGenerico:SOMADOR                                                 ; somadorGenerico     ; work         ;
+;    |unidadeControle:UNIDADE_CONTROLE|        ; 1.2 (1.2)            ; 1.2 (1.2)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|unidadeControle:UNIDADE_CONTROLE                                        ; unidadeControle     ; work         ;
+;    |unidadeControleULA:UNIDADE_CONTROLE_ULA| ; 5.3 (0.0)            ; 5.3 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 10 (0)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|unidadeControleULA:UNIDADE_CONTROLE_ULA                                 ; unidadeControleULA  ; work         ;
+;       |decoderFunctULA:DECODER_FUNCT|        ; 1.3 (1.3)            ; 1.3 (1.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|unidadeControleULA:UNIDADE_CONTROLE_ULA|decoderFunctULA:DECODER_FUNCT   ; decoderFunctULA     ; work         ;
+;       |decoderOpCodeULA:DECODER_OPCODE|      ; 1.3 (1.3)            ; 1.3 (1.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 3 (3)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|unidadeControleULA:UNIDADE_CONTROLE_ULA|decoderOpCodeULA:DECODER_OPCODE ; decoderOpCodeULA    ; work         ;
+;       |muxGenerico2x1:MUX2_1|                ; 2.7 (2.7)            ; 2.7 (2.7)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (5)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |CicloUnico|unidadeControleULA:UNIDADE_CONTROLE_ULA|muxGenerico2x1:MUX2_1           ; muxGenerico2x1      ; work         ;
++----------------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -1084,46 +1215,180 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; HEX5[4]  ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; HEX5[5]  ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; HEX5[6]  ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
-; SW[0]    ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; SW[0]    ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; KEY[0]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; CLOCK_50 ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 +----------+----------+----+------+------+----+------+-------+--------+------------------------+--------------------------+
 
 
-+-------------------------------------------------------------------------+
-; Pad To Core Delay Chain Fanout                                          ;
-+-------------------------------------------+-------------------+---------+
-; Source Pin / Fanout                       ; Pad To Core Index ; Setting ;
-+-------------------------------------------+-------------------+---------+
-; KEY[1]                                    ;                   ;         ;
-; KEY[2]                                    ;                   ;         ;
-; KEY[3]                                    ;                   ;         ;
-; SW[1]                                     ;                   ;         ;
-; SW[2]                                     ;                   ;         ;
-; SW[3]                                     ;                   ;         ;
-; SW[4]                                     ;                   ;         ;
-; SW[5]                                     ;                   ;         ;
-; SW[6]                                     ;                   ;         ;
-; SW[7]                                     ;                   ;         ;
-; SW[8]                                     ;                   ;         ;
-; SW[9]                                     ;                   ;         ;
-; SW[0]                                     ;                   ;         ;
-; KEY[0]                                    ;                   ;         ;
-;      - edgeDetector:detectorSub0|saida    ; 1                 ; 0       ;
-;      - edgeDetector:detectorSub0|saidaQ~0 ; 1                 ; 0       ;
-; CLOCK_50                                  ;                   ;         ;
-;      - edgeDetector:detectorSub0|saidaQ   ; 1                 ; 0       ;
-+-------------------------------------------+-------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Pad To Core Delay Chain Fanout                                                                                                  ;
++---------------------------------------------------------------------------------------------------+-------------------+---------+
+; Source Pin / Fanout                                                                               ; Pad To Core Index ; Setting ;
++---------------------------------------------------------------------------------------------------+-------------------+---------+
+; KEY[1]                                                                                            ;                   ;         ;
+; KEY[2]                                                                                            ;                   ;         ;
+; KEY[3]                                                                                            ;                   ;         ;
+; SW[1]                                                                                             ;                   ;         ;
+; SW[2]                                                                                             ;                   ;         ;
+; SW[3]                                                                                             ;                   ;         ;
+; SW[4]                                                                                             ;                   ;         ;
+; SW[5]                                                                                             ;                   ;         ;
+; SW[6]                                                                                             ;                   ;         ;
+; SW[7]                                                                                             ;                   ;         ;
+; SW[8]                                                                                             ;                   ;         ;
+; SW[9]                                                                                             ;                   ;         ;
+; SW[0]                                                                                             ;                   ;         ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[24]~0                                                  ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[25]~1                                                  ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[26]~2                                                  ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[27]~3                                                  ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[28]~4                                                  ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[29]~5                                                  ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[30]~6                                                  ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[31]~7                                                  ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[2]~8                                                   ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG|rascSaida7seg[0]~0 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[3]~9                                                   ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG|rascSaida7seg[1]~1 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG|rascSaida7seg[2]~2 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[1]~10                                                  ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG|rascSaida7seg[3]~3 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG|rascSaida7seg[4]~4 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG|rascSaida7seg[5]~5 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY0|conversorHex7Seg:DECODER7SEG|rascSaida7seg[6]~6 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[4]~11                                                  ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[5]~12                                                  ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[6]~13                                                  ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY1|conversorHex7Seg:DECODER7SEG|rascSaida7seg[0]~0 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[7]~14                                                  ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY1|conversorHex7Seg:DECODER7SEG|rascSaida7seg[4]~4 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY1|conversorHex7Seg:DECODER7SEG|rascSaida7seg[5]~5 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[8]~15                                                  ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[9]~16                                                  ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[10]~17                                                 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY2|conversorHex7Seg:DECODER7SEG|rascSaida7seg[0]~0 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY2|conversorHex7Seg:DECODER7SEG|rascSaida7seg[1]~1 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY2|conversorHex7Seg:DECODER7SEG|rascSaida7seg[2]~2 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[11]~18                                                 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY2|conversorHex7Seg:DECODER7SEG|rascSaida7seg[4]~4 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY2|conversorHex7Seg:DECODER7SEG|rascSaida7seg[5]~5 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY2|conversorHex7Seg:DECODER7SEG|rascSaida7seg[6]~6 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[12]~19                                                 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[13]~20                                                 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[14]~21                                                 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY3|conversorHex7Seg:DECODER7SEG|rascSaida7seg[0]~0 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[15]~22                                                 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY3|conversorHex7Seg:DECODER7SEG|rascSaida7seg[4]~4 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY3|conversorHex7Seg:DECODER7SEG|rascSaida7seg[5]~5 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[16]~23                                                 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[17]~24                                                 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[18]~25                                                 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY4|conversorHex7Seg:DECODER7SEG|rascSaida7seg[0]~0 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[19]~26                                                 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY4|conversorHex7Seg:DECODER7SEG|rascSaida7seg[4]~4 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY4|conversorHex7Seg:DECODER7SEG|rascSaida7seg[5]~5 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[20]~27                                                 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[21]~28                                                 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[22]~29                                                 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY5|conversorHex7Seg:DECODER7SEG|rascSaida7seg[0]~0 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY5|conversorHex7Seg:DECODER7SEG|rascSaida7seg[1]~1 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY5|conversorHex7Seg:DECODER7SEG|rascSaida7seg[2]~2 ; 0                 ; 0       ;
+;      - muxGenerico2x1:MUX_PC_ULA|saida_MUX[23]~30                                                 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY5|conversorHex7Seg:DECODER7SEG|rascSaida7seg[4]~4 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY5|conversorHex7Seg:DECODER7SEG|rascSaida7seg[5]~5 ; 0                 ; 0       ;
+;      - logicaDisplay:DISPLAY|display7Seg:DISPLAY5|conversorHex7Seg:DECODER7SEG|rascSaida7seg[6]~6 ; 0                 ; 0       ;
+; KEY[0]                                                                                            ;                   ;         ;
+;      - edgeDetector:\gravar:detectorSub0|saida                                                    ; 1                 ; 0       ;
+;      - edgeDetector:\gravar:detectorSub0|saidaQ~0                                                 ; 1                 ; 0       ;
+; CLOCK_50                                                                                          ;                   ;         ;
+;      - edgeDetector:\gravar:detectorSub0|saidaQ                                                   ; 1                 ; 0       ;
++---------------------------------------------------------------------------------------------------+-------------------+---------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                                       ;
-+---------------------------------+--------------------+---------+-------+--------+----------------------+------------------+---------------------------+
-; Name                            ; Location           ; Fan-Out ; Usage ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+---------------------------------+--------------------+---------+-------+--------+----------------------+------------------+---------------------------+
-; CLOCK_50                        ; PIN_M9             ; 1       ; Clock ; no     ; --                   ; --               ; --                        ;
-; edgeDetector:detectorSub0|saida ; MLABCELL_X34_Y3_N0 ; 41      ; Clock ; no     ; --                   ; --               ; --                        ;
-+---------------------------------+--------------------+---------+-------+--------+----------------------+------------------+---------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                                                              ;
++-----------------------------------------------+----------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; Name                                          ; Location             ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++-----------------------------------------------+----------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; CLOCK_50                                      ; PIN_M9               ; 1       ; Clock        ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2758                       ; LABCELL_X36_Y11_N15  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2760                       ; LABCELL_X40_Y14_N0   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2762                       ; LABCELL_X36_Y14_N27  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2764                       ; LABCELL_X32_Y10_N9   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2766                       ; LABCELL_X39_Y9_N39   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2768                       ; LABCELL_X36_Y11_N39  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2770                       ; LABCELL_X36_Y14_N45  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2772                       ; MLABCELL_X37_Y8_N54  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2774                       ; MLABCELL_X42_Y10_N12 ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2776                       ; LABCELL_X40_Y14_N54  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2778                       ; LABCELL_X36_Y14_N48  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2780                       ; LABCELL_X39_Y12_N6   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2782                       ; MLABCELL_X45_Y7_N45  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2784                       ; LABCELL_X41_Y5_N9    ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2786                       ; LABCELL_X43_Y14_N36  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2788                       ; LABCELL_X39_Y12_N27  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2790                       ; MLABCELL_X42_Y10_N15 ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2792                       ; MLABCELL_X37_Y11_N3  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2794                       ; MLABCELL_X37_Y11_N0  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2796                       ; LABCELL_X32_Y10_N27  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2798                       ; LABCELL_X44_Y12_N51  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2800                       ; LABCELL_X44_Y12_N33  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2802                       ; LABCELL_X47_Y7_N51   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2804                       ; LABCELL_X29_Y11_N18  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2806                       ; LABCELL_X36_Y11_N18  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2808                       ; MLABCELL_X37_Y12_N57 ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2810                       ; LABCELL_X47_Y7_N30   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2812                       ; MLABCELL_X37_Y10_N12 ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2814                       ; MLABCELL_X45_Y11_N18 ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2816                       ; LABCELL_X36_Y11_N36  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2818                       ; LABCELL_X47_Y9_N48   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2820                       ; LABCELL_X36_Y11_N12  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2822                       ; MLABCELL_X49_Y7_N51  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2824                       ; LABCELL_X43_Y7_N6    ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2826                       ; MLABCELL_X45_Y7_N42  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2828                       ; LABCELL_X36_Y6_N42   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2830                       ; LABCELL_X44_Y10_N24  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2832                       ; LABCELL_X39_Y10_N24  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2834                       ; LABCELL_X43_Y8_N42   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2836                       ; MLABCELL_X45_Y7_N33  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2838                       ; MLABCELL_X45_Y10_N21 ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2840                       ; MLABCELL_X37_Y6_N33  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2842                       ; LABCELL_X48_Y10_N15  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2844                       ; MLABCELL_X42_Y7_N42  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2846                       ; LABCELL_X32_Y10_N0   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2848                       ; LABCELL_X29_Y11_N9   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2850                       ; MLABCELL_X37_Y8_N57  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2852                       ; LABCELL_X36_Y11_N21  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2854                       ; LABCELL_X36_Y15_N21  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2856                       ; MLABCELL_X34_Y10_N48 ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2858                       ; MLABCELL_X34_Y6_N27  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2860                       ; MLABCELL_X37_Y5_N45  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2862                       ; LABCELL_X36_Y15_N45  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2864                       ; MLABCELL_X34_Y10_N27 ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2866                       ; MLABCELL_X34_Y6_N36  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2868                       ; MLABCELL_X37_Y8_N36  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2870                       ; LABCELL_X36_Y15_N0   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2872                       ; LABCELL_X35_Y12_N3   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2874                       ; MLABCELL_X34_Y6_N6   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2876                       ; MLABCELL_X37_Y8_N39  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2878                       ; MLABCELL_X42_Y9_N51  ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2880                       ; MLABCELL_X34_Y10_N39 ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2882                       ; LABCELL_X36_Y11_N0   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RAMMIPS:RAM|memRAM~2884                       ; MLABCELL_X37_Y4_N9   ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; bancoReg:BANCO_REGISTRADORES|registrador~1195 ; MLABCELL_X42_Y5_N18  ; 33      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; bancoReg:BANCO_REGISTRADORES|registrador~1196 ; MLABCELL_X37_Y4_N30  ; 39      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; edgeDetector:\gravar:detectorSub0|saida       ; LABCELL_X41_Y9_N18   ; 2158    ; Clock        ; no     ; --                   ; --               ; --                        ;
++-----------------------------------------------+----------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
+
+
++---------------------------------------------------+
+; Non-Global High Fan-Out Signals                   ;
++-----------------------------------------+---------+
+; Name                                    ; Fan-Out ;
++-----------------------------------------+---------+
+; edgeDetector:\gravar:detectorSub0|saida ; 2158    ;
++-----------------------------------------+---------+
 
 
 +--------------------------------------------------------+
@@ -1131,21 +1396,21 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------------------------+-------------------------+
 ; Routing Resource Type        ; Usage                   ;
 +------------------------------+-------------------------+
-; Block interconnects          ; 243 / 140,056 ( < 1 % ) ;
-; C12 interconnects            ; 8 / 6,048 ( < 1 % )     ;
-; C2 interconnects             ; 44 / 54,648 ( < 1 % )   ;
-; C4 interconnects             ; 63 / 25,920 ( < 1 % )   ;
+; Block interconnects          ; 5,893 / 140,056 ( 4 % ) ;
+; C12 interconnects            ; 124 / 6,048 ( 2 % )     ;
+; C2 interconnects             ; 2,144 / 54,648 ( 4 % )  ;
+; C4 interconnects             ; 1,201 / 25,920 ( 5 % )  ;
 ; DQS bus muxes                ; 0 / 17 ( 0 % )          ;
 ; DQS-18 I/O buses             ; 0 / 17 ( 0 % )          ;
 ; DQS-9 I/O buses              ; 0 / 17 ( 0 % )          ;
-; Direct links                 ; 46 / 140,056 ( < 1 % )  ;
+; Direct links                 ; 285 / 140,056 ( < 1 % ) ;
 ; Global clocks                ; 0 / 16 ( 0 % )          ;
-; Local interconnects          ; 22 / 36,960 ( < 1 % )   ;
+; Local interconnects          ; 787 / 36,960 ( 2 % )    ;
 ; Quadrant clocks              ; 0 / 88 ( 0 % )          ;
-; R14 interconnects            ; 34 / 5,984 ( < 1 % )    ;
-; R14/C12 interconnect drivers ; 40 / 9,504 ( < 1 % )    ;
-; R3 interconnects             ; 113 / 60,192 ( < 1 % )  ;
-; R6 interconnects             ; 121 / 127,072 ( < 1 % ) ;
+; R14 interconnects            ; 227 / 5,984 ( 4 % )     ;
+; R14/C12 interconnect drivers ; 312 / 9,504 ( 3 % )     ;
+; R3 interconnects             ; 2,596 / 60,192 ( 4 % )  ;
+; R6 interconnects             ; 3,757 / 127,072 ( 3 % ) ;
 ; Spine clocks                 ; 0 / 120 ( 0 % )         ;
 ; Wire stub REs                ; 0 / 7,344 ( 0 % )       ;
 +------------------------------+-------------------------+
@@ -1327,52 +1592,122 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------+----------------------+-------------------+
 ; Source Clock(s) ; Destination Clock(s) ; Delay Added in ns ;
 +-----------------+----------------------+-------------------+
-; KEY[0]          ; KEY[0]               ; 21.1              ;
+; CLOCK_50,I/O    ; KEY[0]               ; 50.8              ;
+; KEY[0]          ; KEY[0]               ; 43.0              ;
+; KEY[0]          ; KEY[0],I/O           ; 20.0              ;
 ; I/O             ; CLOCK_50             ; 3.2               ;
 +-----------------+----------------------+-------------------+
 Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
 This will disable optimization of problematic paths and expose them for further analysis using the Timing Analyzer.
 
 
-+-----------------------------------------------------------------------------------------+
-; Estimated Delay Added for Hold Timing Details                                           ;
-+----------------------------------+----------------------------------+-------------------+
-; Source Register                  ; Destination Register             ; Delay Added in ns ;
-+----------------------------------+----------------------------------+-------------------+
-; KEY[0]                           ; edgeDetector:detectorSub0|saidaQ ; 3.158             ;
-; registradorGenerico:PC|DOUT[4]   ; registradorGenerico:PC|DOUT[18]  ; 0.994             ;
-; registradorGenerico:PC|DOUT[3]   ; registradorGenerico:PC|DOUT[5]   ; 0.901             ;
-; registradorGenerico:PC|DOUT[5]   ; registradorGenerico:PC|DOUT[5]   ; 0.901             ;
-; registradorGenerico:PC|DOUT[2]   ; registradorGenerico:PC|DOUT[5]   ; 0.901             ;
-; registradorGenerico:PC|DOUT[6]   ; registradorGenerico:PC|DOUT[18]  ; 0.673             ;
-; registradorGenerico:PC|DOUT[7]   ; registradorGenerico:PC|DOUT[18]  ; 0.673             ;
-; registradorGenerico:PC|DOUT[28]  ; registradorGenerico:PC|DOUT[28]  ; 0.612             ;
-; registradorGenerico:PC|DOUT[26]  ; registradorGenerico:PC|DOUT[28]  ; 0.520             ;
-; registradorGenerico:PC|DOUT[22]  ; registradorGenerico:PC|DOUT[28]  ; 0.414             ;
-; registradorGenerico:PC|DOUT[25]  ; registradorGenerico:PC|DOUT[28]  ; 0.359             ;
-; registradorGenerico:PC|DOUT[24]  ; registradorGenerico:PC|DOUT[28]  ; 0.338             ;
-; registradorGenerico:PC|DOUT[8]   ; registradorGenerico:PC|DOUT[8]   ; 0.295             ;
-; registradorGenerico:PC|DOUT[31]  ; registradorGenerico:PC|DOUT[31]  ; 0.287             ;
-; registradorGenerico:PC|DOUT[29]  ; registradorGenerico:PC|DOUT[31]  ; 0.193             ;
-; registradorGenerico:PC|DOUT[27]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[23]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[21]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[20]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[19]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[18]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[17]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[16]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[15]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[14]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[13]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[12]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[11]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[10]  ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; registradorGenerico:PC|DOUT[9]   ; registradorGenerico:PC|DOUT[28]  ; 0.166             ;
-; edgeDetector:detectorSub0|saidaQ ; registradorGenerico:PC|DOUT[10]  ; 0.130             ;
-; registradorGenerico:PC|DOUT[30]  ; registradorGenerico:PC|DOUT[31]  ; 0.090             ;
-+----------------------------------+----------------------------------+-------------------+
-Note: This table only shows the top 32 path(s) that have the largest delay added for hold.
++-----------------------------------------------------------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Details                                                                   ;
++----------------------------------------------+----------------------------------------------+-------------------+
+; Source Register                              ; Destination Register                         ; Delay Added in ns ;
++----------------------------------------------+----------------------------------------------+-------------------+
+; KEY[0]                                       ; edgeDetector:\gravar:detectorSub0|saidaQ     ; 3.171             ;
+; registradorGenerico:PC|DOUT[7]               ; bancoReg:BANCO_REGISTRADORES|registrador~69  ; 1.251             ;
+; registradorGenerico:PC|DOUT[4]               ; bancoReg:BANCO_REGISTRADORES|registrador~69  ; 1.234             ;
+; registradorGenerico:PC|DOUT[3]               ; bancoReg:BANCO_REGISTRADORES|registrador~69  ; 1.234             ;
+; registradorGenerico:PC|DOUT[5]               ; bancoReg:BANCO_REGISTRADORES|registrador~69  ; 1.234             ;
+; registradorGenerico:PC|DOUT[6]               ; bancoReg:BANCO_REGISTRADORES|registrador~69  ; 1.234             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~69  ; bancoReg:BANCO_REGISTRADORES|registrador~69  ; 1.098             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~325 ; bancoReg:BANCO_REGISTRADORES|registrador~69  ; 1.062             ;
+; registradorGenerico:PC|DOUT[2]               ; bancoReg:BANCO_REGISTRADORES|registrador~69  ; 1.027             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~294 ; bancoReg:BANCO_REGISTRADORES|registrador~296 ; 0.914             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~320 ; bancoReg:BANCO_REGISTRADORES|registrador~320 ; 0.909             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~296 ; bancoReg:BANCO_REGISTRADORES|registrador~296 ; 0.894             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~38  ; bancoReg:BANCO_REGISTRADORES|registrador~296 ; 0.864             ;
+; RAMMIPS:RAM|memRAM~1899                      ; bancoReg:BANCO_REGISTRADORES|registrador~298 ; 0.826             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~295 ; bancoReg:BANCO_REGISTRADORES|registrador~296 ; 0.799             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~39  ; bancoReg:BANCO_REGISTRADORES|registrador~296 ; 0.799             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~40  ; bancoReg:BANCO_REGISTRADORES|registrador~296 ; 0.799             ;
+; edgeDetector:\gravar:detectorSub0|saidaQ     ; bancoReg:BANCO_REGISTRADORES|registrador~48  ; 0.732             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~305 ; RAMMIPS:RAM|memRAM~1618                      ; 0.715             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~313 ; RAMMIPS:RAM|memRAM~2074                      ; 0.715             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~57  ; RAMMIPS:RAM|memRAM~2074                      ; 0.681             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~49  ; RAMMIPS:RAM|memRAM~1618                      ; 0.662             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~312 ; bancoReg:BANCO_REGISTRADORES|registrador~312 ; 0.584             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~56  ; bancoReg:BANCO_REGISTRADORES|registrador~312 ; 0.584             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~302 ; bancoReg:BANCO_REGISTRADORES|registrador~304 ; 0.559             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~46  ; bancoReg:BANCO_REGISTRADORES|registrador~304 ; 0.559             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~314 ; RAMMIPS:RAM|memRAM~2075                      ; 0.541             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~300 ; bancoReg:BANCO_REGISTRADORES|registrador~44  ; 0.536             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~61  ; bancoReg:BANCO_REGISTRADORES|registrador~317 ; 0.527             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~316 ; RAMMIPS:RAM|memRAM~2077                      ; 0.519             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~317 ; bancoReg:BANCO_REGISTRADORES|registrador~317 ; 0.486             ;
+; RAMMIPS:RAM|memRAM~1521                      ; bancoReg:BANCO_REGISTRADORES|registrador~304 ; 0.469             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~310 ; bancoReg:BANCO_REGISTRADORES|registrador~312 ; 0.466             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~58  ; RAMMIPS:RAM|memRAM~2075                      ; 0.460             ;
+; RAMMIPS:RAM|memRAM~497                       ; bancoReg:BANCO_REGISTRADORES|registrador~304 ; 0.456             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~301 ; bancoReg:BANCO_REGISTRADORES|registrador~45  ; 0.450             ;
+; RAMMIPS:RAM|memRAM~1028                      ; bancoReg:BANCO_REGISTRADORES|registrador~67  ; 0.419             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~304 ; bancoReg:BANCO_REGISTRADORES|registrador~304 ; 0.402             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~48  ; bancoReg:BANCO_REGISTRADORES|registrador~304 ; 0.402             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~60  ; RAMMIPS:RAM|memRAM~2077                      ; 0.400             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~303 ; bancoReg:BANCO_REGISTRADORES|registrador~304 ; 0.384             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~47  ; bancoReg:BANCO_REGISTRADORES|registrador~304 ; 0.384             ;
+; RAMMIPS:RAM|memRAM~1518                      ; bancoReg:BANCO_REGISTRADORES|registrador~45  ; 0.374             ;
+; RAMMIPS:RAM|memRAM~1012                      ; bancoReg:BANCO_REGISTRADORES|registrador~307 ; 0.367             ;
+; RAMMIPS:RAM|memRAM~494                       ; bancoReg:BANCO_REGISTRADORES|registrador~45  ; 0.361             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~321 ; RAMMIPS:RAM|memRAM~1698                      ; 0.357             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~65  ; RAMMIPS:RAM|memRAM~1698                      ; 0.357             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~306 ; RAMMIPS:RAM|memRAM~51                        ; 0.356             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~50  ; RAMMIPS:RAM|memRAM~51                        ; 0.356             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~299 ; bancoReg:BANCO_REGISTRADORES|registrador~44  ; 0.350             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~297 ; bancoReg:BANCO_REGISTRADORES|registrador~44  ; 0.350             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~298 ; bancoReg:BANCO_REGISTRADORES|registrador~44  ; 0.350             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~42  ; bancoReg:BANCO_REGISTRADORES|registrador~44  ; 0.350             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~44  ; bancoReg:BANCO_REGISTRADORES|registrador~44  ; 0.350             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~43  ; bancoReg:BANCO_REGISTRADORES|registrador~44  ; 0.350             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~41  ; bancoReg:BANCO_REGISTRADORES|registrador~44  ; 0.350             ;
+; RAMMIPS:RAM|memRAM~1429                      ; bancoReg:BANCO_REGISTRADORES|registrador~308 ; 0.332             ;
+; RAMMIPS:RAM|memRAM~334                       ; bancoReg:BANCO_REGISTRADORES|registrador~45  ; 0.328             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~45  ; bancoReg:BANCO_REGISTRADORES|registrador~45  ; 0.327             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~307 ; bancoReg:BANCO_REGISTRADORES|registrador~312 ; 0.326             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~51  ; bancoReg:BANCO_REGISTRADORES|registrador~312 ; 0.326             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~308 ; bancoReg:BANCO_REGISTRADORES|registrador~312 ; 0.326             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~52  ; bancoReg:BANCO_REGISTRADORES|registrador~312 ; 0.326             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~309 ; bancoReg:BANCO_REGISTRADORES|registrador~312 ; 0.326             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~53  ; bancoReg:BANCO_REGISTRADORES|registrador~312 ; 0.326             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~54  ; bancoReg:BANCO_REGISTRADORES|registrador~312 ; 0.326             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~311 ; bancoReg:BANCO_REGISTRADORES|registrador~312 ; 0.326             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~55  ; bancoReg:BANCO_REGISTRADORES|registrador~312 ; 0.326             ;
+; RAMMIPS:RAM|memRAM~500                       ; bancoReg:BANCO_REGISTRADORES|registrador~307 ; 0.319             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~323 ; registradorGenerico:PC|DOUT[28]              ; 0.316             ;
+; RAMMIPS:RAM|memRAM~1333                      ; bancoReg:BANCO_REGISTRADORES|registrador~308 ; 0.315             ;
+; RAMMIPS:RAM|memRAM~2057                      ; bancoReg:BANCO_REGISTRADORES|registrador~296 ; 0.314             ;
+; RAMMIPS:RAM|memRAM~1729                      ; bancoReg:BANCO_REGISTRADORES|registrador~320 ; 0.301             ;
+; RAMMIPS:RAM|memRAM~1524                      ; bancoReg:BANCO_REGISTRADORES|registrador~307 ; 0.298             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~319 ; registradorGenerico:PC|DOUT[28]              ; 0.297             ;
+; RAMMIPS:RAM|memRAM~846                       ; bancoReg:BANCO_REGISTRADORES|registrador~45  ; 0.293             ;
+; RAMMIPS:RAM|memRAM~1818                      ; bancoReg:BANCO_REGISTRADORES|registrador~313 ; 0.286             ;
+; RAMMIPS:RAM|memRAM~1365                      ; bancoReg:BANCO_REGISTRADORES|registrador~308 ; 0.281             ;
+; RAMMIPS:RAM|memRAM~1761                      ; bancoReg:BANCO_REGISTRADORES|registrador~320 ; 0.276             ;
+; RAMMIPS:RAM|memRAM~2065                      ; bancoReg:BANCO_REGISTRADORES|registrador~304 ; 0.251             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~324 ; bancoReg:BANCO_REGISTRADORES|registrador~324 ; 0.232             ;
+; RAMMIPS:RAM|memRAM~886                       ; bancoReg:BANCO_REGISTRADORES|registrador~309 ; 0.208             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~64  ; registradorGenerico:PC|DOUT[28]              ; 0.201             ;
+; RAMMIPS:RAM|memRAM~630                       ; bancoReg:BANCO_REGISTRADORES|registrador~309 ; 0.200             ;
+; RAMMIPS:RAM|memRAM~1809                      ; bancoReg:BANCO_REGISTRADORES|registrador~304 ; 0.199             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~68  ; RAMMIPS:RAM|memRAM~1477                      ; 0.199             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~62  ; RAMMIPS:RAM|memRAM~1951                      ; 0.196             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~318 ; RAMMIPS:RAM|memRAM~1951                      ; 0.196             ;
+; RAMMIPS:RAM|memRAM~337                       ; bancoReg:BANCO_REGISTRADORES|registrador~304 ; 0.184             ;
+; RAMMIPS:RAM|memRAM~822                       ; bancoReg:BANCO_REGISTRADORES|registrador~309 ; 0.177             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~63  ; registradorGenerico:PC|DOUT[28]              ; 0.176             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~315 ; registradorGenerico:PC|DOUT[28]              ; 0.176             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~59  ; registradorGenerico:PC|DOUT[28]              ; 0.176             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~322 ; registradorGenerico:PC|DOUT[28]              ; 0.176             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~66  ; registradorGenerico:PC|DOUT[28]              ; 0.176             ;
+; bancoReg:BANCO_REGISTRADORES|registrador~67  ; registradorGenerico:PC|DOUT[28]              ; 0.176             ;
+; registradorGenerico:PC|DOUT[22]              ; registradorGenerico:PC|DOUT[22]              ; 0.168             ;
+; registradorGenerico:PC|DOUT[21]              ; registradorGenerico:PC|DOUT[22]              ; 0.168             ;
+; registradorGenerico:PC|DOUT[20]              ; registradorGenerico:PC|DOUT[22]              ; 0.168             ;
+; registradorGenerico:PC|DOUT[19]              ; registradorGenerico:PC|DOUT[22]              ; 0.168             ;
++----------------------------------------------+----------------------------------------------+-------------------+
+Note: This table only shows the top 100 path(s) that have the largest delay added for hold.
 
 
 +-----------------+
@@ -1400,29 +1735,29 @@ Warning (15705): Ignored locations or region assignments to the following nodes
 Info (11798): Fitter preparation operations ending: elapsed time is 00:00:06
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:10
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:01
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:04
 Info (170193): Fitter routing operations beginning
-Info (170195): Router estimated average interconnect usage is 0% of the available device resources
-    Info (170196): Router estimated peak interconnect usage is 1% of the available device resources in the region that extends from location X33_Y0 to location X43_Y10
+Info (170195): Router estimated average interconnect usage is 3% of the available device resources
+    Info (170196): Router estimated peak interconnect usage is 29% of the available device resources in the region that extends from location X33_Y0 to location X43_Y10
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.57 seconds.
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:29
+Info (11888): Total time spent on timing analysis during the Fitter is 6.34 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:04
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:28
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/output_files/CicloUnico.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 6252 megabytes
-    Info: Processing ended: Tue Nov 22 17:21:07 2022
-    Info: Elapsed time: 00:00:24
-    Info: Total CPU time (on all processors): 00:00:41
+    Info: Peak virtual memory: 6263 megabytes
+    Info: Processing ended: Wed Nov 23 15:59:39 2022
+    Info: Elapsed time: 00:01:41
+    Info: Total CPU time (on all processors): 00:03:19
 
 
 +----------------------------+

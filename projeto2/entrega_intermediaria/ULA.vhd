@@ -183,13 +183,13 @@ begin
 	port map (EntradaA => EntradaA(31), EntradaB => EntradaB(31), Seletor => Seletor,
 		InverteB => InverteB, CarryIn => carry_out_30, SLT => SLT, Saida => Saida(31));
 	
-signalBEQ <= not(Saida(31) and Saida(30) and Saida(29) and Saida(28) 
-				 and Saida(27) and Saida(26) and Saida(25) and Saida(24)
-				 and Saida(23) and Saida(22) and Saida(21) and Saida(20)
-				 and Saida(19) and Saida(18) and Saida(17) and Saida(16)
-				 and Saida(15) and Saida(14) and Saida(13) and Saida(12)
-				 and Saida(11) and Saida(10) and Saida(9) and Saida(8)
-				 and Saida(7) and Saida(6) and Saida(5) and Saida(4)
-				 and Saida(3) and Saida(2) and Saida(1) and Saida(0));
+signalBEQ <= not(Saida(31) or Saida(30) or Saida(29) or Saida(28) 
+				 or Saida(27) or Saida(26) or Saida(25) or Saida(24)
+				 or Saida(23) or Saida(22) or Saida(21) or Saida(20)
+				 or Saida(19) or Saida(18) or Saida(17) or Saida(16)
+				 or Saida(15) or Saida(14) or Saida(13) or Saida(12)
+				 or Saida(11) or Saida(10) or Saida(9) or Saida(8)
+				 or Saida(7) or Saida(6) or Saida(5) or Saida(4)
+				 or Saida(3) or Saida(2) or Saida(1) or Saida(0));
 	
 end architecture;

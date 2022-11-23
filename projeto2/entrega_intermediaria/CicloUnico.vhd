@@ -30,6 +30,7 @@ architecture arquitetura of CicloUnico is
   signal saidaIncrementaPC : std_logic_vector (larguraEnderecos-1 downto 0);
   signal proxPC : std_logic_vector (larguraEnderecos-1 downto 0);
   
+  
   signal Saida_ULA : std_logic_vector (larguraDados-1 downto 0);
   signal signalBEQ : std_logic;
   signal saidaExtensor : std_logic_vector (larguraDados-1 downto 0);
@@ -80,10 +81,14 @@ begin
 
 -- Para simular, fica mais simples tirar o edgeDetector
 
+gravar:  if simulacao generate
+CLK <= KEY(0);
+else generate
 detectorSub0: work.edgeDetector(bordaSubida)
         port map (clk => CLOCK_50, entrada => (not KEY(0)), saida => CLK);
+end generate;
 
-
+				 
 -- Manipulando a instrucao
 opCode    <= formato_Instrucao (31 downto 26);
 Rs_IN     <= formato_Instrucao (25 downto 21);

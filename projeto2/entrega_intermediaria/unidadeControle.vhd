@@ -14,7 +14,7 @@ architecture comportamento of unidadeControle is
   constant SW    : std_logic_vector(5 downto 0) := 6x"2b";
   constant BEQ   : std_logic_vector(5 downto 0) := 6x"04";
   
-  constant JMP 	  : std_logic_vector(5 downto 0) := 6x"02";
+  constant JMP   : std_logic_vector(5 downto 0) := 6x"02";
   
 begin
 

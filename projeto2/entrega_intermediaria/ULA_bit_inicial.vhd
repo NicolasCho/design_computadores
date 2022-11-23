@@ -36,7 +36,7 @@ begin
 	MUX4_1 : entity work.muxGenerico4x1_1bit
 	port map (entradaA_MUX => entradaMuxA, entradaB_MUX => entradaMuxB, entradaC_MUX => entradaMuxC, entradaD_MUX => entradaMuxD,
 	 			seletor_MUX => Seletor,
-				saida_MUX => saidaMuxEntradaB);
+				saida_MUX => Saida);
 				
 
 	entradaMuxA <= EntradaA and saidaMuxEntradaB;

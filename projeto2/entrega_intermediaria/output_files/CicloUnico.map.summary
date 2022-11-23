@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Tue Nov 22 17:20:42 2022
+Analysis & Synthesis Status : Successful - Wed Nov 23 15:57:57 2022
 Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 Revision Name : CicloUnico
 Top-level Entity Name : CicloUnico
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 31
+Total registers : 2143
 Total pins : 67
 Total virtual pins : 0
 Total block memory bits : 0

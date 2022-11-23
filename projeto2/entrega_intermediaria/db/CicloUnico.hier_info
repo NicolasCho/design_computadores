@@ -1,6 +1,6 @@
 |CicloUnico
-CLOCK_50 => edgedetector:detectorSub0.clk
-KEY[0] => edgedetector:detectorSub0.entrada
+CLOCK_50 => edgedetector:gravar:detectorSub0.clk
+KEY[0] => edgedetector:gravar:detectorSub0.entrada
 KEY[1] => ~NO_FANOUT~
 KEY[2] => ~NO_FANOUT~
 KEY[3] => ~NO_FANOUT~
@@ -68,7 +68,7 @@ HEX5[5] <= logicadisplay:DISPLAY.hex5[5]
 HEX5[6] <= logicadisplay:DISPLAY.hex5[6]
 
 
-|CicloUnico|edgeDetector:detectorSub0
+|CicloUnico|edgeDetector:\gravar:detectorSub0
 clk => saidaQ.CLK
 entrada => saida.IN1
 entrada => saidaQ.DATAIN
@@ -926,8 +926,8 @@ Saida[31] <= ula_bit_inicial:BIT31.Saida
 
 
 |CicloUnico|ULA:ULA|ULA_bit_final:BIT0
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -937,7 +937,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_bit_final:BIT0|muxGenerico2x1_1bit:MUX2_1
@@ -973,8 +973,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT1
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -983,7 +983,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT1|muxGenerico2x1_1bit:MUX2_1
@@ -1019,8 +1019,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT2
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1029,7 +1029,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT2|muxGenerico2x1_1bit:MUX2_1
@@ -1065,8 +1065,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT3
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1075,7 +1075,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT3|muxGenerico2x1_1bit:MUX2_1
@@ -1111,8 +1111,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT4
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1121,7 +1121,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT4|muxGenerico2x1_1bit:MUX2_1
@@ -1157,8 +1157,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT5
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1167,7 +1167,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT5|muxGenerico2x1_1bit:MUX2_1
@@ -1203,8 +1203,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT6
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1213,7 +1213,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT6|muxGenerico2x1_1bit:MUX2_1
@@ -1249,8 +1249,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT7
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1259,7 +1259,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT7|muxGenerico2x1_1bit:MUX2_1
@@ -1295,8 +1295,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT8
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1305,7 +1305,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT8|muxGenerico2x1_1bit:MUX2_1
@@ -1341,8 +1341,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT9
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1351,7 +1351,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT9|muxGenerico2x1_1bit:MUX2_1
@@ -1387,8 +1387,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT10
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1397,7 +1397,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT10|muxGenerico2x1_1bit:MUX2_1
@@ -1433,8 +1433,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT11
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1443,7 +1443,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT11|muxGenerico2x1_1bit:MUX2_1
@@ -1479,8 +1479,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT12
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1489,7 +1489,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT12|muxGenerico2x1_1bit:MUX2_1
@@ -1525,8 +1525,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT13
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1535,7 +1535,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT13|muxGenerico2x1_1bit:MUX2_1
@@ -1571,8 +1571,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT14
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1581,7 +1581,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT14|muxGenerico2x1_1bit:MUX2_1
@@ -1617,8 +1617,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT15
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1627,7 +1627,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT15|muxGenerico2x1_1bit:MUX2_1
@@ -1663,8 +1663,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT16
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1673,7 +1673,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT16|muxGenerico2x1_1bit:MUX2_1
@@ -1709,8 +1709,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT17
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1719,7 +1719,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT17|muxGenerico2x1_1bit:MUX2_1
@@ -1755,8 +1755,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT18
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1765,7 +1765,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT18|muxGenerico2x1_1bit:MUX2_1
@@ -1801,8 +1801,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT19
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1811,7 +1811,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT19|muxGenerico2x1_1bit:MUX2_1
@@ -1847,8 +1847,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT20
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1857,7 +1857,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT20|muxGenerico2x1_1bit:MUX2_1
@@ -1893,8 +1893,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT21
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1903,7 +1903,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT21|muxGenerico2x1_1bit:MUX2_1
@@ -1939,8 +1939,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT22
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1949,7 +1949,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT22|muxGenerico2x1_1bit:MUX2_1
@@ -1985,8 +1985,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT23
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -1995,7 +1995,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT23|muxGenerico2x1_1bit:MUX2_1
@@ -2031,8 +2031,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT24
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -2041,7 +2041,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT24|muxGenerico2x1_1bit:MUX2_1
@@ -2077,8 +2077,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT25
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -2087,7 +2087,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT25|muxGenerico2x1_1bit:MUX2_1
@@ -2123,8 +2123,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT26
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -2133,7 +2133,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT26|muxGenerico2x1_1bit:MUX2_1
@@ -2169,8 +2169,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT27
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -2179,7 +2179,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT27|muxGenerico2x1_1bit:MUX2_1
@@ -2215,8 +2215,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT28
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -2225,7 +2225,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT28|muxGenerico2x1_1bit:MUX2_1
@@ -2261,8 +2261,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT29
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -2271,7 +2271,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT29|muxGenerico2x1_1bit:MUX2_1
@@ -2307,8 +2307,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT30
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -2317,7 +2317,7 @@ Seletor[1] => muxgenerico4x1_1bit:MUX4_1.seletor_MUX[1]
 InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => somadorcompleto:SOMADOR.carryIn
 CarryOut <= somadorcompleto:SOMADOR.carryOut
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_1_bit:BIT30|muxGenerico2x1_1bit:MUX2_1
@@ -2353,8 +2353,8 @@ saida_MUX <= saida_MUX.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CicloUnico|ULA:ULA|ULA_bit_inicial:BIT31
-EntradaA => entradaMuxA.IN0
-EntradaA => entradaMuxB.IN0
+EntradaA => entradaMuxA.IN1
+EntradaA => entradaMuxB.IN1
 EntradaA => somadorcompleto:SOMADOR.entradaA
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaA_MUX
 EntradaB => muxgenerico2x1_1bit:MUX2_1.entradaB_MUX
@@ -2364,7 +2364,7 @@ InverteB => muxgenerico2x1_1bit:MUX2_1.seletor_MUX
 CarryIn => SLT.IN1
 CarryIn => somadorcompleto:SOMADOR.carryIn
 SLT <= SLT.DB_MAX_OUTPUT_PORT_TYPE
-Saida <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Saida <= muxgenerico4x1_1bit:MUX4_1.saida_MUX
 
 
 |CicloUnico|ULA:ULA|ULA_bit_inicial:BIT31|muxGenerico2x1_1bit:MUX2_1

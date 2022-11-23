@@ -56,6 +56,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "HEX0[5]",
+					"strict" : false
+				},
+				{
 					"name" : "HEX0[6]",
 					"strict" : false
 				},
@@ -197,6 +201,10 @@
 				},
 				{
 					"name" : "HEX5[6]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[0]",
 					"strict" : false
 				},
 				{
