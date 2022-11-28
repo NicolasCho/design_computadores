@@ -1,0 +1,2 @@
+Botão clock: KEY0
+Controle MUX para PC ou saida ULA no display: SW0

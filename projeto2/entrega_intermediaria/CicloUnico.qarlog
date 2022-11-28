@@ -1,0 +1,40 @@
+Quartus Prime Archive log --	C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.qarlog
+
+Archive:	C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.qar
+Date:		Fri Nov 25 14:08:29 2022
+Quartus Prime		20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.qpf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.qsf
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/CicloUnico.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/RAMMIPS.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ROMMIPS.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ROMcontent.mif
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ULA.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ULA_1_bit.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ULA_bit_final.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/ULA_bit_inicial.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/bancoReg.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/conversorHex7Seg.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/decoderFunctULA.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/decoderOpCodeULA.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/display7Seg.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/edgeDetector.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/estendeSinalGenerico.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/logicaDisplay.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/muxGenerico2x1.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/muxGenerico2x1_1bit.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/muxGenerico4x1_1bit.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/registradorGenerico.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/shifter.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/somaConstante.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/somadorCompleto.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/somadorGenerico.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/unidadeControle.vhd
+C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_intermediaria/unidadeControleULA.vhd
+c:/intelfpga_lite/20.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 29 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
