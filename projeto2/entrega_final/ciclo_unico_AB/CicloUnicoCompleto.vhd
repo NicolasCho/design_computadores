@@ -6,7 +6,7 @@ entity CicloUnicoCompleto is
   generic ( larguraDados : natural := 32;
         larguraEnderecos : natural := 32;
 		  larguraInstrucao : natural := 32;
-        simulacao : boolean := FALSE -- para gravar na placa, altere de TRUE para FALSE
+        simulacao : boolean := TRUE -- para gravar na placa, altere de TRUE para FALSE
   );
   port   (
     CLOCK_50 : in std_logic;
@@ -72,7 +72,7 @@ architecture arquitetura of CicloUnicoCompleto is
   signal habEscritaReg : std_logic;
   signal muxControleRtImediato : std_logic;
   signal controleTipoR : std_logic;
-  signal muxControleULARAM : std_logic;	
+  signal muxControleULARAM : std_logic_vector(1 downto 0);	
   signal habilitaBEQ : std_logic;
   signal habilitaBNE : std_logic;
   signal habLeituraRAM: std_logic;
@@ -169,7 +169,7 @@ MUX_ULA_RAM : entity work.muxGenerico4x1  generic map (larguraDados => 32)
 							
 			 
 UNIDADE_CONTROLE : entity work.unidadeControle  
-          port map (opCode => opCode, saida => controle);
+          port map (opCode => opCode, funct => funct,saida => controle);
 			 
 UNIDADE_CONTROLE_ULA : entity work.unidadeControleULA  
           port map (opCode => opCode, funct => funct, tipoR => controleTipoR, saida => ULACtrl);
