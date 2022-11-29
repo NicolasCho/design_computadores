@@ -6,7 +6,7 @@ entity CicloUnicoCompleto is
   generic ( larguraDados : natural := 32;
         larguraEnderecos : natural := 32;
 		  larguraInstrucao : natural := 32;
-        simulacao : boolean := TRUE -- para gravar na placa, altere de TRUE para FALSE
+        simulacao : boolean := FALSE -- para gravar na placa, altere de TRUE para FALSE
   );
   port   (
     CLOCK_50 : in std_logic;
@@ -63,11 +63,11 @@ architecture arquitetura of CicloUnicoCompleto is
   signal imediatoJ : std_logic_vector(25 downto 0); 
   signal funct : std_logic_vector (5 downto 0);
   
-  signal controle: std_logic_vector(12 downto 0);
+  signal controle: std_logic_vector(13 downto 0);
   --controle
   signal JR : std_logic;
   signal muxPC_BEQ_JMP : std_logic;
-  signal muxControleRtRd : std_logic;
+  signal muxControleRtRd : std_logic_vector(1 downto 0);
   signal controleORI_ANDI : std_logic;
   signal habEscritaReg : std_logic;
   signal muxControleRtImediato : std_logic;
@@ -105,9 +105,9 @@ imediato  <= formato_Instrucao (15 downto 0);
 funct     <= formato_Instrucao (5 downto 0);
 		
 -- Pontos de controle
-JR                <= controle(12);
-muxPC_BEQ_JMP     <= controle(11);
-muxControleRtRd   <= controle(10);
+JR                <= controle(13);
+muxPC_BEQ_JMP     <= controle(12);
+muxControleRtRd   <= controle(11 downto 10);
 controleORI_ANDI  <= controle(9);
 habEscritaReg     <= controle(8);
 muxControleRtImediato <= controle(7);
@@ -133,9 +133,10 @@ ROM : entity work.ROMMIPS   generic map (dataWidth => larguraInstrucao, addrWidt
           port map (Endereco => EnderecoROM, Dado => formato_Instrucao);
 			 
 	
-MUX_RT_RD : entity work.muxGenerico2x1		generic map	(larguraDados => 5)
-			 port map (entradaA_MUX => Rt_IN, entradaB_MUX => Rd_IN, seletor_MUX => muxControleRtRd,
-							saida_MUX => saidaMuxRtRd);
+MUX_RT_RD : entity work.muxGenerico4x1		generic map	(larguraDados => 5)
+			 port map (entradaA_MUX => Rt_IN, entradaB_MUX => Rd_IN, 
+							entradaC_MUX => "11111", entradaD_MUX => "00000",
+							seletor_MUX => muxControleRtRd, saida_MUX => saidaMuxRtRd);
 	
 BANCO_REGISTRADORES : entity work.bancoReg generic map (larguraDados => larguraDados, larguraEndBancoRegs => 5)
 			port map (clk   	=> CLK,

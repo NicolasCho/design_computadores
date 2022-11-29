@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 entity unidadeControle is
   port ( opCode : in std_logic_vector(5 downto 0);
 			funct  : in std_logic_vector(5 downto 0);
-         saida  : out std_logic_vector(12 downto 0)
+         saida  : out std_logic_vector(13 downto 0)
   );
 end entity;
 
@@ -29,9 +29,14 @@ architecture comportamento of unidadeControle is
   
 begin
 
-saida(12) <= '1' when (opCode = R_Type and funct = JR_Funct) else '0';		--JR
-saida(11) <= '1' when (opCode = JMP or opCode = JAL) else '0';					--MuxPCBeqJmp
-saida(10) <= '1' when (opCode = R_TYPE) else '0';									--MuxRtRd
+saida(13) <= '1' when (opCode = R_Type and funct = JR_Funct) else '0';		--JR
+saida(12) <= '1' when (opCode = JMP or opCode = JAL) else '0';					--MuxPCBeqJmp
+
+saida(11 downto 10) <= "01" when (opCode = R_TYPE) else 
+							  "10" when (opCode = JAL)    else 							--MuxRtRd
+							  "00";									
+
+
 saida(9)	 <= '1' when (opCode = ANDI or opCode = ORI) else'0';					--ORI_ANDI
 
 saida(8)	 <= '1' when (opCode = R_TYPE or opCode = LW or opCode= LUI 
