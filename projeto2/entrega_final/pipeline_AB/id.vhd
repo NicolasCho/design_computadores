@@ -22,8 +22,6 @@ entity if is
     saidaFunct : out std_logic_vector (5 downto 0);
     JR                   : out std_logic;
     muxPC_BEQ_JMP        : out std_logic;
-    muxControleRtRd      : out std_logic_vector(1 downto 0);
-    controleORI_ANDI     : out std_logic;
     habEscritaReg        : out std_logic;
     muxControleRtImediato: out std_logic;
     controleTipoR        : out std_logic;
@@ -52,20 +50,8 @@ architecture arquitetura of if is
     
     signal controle: std_logic_vector(13 downto 0);
     --controle
-    signal JR : std_logic;
-    signal muxPC_BEQ_JMP : std_logic;
     signal muxControleRtRd : std_logic_vector(1 downto 0);
-    signal controleORI_ANDI : std_logic;
-    signal muxControleRtImediato : std_logic;
-    signal controleTipoR : std_logic;
-    signal muxControleULARAM : std_logic_vector(1 downto 0);	
-    signal habilitaBEQ : std_logic;
-    signal habilitaBNE : std_logic;
-    signal habLeituraRAM: std_logic;
-    signal habilitaEscritaRAM: std_logic;
-    
-    signal PCSelectorMUX : std_logic;
-    signal ULACtrl : std_logic_vector (2 downto 0);
+    signal controleORI_ANDI : std_logic;	
 
     
     
