@@ -12,6 +12,8 @@ entity ex is
     CLK : in std_logic;
     opCode : in std_logic_vector (5 downto 0);
     funct: in std_logic_vector (5 downto 0);
+    Rt_IN : in std_logic_vector (4 downto 0);
+    Rd_IN : in std_logic_vector (4 downto 0);
     saidaExtensor : in std_logic_vector(larguraDados-1 downto 0);
     Rs_OUT : in std_logic_vector(larguraDados-1 downto 0);
     Rt_OUT : in std_logic_vector(larguraDados-1 downto 0);
@@ -19,6 +21,7 @@ entity ex is
     saidaSomador : out std_logic_vector(larguraDados-1 downto 0);
     Saida_ULA : out std_logic_vector(larguraDados-1 downto 0);
     signalBEQ : out std_logic;
+    saidaMuxRtRd : out std_logic_vector (4 downto 0);
 
     muxControleRtImediato: in std_logic;
     controleTipoR        : in std_logic
@@ -65,6 +68,11 @@ SHIFTER : entity work.shifter generic map(larguraDado => 32)
 
 SOMADOR: entity work.somadorGenerico generic map (	larguraDados => 32)
 			 port map (entradaA => saidaIncrementaPC, entradaB => saidaShifter, saida => saidaSomador);
+
+MUX_RT_RD : entity work.muxGenerico4x1		generic map	(larguraDados => 5)
+			 port map (entradaA_MUX => Rt_IN, entradaB_MUX => Rd_IN, 
+							entradaC_MUX => "11111", entradaD_MUX => "00000",
+							seletor_MUX => muxControleRtRd, saida_MUX => saidaMuxRtRd);
 
              
 end architecture;

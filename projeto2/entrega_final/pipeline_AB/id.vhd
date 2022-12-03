@@ -20,8 +20,11 @@ entity id is
     Rt_OUT : out std_logic_vector(larguraDados-1 downto 0);
     saidaOpcode : out std_logic_vector (5 downto 0);
     saidaFunct : out std_logic_vector (5 downto 0);
+    Rt_IN_Reg : out std_logic_vector (4 downto 0);
+    Rd_IN_Reg : out std_logic_vector (4 downto 0);
     JR                   : out std_logic;
     muxPC_BEQ_JMP        : out std_logic;
+    muxControleRtRd      : out std_logic;
     habEscritaReg        : out std_logic;
     muxControleRtImediato: out std_logic;
     controleTipoR        : out std_logic;
@@ -37,7 +40,6 @@ architecture arquitetura of id is
 
     signal concatenaImediatoJPC : std_logic_vector (larguraDados-1 downto 0);
     
-    signal saidaMuxRtRd : std_logic_vector (4 downto 0);
     
     --Instrucao
     signal opCode : std_logic_vector (5 downto 0);
@@ -50,7 +52,6 @@ architecture arquitetura of id is
     
     signal controle: std_logic_vector(13 downto 0);
     --controle
-    signal muxControleRtRd : std_logic_vector(1 downto 0);
     signal controleORI_ANDI : std_logic;	
 
     
@@ -114,13 +115,12 @@ UNDIADE_LUI : entity work.LUI generic map(larguraDadoEntrada => 16, larguraDadoS
 			 port map (LUI_IN => imediato,
 							LUI_OUT => saidaLUI);
 
-MUX_RT_RD : entity work.muxGenerico4x1		generic map	(larguraDados => 5)
-			 port map (entradaA_MUX => Rt_IN, entradaB_MUX => Rd_IN, 
-							entradaC_MUX => "11111", entradaD_MUX => "00000",
-							seletor_MUX => muxControleRtRd, saida_MUX => saidaMuxRtRd);
+
 
 saidaOpcode <= opCode;
 saidaFunct <= funct;
+Rt_IN_Reg <= Rt_IN;
+Rd_IN_Reg <= Rd_IN;
 
 end architecture;
 
