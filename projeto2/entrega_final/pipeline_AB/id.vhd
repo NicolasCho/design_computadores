@@ -18,6 +18,8 @@ entity if is
     saidaExtensor : out std_logic_vector(larguraDados-1 downto 0);
     Rs_OUT : out std_logic_vector(larguraDados-1 downto 0);
     Rt_OUT : out std_logic_vector(larguraDados-1 downto 0);
+    saidaOpcode : out std_logic_vector (5 downto 0);
+    saidaFunct : out std_logic_vector (5 downto 0);
     JR                   : out std_logic;
     muxPC_BEQ_JMP        : out std_logic;
     muxControleRtRd      : out std_logic_vector(1 downto 0);
@@ -131,6 +133,8 @@ MUX_RT_RD : entity work.muxGenerico4x1		generic map	(larguraDados => 5)
 							entradaC_MUX => "11111", entradaD_MUX => "00000",
 							seletor_MUX => muxControleRtRd, saida_MUX => saidaMuxRtRd);
 
+saidaOpcode <= opCode;
+saidaFunct <= funct;
 
 end architecture;
 
