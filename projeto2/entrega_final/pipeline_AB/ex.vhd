@@ -66,4 +66,5 @@ SHIFTER : entity work.shifter generic map(larguraDado => 32)
 SOMADOR: entity work.somadorGenerico generic map (	larguraDados => 32)
 			 port map (entradaA => saidaIncrementaPC, entradaB => saidaShifter, saida => saidaSomador);
 
+             
 end architecture;

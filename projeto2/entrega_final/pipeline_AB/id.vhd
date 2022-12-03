@@ -20,7 +20,6 @@ entity id is
     Rt_OUT : out std_logic_vector(larguraDados-1 downto 0);
     saidaOpcode : out std_logic_vector (5 downto 0);
     saidaFunct : out std_logic_vector (5 downto 0);
-    PC: out std_logic_vector(larguraDados-1 downto 0);
     JR                   : out std_logic;
     muxPC_BEQ_JMP        : out std_logic;
     habEscritaReg        : out std_logic;
@@ -122,7 +121,6 @@ MUX_RT_RD : entity work.muxGenerico4x1		generic map	(larguraDados => 5)
 
 saidaOpcode <= opCode;
 saidaFunct <= funct;
-PC <= saidaIncrementaPC;
 
 end architecture;
 
