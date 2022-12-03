@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity if is
+entity id is
   -- Total de bits das entradas e saidas
   generic ( larguraDados : natural := 32;
         larguraEnderecos : natural := 32;
@@ -33,7 +33,7 @@ entity if is
   );
 end entity;
 
-architecture arquitetura of if is
+architecture arquitetura of id is
 
     signal concatenaImediatoJPC : std_logic_vector (larguraDados-1 downto 0);
     
