@@ -12,22 +12,20 @@ entity if is
     CLK : in std_logic;
     JR : in std_logic;
     muxPC_BEQ_JMP : in std_logic;
-    imediatoJ : in std_logic_vector(25 downto 0);
     Rs_OUT : in std_logic_vector(larguraDados-1 downto 0);
+    concatenaImediatoJPC: in std_logic_vector (larguraDados-1 downto 0);
     saidaMuxImediatoPC : in std_logic_vector(larguraDados-1 downto 0);
     formato_Instrucao : out std_logic_vector(larguraDados-1 downto 0);
-    PC_4 : out std_logic_vector(larguraDados-1 downto 0);
+    PC_4 : out std_logic_vector(larguraDados-1 downto 0)
   );
 end entity;
 
-architecture arquitetura of CicloUnicoCompleto is
+architecture arquitetura of if is
 
 
     signal EnderecoROM : std_logic_vector (larguraEnderecos-1 downto 0);
     signal saidaIncrementaPC : std_logic_vector (larguraEnderecos-1 downto 0);
     signal proxPC : std_logic_vector (larguraEnderecos-1 downto 0);
-    
-    signal concatenaImediatoJPC : std_logic_vector (larguraDados-1 downto 0);
 
     signal saidaMuxPC_BEQ_JMP : std_logic_vector(larguraDados-1 downto 0);
     
@@ -68,3 +66,5 @@ MUX_PC_BEQ_JMP : entity work.muxGenerico2x1 generic map (larguraDados => 32)
 			 seletor_MUX => muxPC_BEQ_JMP, saida_MUX => saidaMuxPC_BEQ_JMP);
 
 PC_4 <= saidaIncrementaPC;
+
+end architecture;
