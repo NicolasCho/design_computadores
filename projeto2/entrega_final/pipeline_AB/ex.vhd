@@ -10,8 +10,8 @@ entity ex is
   );
   port   (
     CLK : in std_logic;
-    opCode : in std_logic_vector(larguraDados-1 downto 0);
-    funct: in std_logic_vector (larguraDados-1 downto 0);
+    opCode : in std_logic_vector (5 downto 0);
+    funct: in std_logic_vector (5 downto 0);
     saidaExtensor : in std_logic_vector(larguraDados-1 downto 0);
     Rs_OUT : in std_logic_vector(larguraDados-1 downto 0);
     Rt_OUT : in std_logic_vector(larguraDados-1 downto 0);
