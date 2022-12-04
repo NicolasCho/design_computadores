@@ -31,6 +31,11 @@ architecture arquitetura of MIPS is
 	signal JR_signal : std_logic;
 	signal muxPC_BEQ_JMP_signal : std_logic;
 	signal Rs_OUT_signal : std_logic_vector(larguraDados-1 downto 0);
+	signal selMuxPC_BEQ_signal : std_logic;
+	signal saidaSomador_PASSA_signal : std_logic_vector(larguraDados-1 downto 0); 
+	signal saidaMuxULARAM_signal : std_logic_vector(larguraDados-1 downto 0);
+	signal habEscritaReg_PASSA_signal : std_logic;
+	signal saidaMuxRtRd_PASSA_signal : std_logic_vector (4 downto 0);
 	
 --registradores
 	signal saidaIF : std_logic_vector(63 downto 0);
@@ -42,6 +47,8 @@ architecture arquitetura of MIPS is
 	signal saidaEX : std_logic_vector(172 downto 0);
 	signal entradaMEM: std_logic_vector(172 downto 0);
     
+	signal saidaMEM : std_logic_vector(134 downto 0);
+	signal entradaWB : std_logic_vector(134 downto 0);
     
 begin
   
@@ -54,12 +61,12 @@ end generate;
 
 INSTRUCTION_FETCH : entity work.in_fetch  
           port map (CLK => CLK,
-						 enderecoBEQ =>,
+						 enderecoBEQ =>saidaSomador_PASSA_signal,
 						 concatenaImediatoJPC => concatenaImediatoJPC_signal,
 						 Rs_OUT => Rs_OUT_signal,
 						
 						 JR =>JR_signal,
-						 selMuxPC_BEQ =>,
+						 selMuxPC_BEQ =>selMuxPC_BEQ_signal,
 						 selMuxPC_BEQ_JMP =>muxPC_BEQ_JMP_signal,
 
 						 PC_4 => saidaIF(63 downto 32),
@@ -71,9 +78,9 @@ REG_IF_ID : entity work.registradorGenerico generic(larguraDados => 64)
 						 
 INSTRUCTION_DECODE : entity work.id
 			 port map (CLK  => CLK,
-						 WB =>,
-						 saidaMuxRtRd =>,
-						 saidaMuxULARAM =>,
+						 WB =>habEscritaReg_PASSA_signal,
+						 saidaMuxRtRd =>saidaMuxRtRd_PASSA_signal,
+						 saidaMuxULARAM =>saidaMuxULARAM_signal,
 						 formato_Instrucao =>entradaID(31 downto 0),
 						 saidaIncrementaPC => entradaID(63 downto 32),
 						 
@@ -167,35 +174,40 @@ MEMORY_ACCESS: entity work.mem
 					 Saida_ULA =>entradaMEM(100 downto 69),
 					 Rt_OUT =>entradaMEM(68 downto 37),
 					 saidaLUI =>entradaMEM(36 downto 5),
-					 saidaMuxRtRd  =>entradaMEM(4 downto 0)         
+					 saidaMuxRtRd  =>entradaMEM(4 downto 0) 
 					 
-					 saidaRAM  =>,
-					 saidaSomador_PASSA  =>,
-					 selMuxPC_BEQ =>,                               --
+					 selMuxPC_BEQ =>selMuxPC_BEQ_signal, 
+					 saidaSomador_PASSA  =>saidaSomador_PASSA_signal,
 					 
-					 habEscritaReg_PASSA  =>,         
-					 muxControleULARAM_PASSA  =>,
-					 Saida_ULA_PASSA  =>,
-					 saidaIncrementaPC_PASSA  =>,
-					 saidaLUI_PASSA  =>,
-					 saidaMuxRtRd_PASSA =>
+					 habEscritaReg_PASSA  =>saidaMEM(134),         
+					 muxControleULARAM_PASSA  =>saidaMEM(133),
+					 
+					 saidaIncrementaPC_PASSA  =>saidaMEM(132 downto 101),
+					 saidaRAM  =>saidaMEM(100 downto 69),          
+					 Saida_ULA_PASSA  =>saidaMEM(68 downto 37),				
+					 saidaLUI_PASSA  =>saidaMEM(36 downto 5),
+					 saidaMuxRtRd_PASSA => saidaMEM(4 downto 0)
 				  );
+				  
+REG_ID_EX : entity work.registradorGenerico generic(larguraDados => 135)
+				port map(DIN => saidaMEM, DOUT => entradaWB, ENABLE => '1', CLK => CLK, RST => '0');
+
 					  
 WRITE_BACK : entity work.wb
 			port map( CLK : in std_logic;
 	 
-					 habEscritaReg  =>,       
-					 muxControleULARAM  =>,
+					 habEscritaReg  => entradaWB(134),       
+					 muxControleULARAM  => entradaWB(133),
 					 
-					 saidaIncrementaPC  =>,
-					 saidaLUI   =>,
-					 saidaRAM  =>,
-					 Saida_ULA  =>,
-					 saidaMuxRtRd  =>,    
+					 saidaIncrementaPC  =>entradaWB(132 downto 101),
+					 saidaRAM  =>entradaWB(100 downto 69),
+					 Saida_ULA  =>entradaWB(68 downto 37),
+					 saidaLUI   =>entradaWB(36 downto 5),
+					 saidaMuxRtRd  =>entradaWB(4 downto 0),    
 					 
-					 saidaMuxULARAM  =>,
-					 habEscritaReg_PASSA  =>,
-					 saidaMuxRtRd_PASSA =>
+					 saidaMuxULARAM  =>saidaMuxULARAM_signal,
+					 habEscritaReg_PASSA  =>habEscritaReg_PASSA_signal,
+					 saidaMuxRtRd_PASSA =>saidaMuxRtRd_PASSA_signal
 				  );
              
 end architecture;

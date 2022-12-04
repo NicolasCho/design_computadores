@@ -14,9 +14,9 @@ entity wb is
     muxControleULARAM    : in std_logic_vector(1 downto 0); --
 	 
 	 saidaIncrementaPC : in std_logic_vector(larguraDados-1 downto 0);
-	 saidaLUI  : in std_logic_vector(larguraDados-1 downto 0);  
 	 saidaRAM : in std_logic_vector(larguraDados-1 downto 0);
-    Saida_ULA : in std_logic_vector(larguraDados-1 downto 0);
+	 Saida_ULA : in std_logic_vector(larguraDados-1 downto 0);
+	 saidaLUI  : in std_logic_vector(larguraDados-1 downto 0);  
 	 saidaMuxRtRd : in std_logic_vector (4 downto 0);     
 	 
     saidaMuxULARAM : out std_logic_vector(larguraDados-1 downto 0);

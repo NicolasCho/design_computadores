@@ -26,14 +26,15 @@ entity mem is
 	 saidaLUI  : in std_logic_vector(larguraDados-1 downto 0);     
 	 saidaMuxRtRd : in std_logic_vector (4 downto 0);              
 	 
-    saidaRAM : out std_logic_vector(larguraDados-1 downto 0);
-	 saidaSomador_PASSA : out std_logic_vector(larguraDados-1 downto 0);  --
-	 selMuxPC_BEQ : out std_logic;                                 --
+	 selMuxPC_BEQ : out std_logic;
+	 saidaSomador_PASSA : out std_logic_vector(larguraDados-1 downto 0); 
 	 
 	 habEscritaReg_PASSA        : out std_logic;                
     muxControleULARAM_PASSA    : out std_logic_vector(1 downto 0);
-	 Saida_ULA_PASSA : out std_logic_vector(larguraDados-1 downto 0);
+	 
 	 saidaIncrementaPC_PASSA : out std_logic_vector(larguraDados-1 downto 0);
+    saidaRAM : out std_logic_vector(larguraDados-1 downto 0);                            --
+	 Saida_ULA_PASSA : out std_logic_vector(larguraDados-1 downto 0);
 	 saidaLUI_PASSA : out std_logic_vector(larguraDados-1 downto 0);
     saidaMuxRtRd_PASSA : out std_logic_vector (4 downto 0)
   );
