@@ -18,7 +18,9 @@ entity in_fetch is
 	 selMuxPC_BEQ_JMP: in std_logic;  --controle
 
 	 PC_4 : out std_logic_vector(larguraDados-1 downto 0);
-    formato_Instrucao : out std_logic_vector(larguraDados-1 downto 0)
+    formato_Instrucao : out std_logic_vector(larguraDados-1 downto 0);
+	 -----
+	 PC_OUT : out std_logic_vector(larguraDados-1 downto 0)
   );
 end entity;
 
@@ -34,7 +36,7 @@ architecture arquitetura of in_fetch is
     
     
 begin
-
+PC_OUT <= EnderecoROM;
 
 PC : entity work.registradorGenerico   generic map (larguraDados => larguraEnderecos)
           port map (DIN => proxPC, DOUT => EnderecoROM, ENABLE => '1', CLK => CLK, RST => '0');

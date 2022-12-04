@@ -50,6 +50,10 @@ architecture arquitetura of MIPS is
 	signal saidaMEM : std_logic_vector(135 downto 0);
 	signal entradaWB : std_logic_vector(135 downto 0);
     
+--visualizacao
+	signal PC_OUT : std_logic_vector(larguraDados-1 downto 0);
+	signal saidaMuxVisualizacao : std_logic_vector(larguraDados-1 downto 0);
+
 begin
   
 gravar:  if simulacao generate
@@ -70,7 +74,9 @@ INSTRUCTION_FETCH : entity work.in_fetch
 						 selMuxPC_BEQ_JMP =>muxPC_BEQ_JMP_signal,
 
 						 PC_4 => saidaIF(63 downto 32),
-						 formato_Instrucao => saidaIF(31 downto 0)
+						 formato_Instrucao => saidaIF(31 downto 0),
+						 
+						 PC_OUT =>PC_OUT
 					  );
 					 
 REG_IF_ID : entity work.registradorGenerico generic map(larguraDados => 64)
@@ -209,5 +215,29 @@ WRITE_BACK : entity work.wb
 					 habEscritaReg_PASSA  =>habEscritaReg_PASSA_signal,
 					 saidaMuxRtRd_PASSA =>saidaMuxRtRd_PASSA_signal
 				  );
-             
+ 
+--------------------------------------------------------------------------------- 
+MUX_VISUALIZACAO: entity work.muxGenerico4x1 generic map (larguraDados => 32)
+			 port map (entradaA_MUX => PC_OUT, entradaB_MUX => entradaEX(169 downto 138),
+						entradaC_MUX => saidaEX(100 downto 69), entradaD_MUX => saidaMuxULARAM_signal,
+						seletor_MUX => SW(1)&SW(0), saida_MUX => saidaMuxVisualizacao);
+ 
+DISPLAY : entity work.logicaDisplay  
+			port map(dado => saidaMuxVisualizacao(23 downto 0),
+						hex0 => HEX0,
+						hex1 => HEX1,
+						hex2 => HEX2,
+						hex3 => HEX3,
+						hex4 => HEX4,
+						hex5 => HEX5);
+
+LEDR(3 downto 0) <= saidaMuxVisualizacao(27 downto 24);
+LEDR(7 downto 4) <= saidaMuxVisualizacao(31 downto 28); 
+ 
+ 
+ 
+LEDR(9) <= saidaEX(101);
+LEDR(8) <= habEscritaReg_PASSA_signal;
+
+ 
 end architecture;

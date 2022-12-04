@@ -51,6 +51,8 @@ Saida_ULA_PASSA <= Saida_ULA;
 saidaIncrementaPC_PASSA <= saidaIncrementaPC;
 saidaLUI_PASSA <= saidaLUI;
 saidaMuxRtRd_PASSA <= saidaMuxRtRd;
+habEscritaReg_PASSA <= habEscritaReg;
+muxControleULARAM_PASSA <= muxControleULARAM;
 
 saidaSomador_PASSA <= saidaSomador;
 selMuxPC_BEQ <= (habilitaBEQ or habilitaBNE) and saidaMUX_BEQ_BNE;

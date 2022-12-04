@@ -32,7 +32,7 @@ begin
  
 --PASSA
 habEscritaReg_PASSA <= habEscritaReg;
-saidaMuxRtRd_PASSA <= saidaMuxRtRd_PASSA;
+saidaMuxRtRd_PASSA <= saidaMuxRtRd;
 
 MUX_ULA_RAM : entity work.muxGenerico4x1  generic map (larguraDados => 32)
 			 port map (entradaA_MUX => Saida_ULA, entradaB_MUX => saidaRAM,
