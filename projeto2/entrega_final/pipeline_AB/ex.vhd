@@ -6,25 +6,45 @@ entity ex is
   generic ( larguraDados : natural := 32;
         larguraEnderecos : natural := 32;
 		  larguraInstrucao : natural := 32;
-        simulacao : boolean := FALSE -- para gravar na placa, altere de TRUE para FALSE
+        
   );
   port   (
     CLK : in std_logic;
-    opCode : in std_logic_vector (5 downto 0);
-    funct: in std_logic_vector (5 downto 0);
+	 
+    muxControleRtRd      : in std_logic;  --
+    habEscritaReg        : in std_logic;  
+    muxControleRtImediato: in std_logic;  --
+    controleTipoR        : in std_logic;  --
+    muxControleULARAM    : in std_logic_vector(1 downto 0);
+    habilitaBEQ          : in std_logic;
+    habilitaBNE          : in std_logic;
+    habLeituraRAM        : in std_logic;
+    habilitaEscritaRAM   : in std_logic;
+	
+    opCode : in std_logic_vector (5 downto 0); --
+    funct: in std_logic_vector (5 downto 0);   --
+	 
+	 saidaIncrementaPC : in std_logic_vector(larguraDados-1 downto 0);	 Rs_OUT : in std_logic_vector(larguraDados-1 downto 0);
+    Rt_OUT : in std_logic_vector(larguraDados-1 downto 0);
+	 saidaExtensor : in std_logic_vector(larguraDados-1 downto 0);
+	 saidaLUI : in std_logic_vector(larguraDados-1 downto 0);
     Rt_IN : in std_logic_vector (4 downto 0);
     Rd_IN : in std_logic_vector (4 downto 0);
-    saidaExtensor : in std_logic_vector(larguraDados-1 downto 0);
-    Rs_OUT : in std_logic_vector(larguraDados-1 downto 0);
-    Rt_OUT : in std_logic_vector(larguraDados-1 downto 0);
-    saidaIncrementaPC : in std_logic_vector(larguraDados-1 downto 0);
-    saidaSomador : out std_logic_vector(larguraDados-1 downto 0);
+	 
+	 habEscritaReg_PASSA        : out std_logic;
+	 muxControleULARAM_PASSA    : out std_logic_vector(1 downto 0);
+    habilitaBEQ_PASSA          : out std_logic;
+    habilitaBNE_PASSA          : out std_logic;
+    habLeituraRAM_PASSA        : out std_logic;
+    habilitaEscritaRAM_PASSA   : out std_logic;
+	
+	 saidaIncrementaPC_PASSA : out std_logic_vector(larguraDados-1 downto 0);
+    saidaSomador : out std_logic_vector(larguraDados-1 downto 0);             
+	 signalBEQ : out std_logic;
     Saida_ULA : out std_logic_vector(larguraDados-1 downto 0);
-    signalBEQ : out std_logic;
-    saidaMuxRtRd : out std_logic_vector (4 downto 0);
-
-    muxControleRtImediato: in std_logic;
-    controleTipoR        : in std_logic
+	 Rt_OUT_PASSA : out std_logic_vector(larguraDados-1 downto 0);
+	 saidaLUI_PASSA : out std_logic_vector(larguraDados-1 downto 0);
+    saidaMuxRtRd : out std_logic_vector (4 downto 0)
   );
 end entity;
 
@@ -37,18 +57,20 @@ architecture arquitetura of ex is
 
     
     
-  begin
-  
-  -- Instanciando os componentes:
-  
-  -- Para simular, fica mais simples tirar o edgeDetector
-  
-  gravar:  if simulacao generate
-  CLK <= KEY(0);
-  else generate
-  detectorSub0: work.edgeDetector(bordaSubida)
-          port map (clk => CLOCK_50, entrada => (not KEY(0)), saida => CLK);
-  end generate;
+begin
+
+--PASSA
+habEscritaReg_PASSA        <= habEscritaReg;
+muxControleULARAM_PASSA    <= muxControleULARAM;
+habilitaBEQ_PASSA          <= habilitaBEQ;
+habilitaBNE_PASSA          <= habilitaBNE;
+habLeituraRAM_PASSA        <= habLeituraRAM;
+habilitaEscritaRAM_PASSA   <= habilitaEscritaRAM;
+
+saidaIncrementaPC_PASSA    <= saidaIncrementaPC;
+saidaLUI_PASSA             <= saidaLUI;
+Rt_OUT_PASSA               <= Rt_OUT;
+
 
 MUX_RT_IMEDIATO : entity work.muxGenerico2x1  generic map (larguraDados => 32)
 			 port map (entradaA_MUX => Rt_OUT, entradaB_MUX => saidaExtensor, seletor_MUX => muxControleRtImediato,

@@ -6,20 +6,24 @@ entity id is
   generic ( larguraDados : natural := 32;
         larguraEnderecos : natural := 32;
 		  larguraInstrucao : natural := 32;
-        
+        simulacao : boolean := FALSE -- para gravar na placa, altere de TRUE para FALSE
   );
   port   (
     CLK : in std_logic;
-    WB : in std_logic; --habReg
-	 saidaMuxRtRd : in std_logic_vector(4 downto 0)
+    WB : in std_logic;
     saidaMuxULARAM : in std_logic_vector(larguraDados-1 downto 0);
     formato_Instrucao: in std_logic_vector (larguraDados-1 downto 0);
     saidaIncrementaPC : in std_logic_vector(larguraDados-1 downto 0);
-	 
-	 concatenaImediatoJPC : out std_logic_vector(larguraDados-1 downto 0);  --USA NA ETAPA ANTERIOR (IF): jump
-	 
-	 JR                   : out std_logic;  --USA NA ETAPA ANTERIOR (IF): jump
-    muxPC_BEQ_JMP        : out std_logic;  --USA NA ETAPA ANTERIOR (IF): jump
+    saidaLUI : out std_logic_vector(larguraDados-1 downto 0);
+    saidaExtensor : out std_logic_vector(larguraDados-1 downto 0);
+    Rs_OUT : out std_logic_vector(larguraDados-1 downto 0);
+    Rt_OUT : out std_logic_vector(larguraDados-1 downto 0);
+    saidaOpcode : out std_logic_vector (5 downto 0);
+    saidaFunct : out std_logic_vector (5 downto 0);
+    Rt_IN_Reg : out std_logic_vector (4 downto 0);
+    Rd_IN_Reg : out std_logic_vector (4 downto 0);
+    JR                   : out std_logic;
+    muxPC_BEQ_JMP        : out std_logic;
     muxControleRtRd      : out std_logic;
     habEscritaReg        : out std_logic;
     muxControleRtImediato: out std_logic;
@@ -28,22 +32,15 @@ entity id is
     habilitaBEQ          : out std_logic;
     habilitaBNE          : out std_logic;
     habLeituraRAM        : out std_logic;
-    habilitaEscritaRAM   : out std_logic;
-	 
-	 saidaOpcode : out std_logic_vector (5 downto 0);
-    saidaFunct : out std_logic_vector (5 downto 0);
-	 
-	 saidaIncrementaPC_PASSA : in std_logic_vector(larguraDados-1 downto 0);
-	 Rs_OUT : out std_logic_vector(larguraDados-1 downto 0);  --USA NA ETAPA ANTERIOR (IF): jump e futura(ex)
-	 Rt_OUT : out std_logic_vector(larguraDados-1 downto 0);
-	 saidaExtensor : out std_logic_vector(larguraDados-1 downto 0);
-    saidaLUI : out std_logic_vector(larguraDados-1 downto 0);
-    Rt_IN_Reg : out std_logic_vector (4 downto 0);
-    Rd_IN_Reg : out std_logic_vector (4 downto 0)
+    habilitaEscritaRAM   : out std_logic
   );
 end entity;
 
-architecture arquitetura of id is    
+architecture arquitetura of id is
+
+    signal concatenaImediatoJPC : std_logic_vector (larguraDados-1 downto 0);
+    
+    
     --Instrucao
     signal opCode : std_logic_vector (5 downto 0);
     signal Rs_IN : std_logic_vector (4 downto 0);
@@ -59,7 +56,18 @@ architecture arquitetura of id is
 
     
     
-begin
+  begin
+  
+  -- Instanciando os componentes:
+  
+  -- Para simular, fica mais simples tirar o edgeDetector
+  
+  gravar:  if simulacao generate
+  CLK <= KEY(0);
+  else generate
+  detectorSub0: work.edgeDetector(bordaSubida)
+          port map (clk => CLOCK_50, entrada => (not KEY(0)), saida => CLK);
+  end generate;
 
 -- Manipulando a instrucao
 opCode    <= formato_Instrucao (31 downto 26);
@@ -85,7 +93,6 @@ habLeituraRAM           <= controle(1);
 habilitaEscritaRAM      <= controle(0);
 
 concatenaImediatoJPC <= saidaIncrementaPC(31 downto 28) & imediatoJ & "00";
-saidaIncrementaPC_PASSA <= saidaIncrementaPC;
 
 BANCO_REGISTRADORES : entity work.bancoReg generic map (larguraDados => larguraDados, larguraEndBancoRegs => 5)
 			port map (clk   	=> CLK,
@@ -104,7 +111,7 @@ EXTENSOR_SINAL : entity work.estendeSinalGenerico generic map(larguraDadoEntrada
 			 port map (estendeSinal_IN => imediato, ORI_ANDI => controleORI_ANDI,
 							estendeSinal_OUT => saidaExtensor);
 							
-UNIDADE_LUI : entity work.LUI generic map(larguraDadoEntrada => 16, larguraDadoSaida => 32)
+UNDIADE_LUI : entity work.LUI generic map(larguraDadoEntrada => 16, larguraDadoSaida => 32)
 			 port map (LUI_IN => imediato,
 							LUI_OUT => saidaLUI);
 
