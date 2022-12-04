@@ -5,7 +5,7 @@ entity in_fetch is
   -- Total de bits das entradas e saidas
   generic ( larguraDados : natural := 32;
         larguraEnderecos : natural := 32;
-		  larguraInstrucao : natural := 32;
+		  larguraInstrucao : natural := 32
   );
   port   (
     CLK : in std_logic;
@@ -15,7 +15,7 @@ entity in_fetch is
 	
     JR : in std_logic; --controle
     selMuxPC_BEQ : in std_logic;    --logica BEQ
-	 selMuxPC_BEQ_JMP in std_logic;  --controle
+	 selMuxPC_BEQ_JMP: in std_logic;  --controle
 
 	 PC_4 : out std_logic_vector(larguraDados-1 downto 0);
     formato_Instrucao : out std_logic_vector(larguraDados-1 downto 0)

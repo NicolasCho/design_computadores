@@ -5,13 +5,12 @@ entity ex is
   -- Total de bits das entradas e saidas
   generic ( larguraDados : natural := 32;
         larguraEnderecos : natural := 32;
-		  larguraInstrucao : natural := 32;
-        
+		  larguraInstrucao : natural := 32       
   );
   port   (
     CLK : in std_logic;
 	 
-    muxControleRtRd      : in std_logic;  --
+    muxControleRtRd      : in std_logic_vector(1 downto 0);
     habEscritaReg        : in std_logic;  
     muxControleRtImediato: in std_logic;  --
     controleTipoR        : in std_logic;  --

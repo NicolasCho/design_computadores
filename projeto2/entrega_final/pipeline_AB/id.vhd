@@ -5,13 +5,12 @@ entity id is
   -- Total de bits das entradas e saidas
   generic ( larguraDados : natural := 32;
         larguraEnderecos : natural := 32;
-		  larguraInstrucao : natural := 32;
-        
+		  larguraInstrucao : natural := 32
   );
   port   (
     CLK : in std_logic;
     WB : in std_logic; --habReg
-	 saidaMuxRtRd : in std_logic_vector(4 downto 0)
+	 saidaMuxRtRd : in std_logic_vector(4 downto 0);
     saidaMuxULARAM : in std_logic_vector(larguraDados-1 downto 0);
     formato_Instrucao: in std_logic_vector (larguraDados-1 downto 0);
     saidaIncrementaPC : in std_logic_vector(larguraDados-1 downto 0);
@@ -20,7 +19,7 @@ entity id is
 	 
 	 JR                   : out std_logic;  --USA NA ETAPA ANTERIOR (IF): jump
     muxPC_BEQ_JMP        : out std_logic;  --USA NA ETAPA ANTERIOR (IF): jump
-    muxControleRtRd      : out std_logic;
+    muxControleRtRd      : out std_logic_vector(1 downto 0);
     habEscritaReg        : out std_logic;
     muxControleRtImediato: out std_logic;
     controleTipoR        : out std_logic;
@@ -33,7 +32,7 @@ entity id is
 	 saidaOpcode : out std_logic_vector (5 downto 0);
     saidaFunct : out std_logic_vector (5 downto 0);
 	 
-	 saidaIncrementaPC_PASSA : in std_logic_vector(larguraDados-1 downto 0);
+	 saidaIncrementaPC_PASSA : out std_logic_vector(larguraDados-1 downto 0);
 	 Rs_OUT : out std_logic_vector(larguraDados-1 downto 0);  --USA NA ETAPA ANTERIOR (IF): jump e futura(ex)
 	 Rt_OUT : out std_logic_vector(larguraDados-1 downto 0);
 	 saidaExtensor : out std_logic_vector(larguraDados-1 downto 0);

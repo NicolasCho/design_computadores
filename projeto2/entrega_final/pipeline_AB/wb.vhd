@@ -5,7 +5,7 @@ entity wb is
   -- Total de bits das entradas e saidas
   generic ( larguraDados : natural := 32;
         larguraEnderecos : natural := 32;
-		  larguraInstrucao : natural := 32;
+		  larguraInstrucao : natural := 32
   );
   port   (
     CLK : in std_logic;

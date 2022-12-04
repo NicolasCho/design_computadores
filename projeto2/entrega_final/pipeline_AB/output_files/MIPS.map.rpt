@@ -1,0 +1,923 @@
+Analysis & Synthesis report for MIPS
+Sun Dec 04 04:57:53 2022
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Parameter Settings for User Entity Instance: Top-level Entity: |MIPS
+ 10. Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH
+ 11. Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH|registradorGenerico:PC
+ 12. Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH|somaConstante:incrementaPC
+ 13. Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH|ROMMIPS:ROM
+ 14. Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH|muxGenerico2x1:MUX_PC_BEQ
+ 15. Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH|muxGenerico2x1:MUX_PC_BEQ_JMP
+ 16. Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH|muxGenerico2x1:MUX_PC_BEQ_JMP_JR
+ 17. Parameter Settings for User Entity Instance: registradorGenerico:REG_IF_ID
+ 18. Parameter Settings for User Entity Instance: id:INSTRUCTION_DECODE
+ 19. Parameter Settings for User Entity Instance: id:INSTRUCTION_DECODE|bancoReg:BANCO_REGISTRADORES
+ 20. Parameter Settings for User Entity Instance: id:INSTRUCTION_DECODE|estendeSinalGenerico:EXTENSOR_SINAL
+ 21. Parameter Settings for User Entity Instance: id:INSTRUCTION_DECODE|LUI:UNIDADE_LUI
+ 22. Parameter Settings for User Entity Instance: registradorGenerico:REG_ID_EX
+ 23. Parameter Settings for User Entity Instance: ex:EXECUTE
+ 24. Parameter Settings for User Entity Instance: ex:EXECUTE|muxGenerico2x1:MUX_RT_IMEDIATO
+ 25. Parameter Settings for User Entity Instance: ex:EXECUTE|ULA:ULA
+ 26. Parameter Settings for User Entity Instance: ex:EXECUTE|unidadeControleULA:UNIDADE_CONTROLE_ULA|muxGenerico2x1:MUX2_1
+ 27. Parameter Settings for User Entity Instance: ex:EXECUTE|shifter:SHIFTER
+ 28. Parameter Settings for User Entity Instance: ex:EXECUTE|somadorGenerico:SOMADOR
+ 29. Parameter Settings for User Entity Instance: ex:EXECUTE|muxGenerico4x1:MUX_RT_RD
+ 30. Parameter Settings for User Entity Instance: registradorGenerico:REG_EX_MEM
+ 31. Parameter Settings for User Entity Instance: mem:MEMORY_ACCESS
+ 32. Parameter Settings for User Entity Instance: mem:MEMORY_ACCESS|RAMMIPS:RAM
+ 33. Parameter Settings for User Entity Instance: registradorGenerico:REG_MEM_WB
+ 34. Parameter Settings for User Entity Instance: wb:WRITE_BACK
+ 35. Parameter Settings for User Entity Instance: wb:WRITE_BACK|muxGenerico4x1:MUX_ULA_RAM
+ 36. Port Connectivity Checks: "registradorGenerico:REG_MEM_WB"
+ 37. Port Connectivity Checks: "registradorGenerico:REG_EX_MEM"
+ 38. Port Connectivity Checks: "ex:EXECUTE|muxGenerico4x1:MUX_RT_RD"
+ 39. Port Connectivity Checks: "ex:EXECUTE|ULA:ULA|ULA_bit_inicial:BIT31|muxGenerico4x1_1bit:MUX4_1"
+ 40. Port Connectivity Checks: "ex:EXECUTE|ULA:ULA|ULA_1_bit:BIT1|muxGenerico4x1_1bit:MUX4_1"
+ 41. Port Connectivity Checks: "registradorGenerico:REG_ID_EX"
+ 42. Port Connectivity Checks: "registradorGenerico:REG_IF_ID"
+ 43. Port Connectivity Checks: "in_fetch:INSTRUCTION_FETCH|registradorGenerico:PC"
+ 44. Post-Synthesis Netlist Statistics for Top Partition
+ 45. Elapsed Time Per Partition
+ 46. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sun Dec 04 04:57:53 2022       ;
+; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Revision Name                   ; MIPS                                        ;
+; Top-level Entity Name           ; MIPS                                        ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 67                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CEBA7F23C7        ;                    ;
+; Top-level entity name                                                           ; MIPS               ; MIPS               ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; VHDL Show LMF Mapping Messages                                                  ; Off                ;                    ;
+; VHDL Version                                                                    ; VHDL_2008          ; VHDL_1993          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                            ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                                                     ; Library ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+---------+
+; in_fetch.vhd                     ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/in_fetch.vhd             ;         ;
+; wb.vhd                           ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/wb.vhd                   ;         ;
+; unidadeControleULA.vhd           ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/unidadeControleULA.vhd   ;         ;
+; unidadeControle.vhd              ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/unidadeControle.vhd      ;         ;
+; ULA_bit_inicial.vhd              ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_bit_inicial.vhd      ;         ;
+; ULA_bit_final.vhd                ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_bit_final.vhd        ;         ;
+; ULA_1_bit.vhd                    ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_1_bit.vhd            ;         ;
+; ULA.vhd                          ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA.vhd                  ;         ;
+; somadorGenerico.vhd              ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/somadorGenerico.vhd      ;         ;
+; somadorCompleto.vhd              ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/somadorCompleto.vhd      ;         ;
+; somaConstante.vhd                ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/somaConstante.vhd        ;         ;
+; shifter.vhd                      ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/shifter.vhd              ;         ;
+; ROMMIPS.vhd                      ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ROMMIPS.vhd              ;         ;
+; registradorGenerico.vhd          ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/registradorGenerico.vhd  ;         ;
+; RAMMIPS.vhd                      ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/RAMMIPS.vhd              ;         ;
+; muxGenerico4x1_1bit.vhd          ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico4x1_1bit.vhd  ;         ;
+; muxGenerico4x1.vhd               ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico4x1.vhd       ;         ;
+; muxGenerico2x1_1bit.vhd          ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico2x1_1bit.vhd  ;         ;
+; muxGenerico2x1.vhd               ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico2x1.vhd       ;         ;
+; MIPS.vhd                         ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd                 ;         ;
+; mem.vhd                          ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/mem.vhd                  ;         ;
+; LUI.vhd                          ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/LUI.vhd                  ;         ;
+; id.vhd                           ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/id.vhd                   ;         ;
+; ex.vhd                           ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ex.vhd                   ;         ;
+; estendeSinalGenerico.vhd         ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/estendeSinalGenerico.vhd ;         ;
+; edgeDetector.vhd                 ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/edgeDetector.vhd         ;         ;
+; decoderOpCodeULA.vhd             ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/decoderOpCodeULA.vhd     ;         ;
+; decoderFunctULA.vhd              ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/decoderFunctULA.vhd      ;         ;
+; bancoReg.vhd                     ; yes             ; User VHDL File  ; C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/bancoReg.vhd             ;         ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary            ;
++---------------------------------------------+----------+
+; Resource                                    ; Usage    ;
++---------------------------------------------+----------+
+; Estimate of Logic utilization (ALMs needed) ; 0        ;
+;                                             ;          ;
+; Combinational ALUT usage for logic          ; 0        ;
+;     -- 7 input functions                    ; 0        ;
+;     -- 6 input functions                    ; 0        ;
+;     -- 5 input functions                    ; 0        ;
+;     -- 4 input functions                    ; 0        ;
+;     -- <=3 input functions                  ; 0        ;
+;                                             ;          ;
+; Dedicated logic registers                   ; 0        ;
+;                                             ;          ;
+; I/O pins                                    ; 67       ;
+;                                             ;          ;
+; Total DSP Blocks                            ; 0        ;
+;                                             ;          ;
+; Maximum fan-out node                        ; CLOCK_50 ;
+; Maximum fan-out                             ; 1        ;
+; Total fan-out                               ; 67       ;
+; Average fan-out                             ; 0.50     ;
++---------------------------------------------+----------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |MIPS                      ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 67   ; 0            ; |MIPS               ; MIPS        ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |MIPS ;
++------------------+-------+-------------------------------------------+
+; Parameter Name   ; Value ; Type                                      ;
++------------------+-------+-------------------------------------------+
+; larguraDados     ; 32    ; Signed Integer                            ;
+; larguraEnderecos ; 32    ; Signed Integer                            ;
+; larguraInstrucao ; 32    ; Signed Integer                            ;
+; simulacao        ; false ; Enumerated                                ;
++------------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH ;
++------------------+-------+----------------------------------------------+
+; Parameter Name   ; Value ; Type                                         ;
++------------------+-------+----------------------------------------------+
+; larguradados     ; 32    ; Signed Integer                               ;
+; larguraenderecos ; 32    ; Signed Integer                               ;
+; largurainstrucao ; 32    ; Signed Integer                               ;
++------------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH|registradorGenerico:PC ;
++----------------+-------+-----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                  ;
++----------------+-------+-----------------------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                                        ;
++----------------+-------+-----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH|somaConstante:incrementaPC ;
++----------------+-------+---------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                      ;
++----------------+-------+---------------------------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                                            ;
+; constante      ; 4     ; Signed Integer                                                            ;
++----------------+-------+---------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH|ROMMIPS:ROM ;
++-----------------+-------+-----------------------------------------------------------+
+; Parameter Name  ; Value ; Type                                                      ;
++-----------------+-------+-----------------------------------------------------------+
+; datawidth       ; 32    ; Signed Integer                                            ;
+; addrwidth       ; 32    ; Signed Integer                                            ;
+; memoryaddrwidth ; 6     ; Signed Integer                                            ;
++-----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH|muxGenerico2x1:MUX_PC_BEQ ;
++----------------+-------+--------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                     ;
++----------------+-------+--------------------------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                                           ;
++----------------+-------+--------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH|muxGenerico2x1:MUX_PC_BEQ_JMP ;
++----------------+-------+------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                         ;
++----------------+-------+------------------------------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                                               ;
++----------------+-------+------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: in_fetch:INSTRUCTION_FETCH|muxGenerico2x1:MUX_PC_BEQ_JMP_JR ;
++----------------+-------+---------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                            ;
++----------------+-------+---------------------------------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: registradorGenerico:REG_IF_ID ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; larguradados   ; 64    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: id:INSTRUCTION_DECODE ;
++------------------+-------+-----------------------------------------+
+; Parameter Name   ; Value ; Type                                    ;
++------------------+-------+-----------------------------------------+
+; larguradados     ; 32    ; Signed Integer                          ;
+; larguraenderecos ; 32    ; Signed Integer                          ;
+; largurainstrucao ; 32    ; Signed Integer                          ;
++------------------+-------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: id:INSTRUCTION_DECODE|bancoReg:BANCO_REGISTRADORES ;
++---------------------+-------+-------------------------------------------------------------------+
+; Parameter Name      ; Value ; Type                                                              ;
++---------------------+-------+-------------------------------------------------------------------+
+; larguradados        ; 32    ; Signed Integer                                                    ;
+; larguraendbancoregs ; 5     ; Signed Integer                                                    ;
++---------------------+-------+-------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: id:INSTRUCTION_DECODE|estendeSinalGenerico:EXTENSOR_SINAL ;
++--------------------+-------+---------------------------------------------------------------------------+
+; Parameter Name     ; Value ; Type                                                                      ;
++--------------------+-------+---------------------------------------------------------------------------+
+; larguradadoentrada ; 16    ; Signed Integer                                                            ;
+; larguradadosaida   ; 32    ; Signed Integer                                                            ;
++--------------------+-------+---------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: id:INSTRUCTION_DECODE|LUI:UNIDADE_LUI ;
++--------------------+-------+-------------------------------------------------------+
+; Parameter Name     ; Value ; Type                                                  ;
++--------------------+-------+-------------------------------------------------------+
+; larguradadoentrada ; 16    ; Signed Integer                                        ;
+; larguradadosaida   ; 32    ; Signed Integer                                        ;
++--------------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: registradorGenerico:REG_ID_EX ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; larguradados   ; 193   ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ex:EXECUTE ;
++------------------+-------+------------------------------+
+; Parameter Name   ; Value ; Type                         ;
++------------------+-------+------------------------------+
+; larguradados     ; 32    ; Signed Integer               ;
+; larguraenderecos ; 32    ; Signed Integer               ;
+; largurainstrucao ; 32    ; Signed Integer               ;
++------------------+-------+------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ex:EXECUTE|muxGenerico2x1:MUX_RT_IMEDIATO ;
++----------------+-------+---------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                          ;
++----------------+-------+---------------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                                ;
++----------------+-------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ex:EXECUTE|ULA:ULA ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; larguradados   ; 32    ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ex:EXECUTE|unidadeControleULA:UNIDADE_CONTROLE_ULA|muxGenerico2x1:MUX2_1 ;
++----------------+-------+----------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                         ;
++----------------+-------+----------------------------------------------------------------------------------------------+
+; larguradados   ; 3     ; Signed Integer                                                                               ;
++----------------+-------+----------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ex:EXECUTE|shifter:SHIFTER ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; larguradado    ; 32    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ex:EXECUTE|somadorGenerico:SOMADOR ;
++----------------+-------+--------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                   ;
++----------------+-------+--------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                         ;
++----------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ex:EXECUTE|muxGenerico4x1:MUX_RT_RD ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; larguradados   ; 5     ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: registradorGenerico:REG_EX_MEM ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; larguradados   ; 173   ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mem:MEMORY_ACCESS ;
++------------------+-------+-------------------------------------+
+; Parameter Name   ; Value ; Type                                ;
++------------------+-------+-------------------------------------+
+; larguradados     ; 32    ; Signed Integer                      ;
+; larguraenderecos ; 32    ; Signed Integer                      ;
+; largurainstrucao ; 32    ; Signed Integer                      ;
++------------------+-------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mem:MEMORY_ACCESS|RAMMIPS:RAM ;
++-----------------+-------+--------------------------------------------------+
+; Parameter Name  ; Value ; Type                                             ;
++-----------------+-------+--------------------------------------------------+
+; datawidth       ; 32    ; Signed Integer                                   ;
+; addrwidth       ; 32    ; Signed Integer                                   ;
+; memoryaddrwidth ; 6     ; Signed Integer                                   ;
++-----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: registradorGenerico:REG_MEM_WB ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; larguradados   ; 136   ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: wb:WRITE_BACK ;
++------------------+-------+---------------------------------+
+; Parameter Name   ; Value ; Type                            ;
++------------------+-------+---------------------------------+
+; larguradados     ; 32    ; Signed Integer                  ;
+; larguraenderecos ; 32    ; Signed Integer                  ;
+; largurainstrucao ; 32    ; Signed Integer                  ;
++------------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: wb:WRITE_BACK|muxGenerico4x1:MUX_ULA_RAM ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Port Connectivity Checks: "registradorGenerico:REG_MEM_WB" ;
++--------+-------+----------+--------------------------------+
+; Port   ; Type  ; Severity ; Details                        ;
++--------+-------+----------+--------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                   ;
+; rst    ; Input ; Info     ; Stuck at GND                   ;
++--------+-------+----------+--------------------------------+
+
+
++------------------------------------------------------------+
+; Port Connectivity Checks: "registradorGenerico:REG_EX_MEM" ;
++--------+-------+----------+--------------------------------+
+; Port   ; Type  ; Severity ; Details                        ;
++--------+-------+----------+--------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                   ;
+; rst    ; Input ; Info     ; Stuck at GND                   ;
++--------+-------+----------+--------------------------------+
+
+
++-----------------------------------------------------------------+
+; Port Connectivity Checks: "ex:EXECUTE|muxGenerico4x1:MUX_RT_RD" ;
++--------------+-------+----------+-------------------------------+
+; Port         ; Type  ; Severity ; Details                       ;
++--------------+-------+----------+-------------------------------+
+; entradac_mux ; Input ; Info     ; Stuck at VCC                  ;
+; entradad_mux ; Input ; Info     ; Stuck at GND                  ;
++--------------+-------+----------+-------------------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ex:EXECUTE|ULA:ULA|ULA_bit_inicial:BIT31|muxGenerico4x1_1bit:MUX4_1" ;
++--------------+-------+----------+---------------------------------------------------------------+
+; Port         ; Type  ; Severity ; Details                                                       ;
++--------------+-------+----------+---------------------------------------------------------------+
+; entradad_mux ; Input ; Info     ; Stuck at GND                                                  ;
++--------------+-------+----------+---------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ex:EXECUTE|ULA:ULA|ULA_1_bit:BIT1|muxGenerico4x1_1bit:MUX4_1" ;
++--------------+-------+----------+--------------------------------------------------------+
+; Port         ; Type  ; Severity ; Details                                                ;
++--------------+-------+----------+--------------------------------------------------------+
+; entradad_mux ; Input ; Info     ; Stuck at GND                                           ;
++--------------+-------+----------+--------------------------------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "registradorGenerico:REG_ID_EX" ;
++--------+-------+----------+-------------------------------+
+; Port   ; Type  ; Severity ; Details                       ;
++--------+-------+----------+-------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                  ;
+; rst    ; Input ; Info     ; Stuck at GND                  ;
++--------+-------+----------+-------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "registradorGenerico:REG_IF_ID" ;
++--------+-------+----------+-------------------------------+
+; Port   ; Type  ; Severity ; Details                       ;
++--------+-------+----------+-------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                  ;
+; rst    ; Input ; Info     ; Stuck at GND                  ;
++--------+-------+----------+-------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Port Connectivity Checks: "in_fetch:INSTRUCTION_FETCH|registradorGenerico:PC" ;
++--------+-------+----------+---------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                           ;
++--------+-------+----------+---------------------------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                                      ;
+; rst    ; Input ; Info     ; Stuck at GND                                      ;
++--------+-------+----------+---------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_lcell_comb     ; 1                           ;
+;     normal            ; 1                           ;
+;         0 data inputs ; 1                           ;
+; boundary_port         ; 67                          ;
+;                       ;                             ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Sun Dec 04 04:57:42 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MIPS -c MIPS
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file in_fetch.vhd
+    Info (12022): Found design unit 1: in_fetch-arquitetura File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/in_fetch.vhd Line: 25
+    Info (12023): Found entity 1: in_fetch File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/in_fetch.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file wb.vhd
+    Info (12022): Found design unit 1: wb-arquitetura File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/wb.vhd Line: 28
+    Info (12023): Found entity 1: wb File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/wb.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file unidadecontroleula.vhd
+    Info (12022): Found design unit 1: unidadeControleULA-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/unidadeControleULA.vhd Line: 14
+    Info (12023): Found entity 1: unidadeControleULA File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/unidadeControleULA.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file unidadecontrole.vhd
+    Info (12022): Found design unit 1: unidadeControle-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/unidadeControle.vhd Line: 11
+    Info (12023): Found entity 1: unidadeControle File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/unidadeControle.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file ula_bit_inicial.vhd
+    Info (12022): Found design unit 1: ULA_bit_inicial-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_bit_inicial.vhd Line: 18
+    Info (12023): Found entity 1: ULA_bit_inicial File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_bit_inicial.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file ula_bit_final.vhd
+    Info (12022): Found design unit 1: ULA_bit_final-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_bit_final.vhd Line: 19
+    Info (12023): Found entity 1: ULA_bit_final File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_bit_final.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file ula_1_bit.vhd
+    Info (12022): Found design unit 1: ULA_1_bit-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_1_bit.vhd Line: 18
+    Info (12023): Found entity 1: ULA_1_bit File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_1_bit.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file ula.vhd
+    Info (12022): Found design unit 1: ULA-arquitetura File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA.vhd Line: 21
+    Info (12023): Found entity 1: ULA File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file somadorgenerico.vhd
+    Info (12022): Found design unit 1: somadorGenerico-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/somadorGenerico.vhd Line: 17
+    Info (12023): Found entity 1: somadorGenerico File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/somadorGenerico.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file somadorcompleto.vhd
+    Info (12022): Found design unit 1: somadorCompleto-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/somadorCompleto.vhd Line: 13
+    Info (12023): Found entity 1: somadorCompleto File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/somadorCompleto.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file somaconstante.vhd
+    Info (12022): Found design unit 1: somaConstante-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/somaConstante.vhd Line: 18
+    Info (12023): Found entity 1: somaConstante File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/somaConstante.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file shifter.vhd
+    Info (12022): Found design unit 1: shifter-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/shifter.vhd Line: 18
+    Info (12023): Found entity 1: shifter File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/shifter.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file rommips.vhd
+    Info (12022): Found design unit 1: ROMMIPS-assincrona File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ROMMIPS.vhd Line: 15
+    Info (12023): Found entity 1: ROMMIPS File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ROMMIPS.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file registradorgenerico.vhd
+    Info (12022): Found design unit 1: registradorGenerico-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/registradorGenerico.vhd Line: 15
+    Info (12023): Found entity 1: registradorGenerico File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/registradorGenerico.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file rammips.vhd
+    Info (12022): Found design unit 1: RAMMIPS-assincrona File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/RAMMIPS.vhd Line: 18
+    Info (12023): Found entity 1: RAMMIPS File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/RAMMIPS.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file muxgenerico4x1_1bit.vhd
+    Info (12022): Found design unit 1: muxGenerico4x1_1bit-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico4x1_1bit.vhd Line: 13
+    Info (12023): Found entity 1: muxGenerico4x1_1bit File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico4x1_1bit.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file muxgenerico4x1.vhd
+    Info (12022): Found design unit 1: muxGenerico4x1-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico4x1.vhd Line: 14
+    Info (12023): Found entity 1: muxGenerico4x1 File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico4x1.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file muxgenerico2x1_1bit.vhd
+    Info (12022): Found design unit 1: muxGenerico2x1_1bit-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico2x1_1bit.vhd Line: 13
+    Info (12023): Found entity 1: muxGenerico2x1_1bit File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico2x1_1bit.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file muxgenerico2x1.vhd
+    Info (12022): Found design unit 1: muxGenerico2x1-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico2x1.vhd Line: 14
+    Info (12023): Found entity 1: muxGenerico2x1 File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico2x1.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file mips.vhd
+    Info (12022): Found design unit 1: MIPS-arquitetura File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 25
+    Info (12023): Found entity 1: MIPS File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file mem.vhd
+    Info (12022): Found design unit 1: mem-arquitetura File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/mem.vhd Line: 43
+    Info (12023): Found entity 1: mem File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/mem.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file lui.vhd
+    Info (12022): Found design unit 1: LUI-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/LUI.vhd Line: 19
+    Info (12023): Found entity 1: LUI File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/LUI.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file logicadisplay.vhd
+    Info (12022): Found design unit 1: logicaDisplay-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/logicaDisplay.vhd Line: 16
+    Info (12023): Found entity 1: logicaDisplay File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/logicaDisplay.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file id.vhd
+    Info (12022): Found design unit 1: id-arquitetura File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/id.vhd Line: 45
+    Info (12023): Found entity 1: id File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/id.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file ex.vhd
+    Info (12022): Found design unit 1: ex-arquitetura File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ex.vhd Line: 50
+    Info (12023): Found entity 1: ex File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ex.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file estendesinalgenerico.vhd
+    Info (12022): Found design unit 1: estendeSinalGenerico-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/estendeSinalGenerico.vhd Line: 20
+    Info (12023): Found entity 1: estendeSinalGenerico File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/estendeSinalGenerico.vhd Line: 4
+Info (12021): Found 3 design units, including 1 entities, in source file edgedetector.vhd
+    Info (12022): Found design unit 1: edgeDetector-bordaSubida File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/edgeDetector.vhd Line: 10
+    Info (12022): Found design unit 2: edgeDetector-bordaDescida File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/edgeDetector.vhd Line: 23
+    Info (12023): Found entity 1: edgeDetector File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/edgeDetector.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file display7seg.vhd
+    Info (12022): Found design unit 1: display7Seg-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/display7Seg.vhd Line: 12
+    Info (12023): Found entity 1: display7Seg File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/display7Seg.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file decoderopcodeula.vhd
+    Info (12022): Found design unit 1: decoderOpCodeULA-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/decoderOpCodeULA.vhd Line: 10
+    Info (12023): Found entity 1: decoderOpCodeULA File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/decoderOpCodeULA.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file decoderfunctula.vhd
+    Info (12022): Found design unit 1: decoderFunctULA-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/decoderFunctULA.vhd Line: 10
+    Info (12023): Found entity 1: decoderFunctULA File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/decoderFunctULA.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file conversorhex7seg.vhd
+    Info (12022): Found design unit 1: conversorHex7Seg-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/conversorHex7Seg.vhd Line: 17
+    Info (12023): Found entity 1: conversorHex7Seg File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/conversorHex7Seg.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file ciclounicocompleto.vhd
+    Info (12022): Found design unit 1: CicloUnicoCompleto-arquitetura File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/CicloUnicoCompleto.vhd Line: 26
+    Info (12023): Found entity 1: CicloUnicoCompleto File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/CicloUnicoCompleto.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file bancoreg.vhd
+    Info (12022): Found design unit 1: bancoReg-comportamento File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/bancoReg.vhd Line: 30
+    Info (12023): Found entity 1: bancoReg File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/bancoReg.vhd Line: 7
+Info (12127): Elaborating entity "MIPS" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at MIPS.vhd(15): used implicit default value for signal "LEDR" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 15
+Warning (10541): VHDL Signal Declaration warning at MIPS.vhd(16): used implicit default value for signal "HEX0" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 16
+Warning (10541): VHDL Signal Declaration warning at MIPS.vhd(17): used implicit default value for signal "HEX1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 17
+Warning (10541): VHDL Signal Declaration warning at MIPS.vhd(18): used implicit default value for signal "HEX2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 18
+Warning (10541): VHDL Signal Declaration warning at MIPS.vhd(19): used implicit default value for signal "HEX3" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 19
+Warning (10541): VHDL Signal Declaration warning at MIPS.vhd(20): used implicit default value for signal "HEX4" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 20
+Warning (10541): VHDL Signal Declaration warning at MIPS.vhd(21): used implicit default value for signal "HEX5" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 21
+Info (12129): Elaborating entity "edgeDetector" using architecture "A:bordasubida" for hierarchy "edgeDetector:\gravar:detectorSub0" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 58
+Info (12128): Elaborating entity "in_fetch" for hierarchy "in_fetch:INSTRUCTION_FETCH" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 62
+Info (12128): Elaborating entity "registradorGenerico" for hierarchy "in_fetch:INSTRUCTION_FETCH|registradorGenerico:PC" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/in_fetch.vhd Line: 39
+Info (12128): Elaborating entity "somaConstante" for hierarchy "in_fetch:INSTRUCTION_FETCH|somaConstante:incrementaPC" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/in_fetch.vhd Line: 43
+Info (12128): Elaborating entity "ROMMIPS" for hierarchy "in_fetch:INSTRUCTION_FETCH|ROMMIPS:ROM" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/in_fetch.vhd Line: 47
+Warning (10541): VHDL Signal Declaration warning at ROMMIPS.vhd(18): used implicit default value for signal "memROM" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ROMMIPS.vhd Line: 18
+Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "in_fetch:INSTRUCTION_FETCH|muxGenerico2x1:MUX_PC_BEQ" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/in_fetch.vhd Line: 50
+Info (12128): Elaborating entity "registradorGenerico" for hierarchy "registradorGenerico:REG_IF_ID" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 76
+Info (12128): Elaborating entity "id" for hierarchy "id:INSTRUCTION_DECODE" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 79
+Info (12128): Elaborating entity "bancoReg" for hierarchy "id:INSTRUCTION_DECODE|bancoReg:BANCO_REGISTRADORES" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/id.vhd Line: 89
+Info (12128): Elaborating entity "unidadeControle" for hierarchy "id:INSTRUCTION_DECODE|unidadeControle:UNIDADE_CONTROLE" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/id.vhd Line: 99
+Info (12128): Elaborating entity "estendeSinalGenerico" for hierarchy "id:INSTRUCTION_DECODE|estendeSinalGenerico:EXTENSOR_SINAL" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/id.vhd Line: 102
+Info (12128): Elaborating entity "LUI" for hierarchy "id:INSTRUCTION_DECODE|LUI:UNIDADE_LUI" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/id.vhd Line: 106
+Info (12128): Elaborating entity "registradorGenerico" for hierarchy "registradorGenerico:REG_ID_EX" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 115
+Info (12128): Elaborating entity "ex" for hierarchy "ex:EXECUTE" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 118
+Info (12128): Elaborating entity "ULA" for hierarchy "ex:EXECUTE|ULA:ULA" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ex.vhd Line: 78
+Info (12128): Elaborating entity "ULA_bit_final" for hierarchy "ex:EXECUTE|ULA:ULA|ULA_bit_final:BIT0" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA.vhd Line: 58
+Info (12128): Elaborating entity "muxGenerico2x1_1bit" for hierarchy "ex:EXECUTE|ULA:ULA|ULA_bit_final:BIT0|muxGenerico2x1_1bit:MUX2_1" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_bit_final.vhd Line: 28
+Info (12128): Elaborating entity "somadorCompleto" for hierarchy "ex:EXECUTE|ULA:ULA|ULA_bit_final:BIT0|somadorCompleto:SOMADOR" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_bit_final.vhd Line: 32
+Info (12128): Elaborating entity "muxGenerico4x1_1bit" for hierarchy "ex:EXECUTE|ULA:ULA|ULA_bit_final:BIT0|muxGenerico4x1_1bit:MUX4_1" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_bit_final.vhd Line: 36
+Info (12128): Elaborating entity "ULA_1_bit" for hierarchy "ex:EXECUTE|ULA:ULA|ULA_1_bit:BIT1" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA.vhd Line: 62
+Info (12128): Elaborating entity "ULA_bit_inicial" for hierarchy "ex:EXECUTE|ULA:ULA|ULA_bit_inicial:BIT31" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ULA.vhd Line: 182
+Info (12128): Elaborating entity "unidadeControleULA" for hierarchy "ex:EXECUTE|unidadeControleULA:UNIDADE_CONTROLE_ULA" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ex.vhd Line: 83
+Info (12128): Elaborating entity "decoderOpCodeULA" for hierarchy "ex:EXECUTE|unidadeControleULA:UNIDADE_CONTROLE_ULA|decoderOpCodeULA:DECODER_OPCODE" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/unidadeControleULA.vhd Line: 19
+Info (12128): Elaborating entity "decoderFunctULA" for hierarchy "ex:EXECUTE|unidadeControleULA:UNIDADE_CONTROLE_ULA|decoderFunctULA:DECODER_FUNCT" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/unidadeControleULA.vhd Line: 22
+Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "ex:EXECUTE|unidadeControleULA:UNIDADE_CONTROLE_ULA|muxGenerico2x1:MUX2_1" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/unidadeControleULA.vhd Line: 25
+Info (12128): Elaborating entity "shifter" for hierarchy "ex:EXECUTE|shifter:SHIFTER" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ex.vhd Line: 86
+Info (12128): Elaborating entity "somadorGenerico" for hierarchy "ex:EXECUTE|somadorGenerico:SOMADOR" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ex.vhd Line: 90
+Info (12128): Elaborating entity "muxGenerico4x1" for hierarchy "ex:EXECUTE|muxGenerico4x1:MUX_RT_RD" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/ex.vhd Line: 93
+Info (12128): Elaborating entity "registradorGenerico" for hierarchy "registradorGenerico:REG_EX_MEM" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 158
+Info (12128): Elaborating entity "mem" for hierarchy "mem:MEMORY_ACCESS" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 161
+Warning (10541): VHDL Signal Declaration warning at mem.vhd(32): used implicit default value for signal "habEscritaReg_PASSA" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/mem.vhd Line: 32
+Warning (10541): VHDL Signal Declaration warning at mem.vhd(33): used implicit default value for signal "muxControleULARAM_PASSA" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/mem.vhd Line: 33
+Info (12128): Elaborating entity "RAMMIPS" for hierarchy "mem:MEMORY_ACCESS|RAMMIPS:RAM" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/mem.vhd Line: 58
+Info (12128): Elaborating entity "registradorGenerico" for hierarchy "registradorGenerico:REG_MEM_WB" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 192
+Info (12128): Elaborating entity "wb" for hierarchy "wb:WRITE_BACK" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 196
+Warning (10873): Using initial value X (don't care) for net "saidaMuxRtRd_PASSA" at wb.vhd(24) File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/wb.vhd Line: 24
+Info (12128): Elaborating entity "muxGenerico4x1" for hierarchy "wb:WRITE_BACK|muxGenerico4x1:MUX_ULA_RAM" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/wb.vhd Line: 37
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LEDR[0]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 15
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 15
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 15
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 15
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 15
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 15
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 15
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 15
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 15
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 15
+    Warning (13410): Pin "HEX0[0]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 16
+    Warning (13410): Pin "HEX0[1]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 16
+    Warning (13410): Pin "HEX0[2]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 16
+    Warning (13410): Pin "HEX0[3]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 16
+    Warning (13410): Pin "HEX0[4]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 16
+    Warning (13410): Pin "HEX0[5]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 16
+    Warning (13410): Pin "HEX0[6]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 16
+    Warning (13410): Pin "HEX1[0]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 17
+    Warning (13410): Pin "HEX1[1]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 17
+    Warning (13410): Pin "HEX1[2]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 17
+    Warning (13410): Pin "HEX1[3]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 17
+    Warning (13410): Pin "HEX1[4]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 17
+    Warning (13410): Pin "HEX1[5]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 17
+    Warning (13410): Pin "HEX1[6]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 17
+    Warning (13410): Pin "HEX2[0]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 18
+    Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 18
+    Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 18
+    Warning (13410): Pin "HEX2[3]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 18
+    Warning (13410): Pin "HEX2[4]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 18
+    Warning (13410): Pin "HEX2[5]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 18
+    Warning (13410): Pin "HEX2[6]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 18
+    Warning (13410): Pin "HEX3[0]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 19
+    Warning (13410): Pin "HEX3[1]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 19
+    Warning (13410): Pin "HEX3[2]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 19
+    Warning (13410): Pin "HEX3[3]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 19
+    Warning (13410): Pin "HEX3[4]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 19
+    Warning (13410): Pin "HEX3[5]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 19
+    Warning (13410): Pin "HEX3[6]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 19
+    Warning (13410): Pin "HEX4[0]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 20
+    Warning (13410): Pin "HEX4[1]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 20
+    Warning (13410): Pin "HEX4[2]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 20
+    Warning (13410): Pin "HEX4[3]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 20
+    Warning (13410): Pin "HEX4[4]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 20
+    Warning (13410): Pin "HEX4[5]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 20
+    Warning (13410): Pin "HEX4[6]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 20
+    Warning (13410): Pin "HEX5[0]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 21
+    Warning (13410): Pin "HEX5[1]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 21
+    Warning (13410): Pin "HEX5[2]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 21
+    Warning (13410): Pin "HEX5[3]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 21
+    Warning (13410): Pin "HEX5[4]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 21
+    Warning (13410): Pin "HEX5[5]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 21
+    Warning (13410): Pin "HEX5[6]" is stuck at GND File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 21
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 15 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK_50" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 12
+    Warning (15610): No output dependent on input pin "KEY[0]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 13
+    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 13
+    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 13
+    Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 13
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/nicol/Desktop/insper/6_semestre/descomp/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd Line: 14
+Info (21057): Implemented 67 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 52 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 81 warnings
+    Info: Peak virtual memory: 4863 megabytes
+    Info: Processing ended: Sun Dec 04 04:57:53 2022
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:25
+
+
