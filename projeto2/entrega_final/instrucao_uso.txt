@@ -1,0 +1,6 @@
+Botão clock: KEY0
+Controle MUX para PC (Etapa 1/ IF), PC+4 (Etapa 3 / EX), saida ULA (Etapa 3/EX) e Saida do WB(Etapa 5/ WB) no display: SW0 E SW1
+PC   : 00
+PC+4 : 01
+ULA  : 10
+WB   : 11

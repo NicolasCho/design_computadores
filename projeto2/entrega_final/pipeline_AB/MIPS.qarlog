@@ -1,0 +1,48 @@
+Quartus Prime Archive log --	D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.qarlog
+
+Archive:	D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.qar
+Date:		Tue Dec 06 18:15:35 2022
+Quartus Prime		20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/CicloUnicoCompleto.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/LUI.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.qpf
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.qsf
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/MIPS.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/RAMMIPS.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/ROMMIPS.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/ROMcontent.mif
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/ULA.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_1_bit.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_bit_final.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/ULA_bit_inicial.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/bancoReg.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/conversorHex7Seg.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/decoderFunctULA.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/decoderOpCodeULA.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/display7Seg.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/edgeDetector.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/estendeSinalGenerico.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/ex.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/id.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/in_fetch.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/logicaDisplay.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/mem.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico2x1.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico2x1_1bit.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico4x1.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/muxGenerico4x1_1bit.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/registradorGenerico.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/shifter.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/somaConstante.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/somadorCompleto.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/somadorGenerico.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/unidadeControle.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/unidadeControleULA.vhd
+D:/Faculdade/6_Semestre/DesCom/design_computadores/projeto2/entrega_final/pipeline_AB/wb.vhd
+d:/quartus/quartus/bin64/assignment_defaults.qdf
+	======= Total: 37 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
